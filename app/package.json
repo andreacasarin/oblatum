@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js"
+    "start": "node ./index.js",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "linter": "jshint ./"
   },
   "dependencies": {
     "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "jest": "^22.0.3",
+    "jshint": "^2.9.5"
   }
 }
