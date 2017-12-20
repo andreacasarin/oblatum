@@ -1,0 +1,3 @@
+docker/data/db/*
+docker/data/app/*
+docker/data/web/*
