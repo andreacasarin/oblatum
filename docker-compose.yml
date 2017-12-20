@@ -17,7 +17,7 @@ services:
     working_dir: /usr/local/app
     volumes:
       - ./app:/usr/local/app
-      - ./docker/data/node/node_modules:/usr/local/app/node_modules
+      - ./docker/data/app/node_modules:/usr/local/app/node_modules
     environment:
       - NODE_ENV=development
     command: bash -c "npm install && npm run start"
@@ -29,6 +29,9 @@ services:
       - 80:80
     volumes_from:
       - app
+    volumes:
+      - ./data/web/logs/:/var/log/nginx
     depends_on:
       - app
+      - db
     command: nginx
