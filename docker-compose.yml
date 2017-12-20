@@ -4,7 +4,7 @@ services:
   db:
     image: mysql:5.7
     volumes:
-      - ./docker/data/db/:/var/lib/mysql
+      - ./db/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -17,20 +17,19 @@ services:
     working_dir: /usr/local/app
     volumes:
       - ./app:/usr/local/app
-      - ./docker/data/app/node_modules:/usr/local/app/node_modules
+      - ./app/node_modules:/usr/local/app/node_modules
     environment:
       - NODE_ENV=development
     command: bash -c "npm install && npm run start"
 
   web:
-    build:
-      context: docker/nginx
+    build: web
     ports:
       - 80:80
     volumes_from:
       - app
     volumes:
-      - ./data/web/logs:/var/log/nginx
+      - ./web/logs:/var/log/nginx
     depends_on:
       - app
       - db

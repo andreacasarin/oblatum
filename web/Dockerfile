@@ -12,8 +12,6 @@ RUN \
     echo 'server {' > /etc/nginx/sites-enabled/default \
     && echo '  listen 80;' >> /etc/nginx/sites-enabled/default \
     && echo '  server_name _;' >>  /etc/nginx/sites-enabled/default \
-    && echo '  access_log /dev/stdout;' >> /etc/nginx/sites-enabled/default \
-    && echo '  error_log /dev/stderr;' >> /etc/nginx/sites-enabled/default \
     && echo '  charset utf-8;' >>/etc/nginx/sites-enabled/default \
     && echo '  location /public {' >>/etc/nginx/sites-enabled/default \
     && echo '    alias /usr/local/app/public;' >>  /etc/nginx/sites-enabled/default \
