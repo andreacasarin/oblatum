@@ -1,0 +1,28 @@
+FROM debian:jessie
+
+RUN \
+    apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install nginx \
+    && rm -rf /usr/share/locale/* \
+    && rm -rf /var/cache/debconf/*-old \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /usr/share/doc/*
+
+RUN \
+    echo 'server {' > /etc/nginx/sites-enabled/default \
+    && echo '  listen 80;' >> /etc/nginx/sites-enabled/default \
+    && echo '  server_name _;' >>  /etc/nginx/sites-enabled/default \
+    && echo '  access_log /dev/stdout;' >> /etc/nginx/sites-enabled/default \
+    && echo '  error_log /dev/stderr;' >> /etc/nginx/sites-enabled/default \
+    && echo '  charset utf-8;' >>/etc/nginx/sites-enabled/default \
+    && echo '  location /public {' >>/etc/nginx/sites-enabled/default \
+    && echo '    alias /usr/local/app/public;' >>  /etc/nginx/sites-enabled/default \
+    && echo '  }' >> /etc/nginx/sites-enabled/default \
+    && echo '  location / {' >>  /etc/nginx/sites-enabled/default \
+    && echo '    proxy_pass http://app:3000;' >> /etc/nginx/sites-enabled/default \
+    && echo '    proxy_set_header Host $host;' >>/etc/nginx/sites-enabled/default \
+    && echo '    proxy_set_header X-Real-IP $remote_addr;' >>/etc/nginx/sites-enabled/default \
+    && echo '    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;' >>/etc/nginx/sites-enabled/default \
+    && echo '  }' >> /etc/nginx/sites-enabled/default \
+    && echo '}' >> /etc/nginx/sites-enabled/default \
+    && echo 'daemon off;' >> /etc/nginx/nginx.conf

@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./docker/data/db/:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+  app:
+    image: node:9
+    user: "node"
+    working_dir: /usr/local/app
+    volumes:
+      - ./app:/usr/local/app
+      - ./docker/data/node/node_modules:/usr/local/app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: bash -c "npm install && npm run start"
+
+  web:
+    build:
+      context: docker/nginx
+    ports:
+      - 80:80
+    volumes_from:
+      - app
+    depends_on:
+      - app
+    command: nginx
