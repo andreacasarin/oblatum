@@ -3,6 +3,8 @@ version: '2'
 services:
   db:
     image: mysql:5.7
+    ports:
+      - 3306:3306
     volumes:
       - ./db/mysql:/var/lib/mysql
     environment:
@@ -19,7 +21,12 @@ services:
       - ./app:/usr/local/app
       - ./app/node_modules:/usr/local/app/node_modules
     environment:
-      - NODE_ENV=development
+      PORT: ${NODE_PORT}
+      NODE_ENV: ${NODE_ENV}
+      DB_HOST: ${MYSQL_HOST}
+      DB_NAME: ${MYSQL_DATABASE}
+      DB_USER: ${MYSQL_USER}
+      DB_PASS: ${MYSQL_PASSWORD}
     # command: bash -c "npm install && npm run start"
     command: bash -c "npm install && npm run watch"
 
