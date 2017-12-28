@@ -29,23 +29,19 @@ For further informations follow "[How to install docker-compose](https://docs.do
 
 `cd oblatum`
 
-##### 5. Create .env configuration file:
-
-`cp .env.dist .env`
-
-##### 7. Build dockerized application:
+##### 3. Build dockerized application:
 
 `docker-compose build`
 
-###### 8. Run dockerized application:
+###### 4. Run dockerized application:
 
 `docker-compose up -d`
 
-##### 9. Install node dependencies
+##### 5. Install node dependencies
 
 `docker-compose exec app npm install`
 
-##### 10. Check that the application is installed and configured correctly:
+##### 6. Check that the application is installed and configured correctly:
 
 Open `http://localhost/` in a browser to see application running.
 
@@ -63,6 +59,7 @@ Open `http://localhost/` in a browser to see application running.
 ###### Run linter:
 
 `docker-compose exec app npm run linter`
+
 
 ## Project FAQ
 
@@ -97,3 +94,11 @@ Complete all initialization steps again if required (like re-configuring tests).
 ###### Update composer dependencies:
 
 `docker-compose exec app npm update`
+
+###### Run sequelize migrations:
+
+`docker-compose exec node_modules/.bin/sequelize db:migrate`
+
+###### Import sequelize seeds:
+
+`docker-compose exec app node_modules/.bin/sequelize db:seed:all`

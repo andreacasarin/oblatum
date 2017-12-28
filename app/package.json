@@ -1,16 +1,26 @@
 {
-  "name": "node_app",
-  "version": "1.0.0",
+  "name": "app",
+  "version": "0.0.0",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "start": "node ./index.js",
-    "watch": "nodemon ./index.js",
+    "start": "node ./bin/www",
+    "watch": "nodemon ./bin/www",
     "test": "jest",
     "coverage": "jest --coverage",
     "linter": "jshint ./"
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "mysql2": "^1.5.1",
+    "sequelize": "^4.28.6",
+    "sequelize-cli": "^3.2.0",
+    "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
     "jest": "^22.0.3",
