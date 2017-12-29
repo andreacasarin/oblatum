@@ -1,14 +1,17 @@
-const vm = new Vue({
+const vue = new Vue({
   el: '#app',
   data: {
-    users: []
+    users: [],
+    errors: [],
   },
   methods: {
     getUsers() {
-      let url = 'http://localhost:3000/users';
+      const url = 'http://localhost:3000/users';
       axios.get(url).then((response) => {
         this.users = response.data;
-      }).catch( error => { console.log(error); });
-    }
-  }
+      }).catch((error) => {
+        this.errors = error.data;
+      });
+    },
+  },
 });
