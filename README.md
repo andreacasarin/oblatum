@@ -97,8 +97,8 @@ Complete all initialization steps again if required (like re-configuring tests).
 
 ###### Run sequelize migrations:
 
-`docker-compose exec node_modules/.bin/sequelize db:migrate`
+`docker-compose exec sequelize db:migrate`
 
 ###### Import sequelize seeds:
 
-`docker-compose exec app node_modules/.bin/sequelize db:seed:all`
+`docker-compose exec app sequelize db:seed:all`
