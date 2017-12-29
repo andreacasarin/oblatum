@@ -26,14 +26,12 @@ const server = http.createServer(app);
  */
 
 server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
 
 /**
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
+server.on('error', (error) => {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -53,14 +51,14 @@ function onError(error) {
     default:
       throw error;
   }
-}
+});
 
 /**
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() {
+server.on('listening', () => {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
-}
+});
