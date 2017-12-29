@@ -1,9 +1,7 @@
-var host = 'http://localhost:3000';
-
 $(document).ready(function(){
     $("#get-users").click(function(){
         $.ajax({
-                url: host + "/users",
+                url: "http://localhost:3000/users",
                 success: function(data) {
                     $("#get-users-listing").html('');
                     for (var i = 0; i < data.length; i++) {

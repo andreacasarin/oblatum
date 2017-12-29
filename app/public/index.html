@@ -11,13 +11,22 @@
 
 <body>
 
-  <h1>Test user listing</h1>
+  <h1>jQuery user listing</h1>
 
   <a id="get-users" href="#"><b>Get users</b></a>
   <p id="get-users-listing"></p>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="javascripts/scripts.js"></script>
+  <h1>Vue.js user listing</h1>
+
+  <div id="app">
+    <a href="#" v-on:click="getUsers()"><b>Get users</b></a>
+    <p><p v-for="user in users">{{ user.email }} -> {{ user.password }}</p></p>
+  </div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="javascripts/scripts.js"></script>
+<script src="javascripts/main.js"></script>
 </body>
 
 </html>
