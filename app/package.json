@@ -8,7 +8,7 @@
     "watch": "nodemon ./bin/www",
     "test": "jest",
     "coverage": "jest --coverage",
-    "linter": "jshint ./"
+    "linter": "eslint ./"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -23,8 +23,13 @@
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
+    "eslint": "^4.14.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
     "jest": "^22.0.3",
-    "jshint": "^2.9.5",
     "nodemon": "^1.14.3"
   }
 }
