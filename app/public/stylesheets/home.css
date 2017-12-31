@@ -27,28 +27,6 @@
     margin-bottom: 50px;
 }
 
-.ion-email{
-    font-size: 30px;
-}
-#email-sent{
-    display: none;
-    cursor: pointer;
-    max-width: 730px;
-    margin: 0 auto;
-    margin-bottom: 15px;
-}
-
-#email-not-sent{
-    display: none;
-    cursor: pointer;
-    max-width: 730px;
-    margin: 0 auto;
-    margin-bottom: 15px;
-}
-
-#email{
-    max-width: 350px;
-}
 
 /*Sign up button*/
 #signup{
@@ -65,4 +43,72 @@
 #keep-in-touch-text {
     color: white;
     font-size: 14px;
+}
+
+/*workaround*/
+@media (max-width: 768px){
+    .what-we-do-images{
+        margin-bottom: 25px;
+    }
+}
+
+.what-we-do-section{
+    background-color: whitesmoke;
+    padding-bottom: 50px;
+}
+
+.what-we-do-title{
+    font-weight: bold;
+    font-size: 45px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    color: #020C18;
+}
+.what-we-do-block{
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.what-we-do-text{
+    vertical-align: middle;
+    background-color: yellow; 
+}
+
+.team-title{
+    font-weight: bold;
+    font-size: 45px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.member-description{
+    padding-top: 5px;
+    font-size: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+
+}
+
+.member-name{
+    padding-top: 10px;
+        font-weight: bold;
+    font-size: 20px;
+}
+
+ .team-container{
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 50px;
+ }
+
+/*workaround*/
+@media (max-width: 768px){
+    .member-description{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 50px;
+        font-size: 15px;
+    }
 }

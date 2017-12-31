@@ -3,7 +3,7 @@ html *{
 }
 
 body {
-    background: #35465c;
+    background: #35465c !important;
     /*background: -moz-linear-gradient(-45deg, #35465c 0%, #33455b 100%);
     background: -webkit-linear-gradient(-45deg, #35465c 0%,#33455b 100%);
     background: linear-gradient(135deg, #35465c 0%,#33455b 100%);
