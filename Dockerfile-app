@@ -1,0 +1,7 @@
+FROM node:9
+
+ADD app/package.json app/package-lock.json /usr/local/app/
+WORKDIR /usr/local/app/
+RUN npm install --only=production
+
+ADD app /usr/local/app/

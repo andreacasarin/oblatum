@@ -9,6 +9,10 @@ RUN \
     && rm -rf /usr/share/doc/*
 
 RUN \
+    sed "s/access_log.*/access_log \/dev\/stdout;/g" -i /etc/nginx/nginx.conf \
+    && sed "s/error_log.*/error_log \/dev\/stderr;/g" -i /etc/nginx/nginx.conf
+
+RUN \
     echo 'server {' > /etc/nginx/sites-enabled/default \
     && echo '  listen 80;' >> /etc/nginx/sites-enabled/default \
     && echo '  server_name _;' >>  /etc/nginx/sites-enabled/default \
@@ -24,3 +28,5 @@ RUN \
     && echo '  }' >> /etc/nginx/sites-enabled/default \
     && echo '}' >> /etc/nginx/sites-enabled/default \
     && echo 'daemon off;' >> /etc/nginx/nginx.conf
+
+ADD app /usr/local/
