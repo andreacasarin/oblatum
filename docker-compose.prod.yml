@@ -2,11 +2,9 @@ version: '2'
 
 services:
   db:
-    image: mysql:5.7
-    ports:
-      - 3306:3306
+    ports: []
     volumes:
-      - ./db/mysql:/var/lib/mysql
+      - oblatum_database:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -14,7 +12,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
   app:
-    image: node:9
+    ports: []
     user: "node"
     working_dir: /usr/local/app
     volumes:
@@ -27,17 +25,13 @@ services:
       DB_NAME: ${MYSQL_DATABASE}
       DB_USER: ${MYSQL_USER}
       DB_PASS: ${MYSQL_PASSWORD}
-      PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-    command: bash -c "npm install && npm run watch"
+    command: bash -c "npm install && npm run start"
 
   web:
-    build: web
     ports:
-      - 80:80
+      - 443:443
     volumes_from:
       - app
-    volumes:
-      - ./web/logs:/var/log/nginx
     depends_on:
       - app
       - db
