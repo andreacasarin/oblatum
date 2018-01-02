@@ -1,0 +1,36 @@
+.team-title{
+    font-weight: bold;
+    font-size: 45px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.member-description{
+    padding-top: 5px;
+    font-size: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+
+}
+
+.member-name{
+    padding-top: 10px;
+        font-weight: bold;
+    font-size: 20px;
+}
+
+ .team-container{
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 50px;
+ }
+
+/*workaround*/
+@media (max-width: 768px){
+    .member-description{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 50px;
+        font-size: 15px;
+    }
+}

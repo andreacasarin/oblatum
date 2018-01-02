@@ -1,0 +1,30 @@
+/*workaround*/
+@media (max-width: 768px){
+    .what-we-do-images{
+        margin-bottom: 25px;
+    }
+}
+
+.what-we-do-section{
+    background-color: whitesmoke;
+    padding-bottom: 50px;
+}
+
+.what-we-do-title{
+    font-weight: bold;
+    font-size: 45px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    color: #020C18;
+}
+.what-we-do-block{
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.what-we-do-text{
+    vertical-align: middle;
+    background-color: yellow; 
+}

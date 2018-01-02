@@ -10,11 +10,7 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#35465c', endColorstr='#355a5c',GradientType=1 );*/
 }
 
+/*Contains .mainText & .descriptiveText*/
 .text-white{
     color: whitesmoke;
-}
-
-.main-container{
-    width: 100%;
-    margin: 0 auto;
 }
