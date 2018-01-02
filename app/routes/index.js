@@ -16,10 +16,6 @@ router.put('/users/:userId', users.update);
 router.delete('/users/:userId', users.delete);
 
 // E-mail sign-up landing page
-router.post('/sendemail', (req, res) => {
-  const email = req.body.email;
-  /* Send email to @Alessandro */
-  res.send(email);
-});
+router.post('/sendemail', misc.sendmail);
 
 module.exports = router;
