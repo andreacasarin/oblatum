@@ -1,12 +1,7 @@
 FROM node:9
 
-RUN echo '#!/bin/bash' > /usr/local/bin/entrypoint.sh \
-  && echo 'npm install' >> /usr/local/bin/entrypoint.sh \
-  && chmod +x /usr/local/bin/entrypoint.sh
-  && echo 'exec "$@"' >> /usr/local/bin/entrypoint.sh
+ADD app/package.json app/package-lock.json /usr/local/app/
+WORKDIR /usr/local/app/
+RUN npm install
 
-ADD init $APP_ADD_PATH /usr/local/
-
-RUN chown -R node /usr/local/init $APP_ADD_PATH
-
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+ADD app /usr/local/app/

@@ -15,7 +15,6 @@ services:
     networks:
       - app_net
     user: node
-    working_dir: /usr/local/app
 
   web:
     build:

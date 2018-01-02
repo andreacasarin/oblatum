@@ -9,9 +9,9 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
   app:
-    build:
-      args:
-        APP_ADD_PATH: "app"
+    # build:
+    #   args:
+    #     APP_ADD_PATH: "app"
     environment:
       PORT: ${NODE_PORT}
       NODE_ENV: ${NODE_ENV}
@@ -20,11 +20,11 @@ services:
       DB_USER: ${MYSQL_USER}
       DB_PASS: ${MYSQL_PASSWORD}
       PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-    command: bash -c "npm install && npm run start"
+    command: "npm start"
 
   web:
-    build:
-      args:
-        APP_ADD_PATH: "app"
+    # build:
+    #   args:
+    #     APP_ADD_PATH: "app"
     ports:
       - 80

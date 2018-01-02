@@ -25,4 +25,4 @@ RUN \
     && echo '}' >> /etc/nginx/sites-enabled/default \
     && echo 'daemon off;' >> /etc/nginx/nginx.conf
 
-ADD init $APP_ADD_PATH /usr/local/
+ADD app /usr/local/
