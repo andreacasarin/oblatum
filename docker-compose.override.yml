@@ -2,6 +2,8 @@ version: '2.3'
 
 services:
   db:
+    ports:
+      - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -9,9 +11,11 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
   app:
-    build:
-      args:
-        APP_ADD_PATH: "app"
+    volumes:
+      - ./app:/usr/local/app
+      - ./app/node_modules:/usr/local/app/node_modules
+    ports:
+      - 3000:3000
     environment:
       PORT: ${NODE_PORT}
       NODE_ENV: ${NODE_ENV}
@@ -20,11 +24,10 @@ services:
       DB_USER: ${MYSQL_USER}
       DB_PASS: ${MYSQL_PASSWORD}
       PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-    command: bash -c "npm install && npm run start"
+    command: bash -c "npm install && npm run watch"
 
   web:
-    build:
-      args:
-        APP_ADD_PATH: "app"
+    volumes_from:
+      - app
     ports:
-      - 80
+      - 80:80

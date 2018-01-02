@@ -1,0 +1,3 @@
+FROM node:9
+
+ADD init $APP_ADD_PATH /usr/local/
