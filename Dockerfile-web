@@ -18,6 +18,9 @@ RUN \
     && echo '  server_name _;' >>  /etc/nginx/sites-enabled/default \
     && echo '  charset utf-8;' >>/etc/nginx/sites-enabled/default \
     && echo '  location / {' >>/etc/nginx/sites-enabled/default \
+    && echo '    alias /usr/local/app/client/;' >>  /etc/nginx/sites-enabled/default \
+    && echo '  }' >> /etc/nginx/sites-enabled/default \
+    && echo '  location /public/ {' >>/etc/nginx/sites-enabled/default \
     && echo '    alias /usr/local/app/public/;' >>  /etc/nginx/sites-enabled/default \
     && echo '  }' >> /etc/nginx/sites-enabled/default \
     && echo '  location /api/ {' >>  /etc/nginx/sites-enabled/default \
