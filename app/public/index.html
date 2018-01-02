@@ -14,18 +14,17 @@
 <!-- Add this to <head> -->
 
 
-    <link rel="stylesheet" href="./stylesheets/navbar.css">
-    <link rel="stylesheet" href="./stylesheets/footer.css">
     <link rel="stylesheet" href="./stylesheets/global.css">
     <link rel="stylesheet" href="./stylesheets/ionicons.css">
     <link rel="stylesheet" href="./stylesheets/bootstrap.min.css"/>
     <!-- JS -->
-    <!-- Development only --> <script src="./javascripts/vue.js"></script>
-    <!-- Production <script src="./javascripts/vue.min.js"></script> -->
-    <script src="./javascripts/vue-router.js"></script>
-    <script src="https://unpkg.com/http-vue-loader"></script>
-    <script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
-<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+    <!-- Development only --> <script src="./javascripts/import/vue.js"></script>
+    <!-- Production <script src="./javascripts/import/vue.min.js"></script> -->
+    <script src="./javascripts/import/vue-router.js"></script>
+
+    <script src="./javascripts/import/polyfill.min.js"></script>
+    <script src="./javascripts/import/bootstrap-vue.js"></script>
+
     <title>Oblatum</title>
 </head>
 
@@ -51,5 +50,5 @@
 
 
 </body>
-<script src="./javascripts/routes.js"></script>
+<script src="./build/build.js"></script>
 </html>

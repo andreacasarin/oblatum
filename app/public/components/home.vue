@@ -1,4 +1,117 @@
-<style src="./stylesheets/home.css"></style>
+<style>
+.main-container{
+    width: 100%;
+    margin: 0 auto;
+}
+
+/*Text in top of the page*/
+.main-text {
+    margin-top: 15px;
+    max-width: 900px;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+/*Description of what we do in top page*/
+.descriptive-text{
+    margin-top: 5px;
+    max-width: 600px;
+}
+
+/*Form containing submit button, textfield*/
+.sign-in-form{
+    max-width: 450px;
+    height: 120px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+
+/*Sign up button*/
+#signup{
+    background-color: #4EBF3C;
+    border-color: #4EBF3C;
+}
+
+#signup:hover{
+    background-color: #1D8D0B;
+    border-color: #1D8D0B;
+    cursor: pointer;
+}
+/*Label above email textfield*/
+#keep-in-touch-text {
+    color: white;
+    font-size: 14px;
+}
+
+/*workaround*/
+@media (max-width: 768px){
+    .what-we-do-images{
+        margin-bottom: 25px;
+    }
+}
+
+.what-we-do-section{
+    background-color: whitesmoke;
+    padding-bottom: 50px;
+}
+
+.what-we-do-title{
+    font-weight: bold;
+    font-size: 45px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    color: #020C18;
+}
+.what-we-do-block{
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.what-we-do-text{
+    vertical-align: middle;
+    background-color: yellow; 
+}
+
+.team-title{
+    font-weight: bold;
+    font-size: 45px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.member-description{
+    padding-top: 5px;
+    font-size: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+
+}
+
+.member-name{
+    padding-top: 10px;
+        font-weight: bold;
+    font-size: 20px;
+}
+
+ .team-container{
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 50px;
+ }
+
+/*workaround*/
+@media (max-width: 768px){
+    .member-description{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 50px;
+        font-size: 15px;
+    }
+}
+</style>
 
 <template>
 <!-- main container -->
@@ -37,7 +150,7 @@
             <b-row class="what-we-do-block d-flex align-items-center">
 
                 <img class="col-md-3 order-md-2 what-we-do-images" 
-                    src="./images/think-big.svg" 
+                    src="../images/think-big.svg" 
                     alt="Think big"
                     height="100px"
                     width="100px" 
@@ -53,7 +166,7 @@
             <!-- Start small -->
             <b-row class="what-we-do-block d-flex align-items-center">
                 <img class="col-md-3 what-we-do-images" 
-                    src="./images/start-small.svg" 
+                    src="../images/start-small.svg" 
                     alt="Start small"
                     height="100px"
                     width="100px" />
@@ -68,7 +181,7 @@
             <b-row class="what-we-do-block d-flex align-items-center">
 
                 <img class="col-md-3 order-md-2 what-we-do-images" 
-                    src="./images/scale-fast.svg" 
+                    src="../images/scale-fast.svg" 
                     alt="Scale fast"
                     height="100px"
                     width="100px"/>
@@ -90,6 +203,7 @@
                     Team
                 </b-col>
             </b-row>
+
             <!-- Team container -->
             <b-row class="team-container">
 
@@ -98,7 +212,7 @@
                     <b-row>
 
                         <img 
-                            src="./images/andrea.jpg" 
+                            src="../images/andrea.jpg" 
                             class="rounded-circle mx-auto d-block" 
                             alt="Member photo"
                             height="200px"
@@ -112,44 +226,46 @@
                 </b-col>
 
                 <!-- Member B -->
-                <div class="col-md-4">
+                <b-col col md="4">
 
-                    <div class="row">
+                    <b-row>
                         <img 
-                            src="./images/alessandro.jpg" 
+                            src="../images/alessandro.jpg" 
                             class="rounded-circle mx-auto d-block" 
                             alt="Member photo"
                             height="200px"
                             width="200px" />
-                    </div>
+                    </b-row>
 
-                    <div class="row justify-content-center text-white member-name">Alessandro Rea</div>
+                    <b-row class="row justify-content-center text-white member-name">Alessandro Rea</b-row>
                     <b-row class="justify-content-center text-white"><i>Founder & CEO</i>
                     </b-row>
-                </div>
+                </b-col>
 
                 <!-- Member C -->
-                <div class="col-md-4">
+                <b-col col md="4">
 
-                    <div class="row">
+                    <b-row>
                         <img 
-                            src="./images/ezechiele.jpg" 
+                            src="../images/ezechiele.jpg" 
                             class="rounded-circle mx-auto d-block" 
                             alt="Member photo"
                             height="200px"
                             width="200px" />
-                    </div>
+                    </b-row>
 
-                    <div class="row justify-content-center text-white member-name">Ezechiele Tosadori</div>
+                    <b-row class="row justify-content-center text-white member-name">Ezechiele Tosadori</b-row>
 
                     <b-row class="justify-content-center text-white"><i>Front-end developer</i>
                     </b-row>
 
-                </div>
+                </b-col>
+            </b-row>
 
-            </div>
-        </div>
-    </div>
+        </b-col>
+    </b-row>
+</b-container>
+
 </template>
 
 <script>
