@@ -15,4 +15,4 @@ services:
 
   web:
     ports:
-      - 10111:80
+      - 80
