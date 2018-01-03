@@ -40,10 +40,10 @@ function saveData(email){
         type: 'POST',
         data: JSON.stringify({email: email}),
         contentType: 'application/json',
-        url: 'http://localhost/sendemail',                      
+        url: 'http://localhost/api/sendmail',
             success: function(data) {
                 console.log('success');
                 console.log(JSON.stringify(data));
-            }  
+            }
     });
-} 
+}
