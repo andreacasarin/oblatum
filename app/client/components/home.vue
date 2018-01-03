@@ -134,7 +134,9 @@
     <!-- Sign up form -->
     <b-row class="justify-content-center">
         <b-col>
-            <obl-register-form></obl-register-form>
+            <obl-login-form v-if="isLogin"></obl-login-form>
+            <obl-register-form v-if="isHome"></obl-register-form>
+            <obl-recover-password-form v-if="isRecover"></obl-recover-password-form>
         </b-col>
     </b-row>
 
@@ -150,7 +152,7 @@
             <b-row class="what-we-do-block d-flex align-items-center">
 
                 <img class="col-md-3 order-md-2 what-we-do-images" 
-                    src="../images/think-big.svg" 
+                    :src="this.$path.global + '/images/think-big.svg'" 
                     alt="Think big"
                     height="100px"
                     width="100px" 
@@ -166,7 +168,7 @@
             <!-- Start small -->
             <b-row class="what-we-do-block d-flex align-items-center">
                 <img class="col-md-3 what-we-do-images" 
-                    src="../images/start-small.svg" 
+                    :src="this.$path.global + '/images/start-small.svg'"
                     alt="Start small"
                     height="100px"
                     width="100px" />
@@ -181,7 +183,7 @@
             <b-row class="what-we-do-block d-flex align-items-center">
 
                 <img class="col-md-3 order-md-2 what-we-do-images" 
-                    src="../images/scale-fast.svg" 
+                    :src="this.$path.global + '/images/scale-fast.svg'"
                     alt="Scale fast"
                     height="100px"
                     width="100px"/>
@@ -212,7 +214,7 @@
                     <b-row>
 
                         <img 
-                            src="../images/andrea.jpg" 
+                            :src="this.$path.global + '/images/andrea.jpg'" 
                             class="rounded-circle mx-auto d-block" 
                             alt="Member photo"
                             height="200px"
@@ -230,7 +232,7 @@
 
                     <b-row>
                         <img 
-                            src="../images/alessandro.jpg" 
+                            :src="this.$path.global + '/images/alessandro.jpg'" 
                             class="rounded-circle mx-auto d-block" 
                             alt="Member photo"
                             height="200px"
@@ -247,7 +249,7 @@
 
                     <b-row>
                         <img 
-                            src="../images/ezechiele.jpg" 
+                            :src="this.$path.global + '/images/ezechiele.jpg'" 
                             class="rounded-circle mx-auto d-block" 
                             alt="Member photo"
                             height="200px"
@@ -270,11 +272,17 @@
 
 <script>
 module.exports = {
-    data: function() {
-        return {
-            who: 'world'
+  computed: {
+        isLogin: function() {
+            return this.$route.path == this.$path.login;
+        },
+        isHome: function(){
+            return this.$route.path == this.$path.home;
+        },
+        isRecover: function(){
+            return this.$route.path == this.$path.recover;
         }
-    }
+  }
 }
 </script>
 

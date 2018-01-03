@@ -477,6 +477,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_register_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_register_form_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_footer_vue__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_footer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_footer_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_login_form_vue__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_login_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_login_form_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_recover_password_form_vue__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_recover_password_form_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_recover_password_form_vue__);
+
+
 
 
 
@@ -485,24 +491,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Vue.component('obl-navbar', __WEBPACK_IMPORTED_MODULE_1__components_navbar_vue___default.a);
 Vue.component('obl-register-form', __WEBPACK_IMPORTED_MODULE_2__components_register_form_vue___default.a);
 Vue.component('obl-footer', __WEBPACK_IMPORTED_MODULE_3__components_footer_vue___default.a);
+Vue.component('obl-login-form', __WEBPACK_IMPORTED_MODULE_4__components_login_form_vue___default.a);
+Vue.component('obl-recover-password-form', __WEBPACK_IMPORTED_MODULE_5__components_recover_password_form_vue___default.a);
 
-/*Vue.component('obl-footer', httpVueLoader('./components/footer.vue'));
-Vue.component('obl-register-form', httpVueLoader('./components/register-form.vue'));*/
+// Paths
+var globalPath = "";
+Vue.prototype.$path = {
+	global: globalPath,
+	home: globalPath + '/',
+	login: globalPath + '/login',
+	recover: globalPath + '/recover'
+}
+
 
 //Routes
 const routes = [
-  { path: '/', component: __WEBPACK_IMPORTED_MODULE_0__components_home_vue___default.a },
+  { path: Vue.prototype.$path.home, component: __WEBPACK_IMPORTED_MODULE_0__components_home_vue___default.a }, 
+  { path: Vue.prototype.$path.login, component: __WEBPACK_IMPORTED_MODULE_0__components_home_vue___default.a },
+  { path: Vue.prototype.$path.recover, component: __WEBPACK_IMPORTED_MODULE_0__components_home_vue___default.a }
 ];
+
+
 
 //Creation of the route instance
 const router = new VueRouter({
   routes: routes 
 })
 
+var testVar = "ciao";
 
 //Creation of the app instance
 const app = new Vue({
   el: '#app',
+  data: {
+    foo: 'foo'
+  },
   router: router
 })
 
@@ -586,7 +609,7 @@ exports = module.exports = __webpack_require__(0)(true);
 
 
 // module
-exports.push([module.i, "\n.main-container{\n    width: 100%;\n    margin: 0 auto;\n}\n\n/*Text in top of the page*/\n.main-text {\n    margin-top: 15px;\n    max-width: 900px;\n    font-weight: bold;\n    font-size: 45px;\n}\n\n/*Description of what we do in top page*/\n.descriptive-text{\n    margin-top: 5px;\n    max-width: 600px;\n}\n\n/*Form containing submit button, textfield*/\n.sign-in-form{\n    max-width: 450px;\n    height: 120px;\n    margin: 0 auto;\n    margin-bottom: 50px;\n}\n\n\n/*Sign up button*/\n#signup{\n    background-color: #4EBF3C;\n    border-color: #4EBF3C;\n}\n#signup:hover{\n    background-color: #1D8D0B;\n    border-color: #1D8D0B;\n    cursor: pointer;\n}\n/*Label above email textfield*/\n#keep-in-touch-text {\n    color: white;\n    font-size: 14px;\n}\n\n/*workaround*/\n@media (max-width: 768px){\n.what-we-do-images{\n        margin-bottom: 25px;\n}\n}\n.what-we-do-section{\n    background-color: whitesmoke;\n    padding-bottom: 50px;\n}\n.what-we-do-title{\n    font-weight: bold;\n    font-size: 45px;\n    margin-top: 50px;\n    margin-bottom: 25px;\n    color: #020C18;\n}\n.what-we-do-block{\n    margin-top: 25px;\n    margin-bottom: 15px;\n    padding-left: 25px;\n    padding-right: 25px;\n}\n.what-we-do-text{\n    vertical-align: middle;\n    background-color: yellow;\n}\n.team-title{\n    font-weight: bold;\n    font-size: 45px;\n    margin-top: 50px;\n    margin-bottom: 40px;\n}\n.member-description{\n    padding-top: 5px;\n    font-size: 15px;\n    margin-right: 5px;\n    margin-left: 5px;\n}\n.member-name{\n    padding-top: 10px;\n        font-weight: bold;\n    font-size: 20px;\n}\n.team-container{\n    margin-left: 25px;\n    margin-right: 25px;\n    margin-bottom: 50px;\n}\n\n/*workaround*/\n@media (max-width: 768px){\n.member-description{\n        margin-left: 10px;\n        margin-right: 10px;\n        margin-bottom: 50px;\n        font-size: 15px;\n}\n}\n", "", {"version":3,"sources":["/usr/local/app/client/components/home.vue?2d4d5a62"],"names":[],"mappings":";AACA;IACA,YAAA;IACA,eAAA;CACA;;AAEA,2BAAA;AACA;IACA,iBAAA;IACA,iBAAA;IACA,kBAAA;IACA,gBAAA;CACA;;AAEA,yCAAA;AACA;IACA,gBAAA;IACA,iBAAA;CACA;;AAEA,4CAAA;AACA;IACA,iBAAA;IACA,cAAA;IACA,eAAA;IACA,oBAAA;CACA;;;AAGA,kBAAA;AACA;IACA,0BAAA;IACA,sBAAA;CACA;AAEA;IACA,0BAAA;IACA,sBAAA;IACA,gBAAA;CACA;AACA,+BAAA;AACA;IACA,aAAA;IACA,gBAAA;CACA;;AAEA,cAAA;AACA;AACA;QACA,oBAAA;CACA;CACA;AAEA;IACA,6BAAA;IACA,qBAAA;CACA;AAEA;IACA,kBAAA;IACA,gBAAA;IACA,iBAAA;IACA,oBAAA;IACA,eAAA;CACA;AACA;IACA,iBAAA;IACA,oBAAA;IACA,mBAAA;IACA,oBAAA;CACA;AAEA;IACA,uBAAA;IACA,yBAAA;CACA;AAEA;IACA,kBAAA;IACA,gBAAA;IACA,iBAAA;IACA,oBAAA;CACA;AAEA;IACA,iBAAA;IACA,gBAAA;IACA,kBAAA;IACA,iBAAA;CAEA;AAEA;IACA,kBAAA;QACA,kBAAA;IACA,gBAAA;CACA;AAEA;IACA,kBAAA;IACA,mBAAA;IACA,oBAAA;CACA;;AAEA,cAAA;AACA;AACA;QACA,kBAAA;QACA,mBAAA;QACA,oBAAA;QACA,gBAAA;CACA;CACA","file":"home.vue","sourcesContent":["<style>\n.main-container{\n    width: 100%;\n    margin: 0 auto;\n}\n\n/*Text in top of the page*/\n.main-text {\n    margin-top: 15px;\n    max-width: 900px;\n    font-weight: bold;\n    font-size: 45px;\n}\n\n/*Description of what we do in top page*/\n.descriptive-text{\n    margin-top: 5px;\n    max-width: 600px;\n}\n\n/*Form containing submit button, textfield*/\n.sign-in-form{\n    max-width: 450px;\n    height: 120px;\n    margin: 0 auto;\n    margin-bottom: 50px;\n}\n\n\n/*Sign up button*/\n#signup{\n    background-color: #4EBF3C;\n    border-color: #4EBF3C;\n}\n\n#signup:hover{\n    background-color: #1D8D0B;\n    border-color: #1D8D0B;\n    cursor: pointer;\n}\n/*Label above email textfield*/\n#keep-in-touch-text {\n    color: white;\n    font-size: 14px;\n}\n\n/*workaround*/\n@media (max-width: 768px){\n    .what-we-do-images{\n        margin-bottom: 25px;\n    }\n}\n\n.what-we-do-section{\n    background-color: whitesmoke;\n    padding-bottom: 50px;\n}\n\n.what-we-do-title{\n    font-weight: bold;\n    font-size: 45px;\n    margin-top: 50px;\n    margin-bottom: 25px;\n    color: #020C18;\n}\n.what-we-do-block{\n    margin-top: 25px;\n    margin-bottom: 15px;\n    padding-left: 25px;\n    padding-right: 25px;\n}\n\n.what-we-do-text{\n    vertical-align: middle;\n    background-color: yellow; \n}\n\n.team-title{\n    font-weight: bold;\n    font-size: 45px;\n    margin-top: 50px;\n    margin-bottom: 40px;\n}\n\n.member-description{\n    padding-top: 5px;\n    font-size: 15px;\n    margin-right: 5px;\n    margin-left: 5px;\n\n}\n\n.member-name{\n    padding-top: 10px;\n        font-weight: bold;\n    font-size: 20px;\n}\n\n .team-container{\n    margin-left: 25px;\n    margin-right: 25px;\n    margin-bottom: 50px;\n }\n\n/*workaround*/\n@media (max-width: 768px){\n    .member-description{\n        margin-left: 10px;\n        margin-right: 10px;\n        margin-bottom: 50px;\n        font-size: 15px;\n    }\n}\n</style>\n\n<template>\n<!-- main container -->\n<b-container fluid>\n\n    <!-- bold big text -->\n    <b-row class=\"justify-content-center\">\n        <b-col class=\"text-center main-text text-white\">\n            Let’s build the future together\n        </b-col>\n    </b-row>\n\n    <!-- description label -->\n    <b-row class=\"justify-content-center\">\n        <b-col class=\"text-center descriptive-text text-white\">\n            Oblatum enables people to trace, store and insure their most valuable assets.\n        </b-col>\n    </b-row>\n\n    <!-- Sign up form -->\n    <b-row class=\"justify-content-center\">\n        <b-col>\n            <obl-register-form></obl-register-form>\n        </b-col>\n    </b-row>\n\n    <!-- What we do section -->\n    <b-row id=\"what-we-do-sec\" class=\"what-we-do-section justify-content-center\">\n        <b-col>\n            <b-row class=\"justify-content-center\">\n                <b-col class=\"text-center what-we-do-title\">\n                    Think big, start small, scale fast\n                </b-col>\n            </b-row>\n            <!-- Think Big -->\n            <b-row class=\"what-we-do-block d-flex align-items-center\">\n\n                <img class=\"col-md-3 order-md-2 what-we-do-images\" \n                    src=\"../images/think-big.svg\" \n                    alt=\"Think big\"\n                    height=\"100px\"\n                    width=\"100px\" \n                    />\n\n                <b-col col md=\"9\" class=\"order-md-1 d-flex align-items-center\">\n                    Oblatum mission is to organize the world’s asset in a transparent and secure way that enables people prosperity and promote financial inclusion.\n                </b-col>\n\n\n            </b-row>\n\n            <!-- Start small -->\n            <b-row class=\"what-we-do-block d-flex align-items-center\">\n                <img class=\"col-md-3 what-we-do-images\" \n                    src=\"../images/start-small.svg\" \n                    alt=\"Start small\"\n                    height=\"100px\"\n                    width=\"100px\" />\n\n                <b-col col md=\"9\" class=\"order-md-1 d-flex align-items-center\">\n                    We have chosen to start from tracing bicycle. We leverage the Ethereum blockchain to create a digital certificate associated with the bicycle which enhances transparency and prevents the reselling of stolen bicycles.\n                </b-col>\n\n            </b-row>\n\n            <!-- Scale fast -->\n            <b-row class=\"what-we-do-block d-flex align-items-center\">\n\n                <img class=\"col-md-3 order-md-2 what-we-do-images\" \n                    src=\"../images/scale-fast.svg\" \n                    alt=\"Scale fast\"\n                    height=\"100px\"\n                    width=\"100px\"/>\n\n                <b-col col md=\"9\" class=\"order-md-1 d-flex align-items-center\">\n                    Our solution can be easily applied to different assets and can be complemented with many different services attached to any registered asset. By relaying on the Ethereum blockchain we contribute to the Ethereum community, the most active community in the crypto-world, and we benefit from the open innovation. \n                </b-col>\n\n            </b-row>\n        </b-col>\n    </b-row>\n\n    <!-- Team section -->\n    <b-row id=\"team-sec\">\n        <b-col>\n\n            <b-row>\n                <b-col class=\"text-center team-title text-white\">\n                    Team\n                </b-col>\n            </b-row>\n\n            <!-- Team container -->\n            <b-row class=\"team-container\">\n\n                <!-- Member A -->\n                <b-col col md=\"4\">\n                    <b-row>\n\n                        <img \n                            src=\"../images/andrea.jpg\" \n                            class=\"rounded-circle mx-auto d-block\" \n                            alt=\"Member photo\"\n                            height=\"200px\"\n                            width=\"200px\" />\n\n                    </b-row>\n                    <b-row class=\"justify-content-center text-white member-name\">Andrea Casarin\n                    </b-row>\n                    <b-row class=\"justify-content-center text-white\"><i>Front-end developer</i>\n                    </b-row>\n                </b-col>\n\n                <!-- Member B -->\n                <b-col col md=\"4\">\n\n                    <b-row>\n                        <img \n                            src=\"../images/alessandro.jpg\" \n                            class=\"rounded-circle mx-auto d-block\" \n                            alt=\"Member photo\"\n                            height=\"200px\"\n                            width=\"200px\" />\n                    </b-row>\n\n                    <b-row class=\"row justify-content-center text-white member-name\">Alessandro Rea</b-row>\n                    <b-row class=\"justify-content-center text-white\"><i>Founder & CEO</i>\n                    </b-row>\n                </b-col>\n\n                <!-- Member C -->\n                <b-col col md=\"4\">\n\n                    <b-row>\n                        <img \n                            src=\"../images/ezechiele.jpg\" \n                            class=\"rounded-circle mx-auto d-block\" \n                            alt=\"Member photo\"\n                            height=\"200px\"\n                            width=\"200px\" />\n                    </b-row>\n\n                    <b-row class=\"row justify-content-center text-white member-name\">Ezechiele Tosadori</b-row>\n\n                    <b-row class=\"justify-content-center text-white\"><i>Front-end developer</i>\n                    </b-row>\n\n                </b-col>\n            </b-row>\n\n        </b-col>\n    </b-row>\n</b-container>\n\n</template>\n\n<script>\nmodule.exports = {\n    data: function() {\n        return {\n            who: 'world'\n        }\n    }\n}\n</script>\n\n"],"sourceRoot":""}]);
+exports.push([module.i, "\n.main-container{\n    width: 100%;\n    margin: 0 auto;\n}\n\n/*Text in top of the page*/\n.main-text {\n    margin-top: 15px;\n    max-width: 900px;\n    font-weight: bold;\n    font-size: 45px;\n}\n\n/*Description of what we do in top page*/\n.descriptive-text{\n    margin-top: 5px;\n    max-width: 600px;\n}\n\n/*Form containing submit button, textfield*/\n.sign-in-form{\n    max-width: 450px;\n    height: 120px;\n    margin: 0 auto;\n    margin-bottom: 50px;\n}\n\n\n/*Sign up button*/\n#signup{\n    background-color: #4EBF3C;\n    border-color: #4EBF3C;\n}\n#signup:hover{\n    background-color: #1D8D0B;\n    border-color: #1D8D0B;\n    cursor: pointer;\n}\n/*Label above email textfield*/\n#keep-in-touch-text {\n    color: white;\n    font-size: 14px;\n}\n\n/*workaround*/\n@media (max-width: 768px){\n.what-we-do-images{\n        margin-bottom: 25px;\n}\n}\n.what-we-do-section{\n    background-color: whitesmoke;\n    padding-bottom: 50px;\n}\n.what-we-do-title{\n    font-weight: bold;\n    font-size: 45px;\n    margin-top: 50px;\n    margin-bottom: 25px;\n    color: #020C18;\n}\n.what-we-do-block{\n    margin-top: 25px;\n    margin-bottom: 15px;\n    padding-left: 25px;\n    padding-right: 25px;\n}\n.what-we-do-text{\n    vertical-align: middle;\n    background-color: yellow;\n}\n.team-title{\n    font-weight: bold;\n    font-size: 45px;\n    margin-top: 50px;\n    margin-bottom: 40px;\n}\n.member-description{\n    padding-top: 5px;\n    font-size: 15px;\n    margin-right: 5px;\n    margin-left: 5px;\n}\n.member-name{\n    padding-top: 10px;\n        font-weight: bold;\n    font-size: 20px;\n}\n.team-container{\n    margin-left: 25px;\n    margin-right: 25px;\n    margin-bottom: 50px;\n}\n\n/*workaround*/\n@media (max-width: 768px){\n.member-description{\n        margin-left: 10px;\n        margin-right: 10px;\n        margin-bottom: 50px;\n        font-size: 15px;\n}\n}\n", "", {"version":3,"sources":["/usr/local/app/client/components/home.vue?698f3d8f"],"names":[],"mappings":";AACA;IACA,YAAA;IACA,eAAA;CACA;;AAEA,2BAAA;AACA;IACA,iBAAA;IACA,iBAAA;IACA,kBAAA;IACA,gBAAA;CACA;;AAEA,yCAAA;AACA;IACA,gBAAA;IACA,iBAAA;CACA;;AAEA,4CAAA;AACA;IACA,iBAAA;IACA,cAAA;IACA,eAAA;IACA,oBAAA;CACA;;;AAGA,kBAAA;AACA;IACA,0BAAA;IACA,sBAAA;CACA;AAEA;IACA,0BAAA;IACA,sBAAA;IACA,gBAAA;CACA;AACA,+BAAA;AACA;IACA,aAAA;IACA,gBAAA;CACA;;AAEA,cAAA;AACA;AACA;QACA,oBAAA;CACA;CACA;AAEA;IACA,6BAAA;IACA,qBAAA;CACA;AAEA;IACA,kBAAA;IACA,gBAAA;IACA,iBAAA;IACA,oBAAA;IACA,eAAA;CACA;AACA;IACA,iBAAA;IACA,oBAAA;IACA,mBAAA;IACA,oBAAA;CACA;AAEA;IACA,uBAAA;IACA,yBAAA;CACA;AAEA;IACA,kBAAA;IACA,gBAAA;IACA,iBAAA;IACA,oBAAA;CACA;AAEA;IACA,iBAAA;IACA,gBAAA;IACA,kBAAA;IACA,iBAAA;CAEA;AAEA;IACA,kBAAA;QACA,kBAAA;IACA,gBAAA;CACA;AAEA;IACA,kBAAA;IACA,mBAAA;IACA,oBAAA;CACA;;AAEA,cAAA;AACA;AACA;QACA,kBAAA;QACA,mBAAA;QACA,oBAAA;QACA,gBAAA;CACA;CACA","file":"home.vue","sourcesContent":["<style>\n.main-container{\n    width: 100%;\n    margin: 0 auto;\n}\n\n/*Text in top of the page*/\n.main-text {\n    margin-top: 15px;\n    max-width: 900px;\n    font-weight: bold;\n    font-size: 45px;\n}\n\n/*Description of what we do in top page*/\n.descriptive-text{\n    margin-top: 5px;\n    max-width: 600px;\n}\n\n/*Form containing submit button, textfield*/\n.sign-in-form{\n    max-width: 450px;\n    height: 120px;\n    margin: 0 auto;\n    margin-bottom: 50px;\n}\n\n\n/*Sign up button*/\n#signup{\n    background-color: #4EBF3C;\n    border-color: #4EBF3C;\n}\n\n#signup:hover{\n    background-color: #1D8D0B;\n    border-color: #1D8D0B;\n    cursor: pointer;\n}\n/*Label above email textfield*/\n#keep-in-touch-text {\n    color: white;\n    font-size: 14px;\n}\n\n/*workaround*/\n@media (max-width: 768px){\n    .what-we-do-images{\n        margin-bottom: 25px;\n    }\n}\n\n.what-we-do-section{\n    background-color: whitesmoke;\n    padding-bottom: 50px;\n}\n\n.what-we-do-title{\n    font-weight: bold;\n    font-size: 45px;\n    margin-top: 50px;\n    margin-bottom: 25px;\n    color: #020C18;\n}\n.what-we-do-block{\n    margin-top: 25px;\n    margin-bottom: 15px;\n    padding-left: 25px;\n    padding-right: 25px;\n}\n\n.what-we-do-text{\n    vertical-align: middle;\n    background-color: yellow; \n}\n\n.team-title{\n    font-weight: bold;\n    font-size: 45px;\n    margin-top: 50px;\n    margin-bottom: 40px;\n}\n\n.member-description{\n    padding-top: 5px;\n    font-size: 15px;\n    margin-right: 5px;\n    margin-left: 5px;\n\n}\n\n.member-name{\n    padding-top: 10px;\n        font-weight: bold;\n    font-size: 20px;\n}\n\n .team-container{\n    margin-left: 25px;\n    margin-right: 25px;\n    margin-bottom: 50px;\n }\n\n/*workaround*/\n@media (max-width: 768px){\n    .member-description{\n        margin-left: 10px;\n        margin-right: 10px;\n        margin-bottom: 50px;\n        font-size: 15px;\n    }\n}\n</style>\n\n<template>\n<!-- main container -->\n<b-container fluid>\n\n    <!-- bold big text -->\n    <b-row class=\"justify-content-center\">\n        <b-col class=\"text-center main-text text-white\">\n            Let’s build the future together\n        </b-col>\n    </b-row>\n\n    <!-- description label -->\n    <b-row class=\"justify-content-center\">\n        <b-col class=\"text-center descriptive-text text-white\">\n            Oblatum enables people to trace, store and insure their most valuable assets.\n        </b-col>\n    </b-row>\n\n    <!-- Sign up form -->\n    <b-row class=\"justify-content-center\">\n        <b-col>\n            <obl-login-form v-if=\"isLogin\"></obl-login-form>\n            <obl-register-form v-if=\"isHome\"></obl-register-form>\n            <obl-recover-password-form v-if=\"isRecover\"></obl-recover-password-form>\n        </b-col>\n    </b-row>\n\n    <!-- What we do section -->\n    <b-row id=\"what-we-do-sec\" class=\"what-we-do-section justify-content-center\">\n        <b-col>\n            <b-row class=\"justify-content-center\">\n                <b-col class=\"text-center what-we-do-title\">\n                    Think big, start small, scale fast\n                </b-col>\n            </b-row>\n            <!-- Think Big -->\n            <b-row class=\"what-we-do-block d-flex align-items-center\">\n\n                <img class=\"col-md-3 order-md-2 what-we-do-images\" \n                    :src=\"this.$path.global + '/images/think-big.svg'\" \n                    alt=\"Think big\"\n                    height=\"100px\"\n                    width=\"100px\" \n                    />\n\n                <b-col col md=\"9\" class=\"order-md-1 d-flex align-items-center\">\n                    Oblatum mission is to organize the world’s asset in a transparent and secure way that enables people prosperity and promote financial inclusion.\n                </b-col>\n\n\n            </b-row>\n\n            <!-- Start small -->\n            <b-row class=\"what-we-do-block d-flex align-items-center\">\n                <img class=\"col-md-3 what-we-do-images\" \n                    :src=\"this.$path.global + '/images/start-small.svg'\"\n                    alt=\"Start small\"\n                    height=\"100px\"\n                    width=\"100px\" />\n\n                <b-col col md=\"9\" class=\"order-md-1 d-flex align-items-center\">\n                    We have chosen to start from tracing bicycle. We leverage the Ethereum blockchain to create a digital certificate associated with the bicycle which enhances transparency and prevents the reselling of stolen bicycles.\n                </b-col>\n\n            </b-row>\n\n            <!-- Scale fast -->\n            <b-row class=\"what-we-do-block d-flex align-items-center\">\n\n                <img class=\"col-md-3 order-md-2 what-we-do-images\" \n                    :src=\"this.$path.global + '/images/scale-fast.svg'\"\n                    alt=\"Scale fast\"\n                    height=\"100px\"\n                    width=\"100px\"/>\n\n                <b-col col md=\"9\" class=\"order-md-1 d-flex align-items-center\">\n                    Our solution can be easily applied to different assets and can be complemented with many different services attached to any registered asset. By relaying on the Ethereum blockchain we contribute to the Ethereum community, the most active community in the crypto-world, and we benefit from the open innovation. \n                </b-col>\n\n            </b-row>\n        </b-col>\n    </b-row>\n\n    <!-- Team section -->\n    <b-row id=\"team-sec\">\n        <b-col>\n\n            <b-row>\n                <b-col class=\"text-center team-title text-white\">\n                    Team\n                </b-col>\n            </b-row>\n\n            <!-- Team container -->\n            <b-row class=\"team-container\">\n\n                <!-- Member A -->\n                <b-col col md=\"4\">\n                    <b-row>\n\n                        <img \n                            :src=\"this.$path.global + '/images/andrea.jpg'\" \n                            class=\"rounded-circle mx-auto d-block\" \n                            alt=\"Member photo\"\n                            height=\"200px\"\n                            width=\"200px\" />\n\n                    </b-row>\n                    <b-row class=\"justify-content-center text-white member-name\">Andrea Casarin\n                    </b-row>\n                    <b-row class=\"justify-content-center text-white\"><i>Front-end developer</i>\n                    </b-row>\n                </b-col>\n\n                <!-- Member B -->\n                <b-col col md=\"4\">\n\n                    <b-row>\n                        <img \n                            :src=\"this.$path.global + '/images/alessandro.jpg'\" \n                            class=\"rounded-circle mx-auto d-block\" \n                            alt=\"Member photo\"\n                            height=\"200px\"\n                            width=\"200px\" />\n                    </b-row>\n\n                    <b-row class=\"row justify-content-center text-white member-name\">Alessandro Rea</b-row>\n                    <b-row class=\"justify-content-center text-white\"><i>Founder & CEO</i>\n                    </b-row>\n                </b-col>\n\n                <!-- Member C -->\n                <b-col col md=\"4\">\n\n                    <b-row>\n                        <img \n                            :src=\"this.$path.global + '/images/ezechiele.jpg'\" \n                            class=\"rounded-circle mx-auto d-block\" \n                            alt=\"Member photo\"\n                            height=\"200px\"\n                            width=\"200px\" />\n                    </b-row>\n\n                    <b-row class=\"row justify-content-center text-white member-name\">Ezechiele Tosadori</b-row>\n\n                    <b-row class=\"justify-content-center text-white\"><i>Front-end developer</i>\n                    </b-row>\n\n                </b-col>\n            </b-row>\n\n        </b-col>\n    </b-row>\n</b-container>\n\n</template>\n\n<script>\nmodule.exports = {\n  computed: {\n        isLogin: function() {\n            return this.$route.path == this.$path.login;\n        },\n        isHome: function(){\n            return this.$route.path == this.$path.home;\n        },\n        isRecover: function(){\n            return this.$route.path == this.$path.recover;\n        }\n  }\n}\n</script>\n\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -898,13 +921,21 @@ module.exports = function listToStyles (parentId, list) {
 //
 //
 //
+//
+//
 
 module.exports = {
-    data: function() {
-        return {
-            who: 'world'
+  computed: {
+        isLogin: function() {
+            return this.$route.path == this.$path.login;
+        },
+        isHome: function(){
+            return this.$route.path == this.$path.home;
+        },
+        isRecover: function(){
+            return this.$route.path == this.$path.recover;
         }
-    }
+  }
 }
 
 
@@ -927,7 +958,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "text-center descriptive-text text-white"
   }, [_vm._v("\n            Oblatum enables people to trace, store and insure their most valuable assets.\n        ")])], 1), _vm._v(" "), _c('b-row', {
     staticClass: "justify-content-center"
-  }, [_c('b-col', [_c('obl-register-form')], 1)], 1), _vm._v(" "), _c('b-row', {
+  }, [_c('b-col', [(_vm.isLogin) ? _c('obl-login-form') : _vm._e(), _vm._v(" "), (_vm.isHome) ? _c('obl-register-form') : _vm._e(), _vm._v(" "), (_vm.isRecover) ? _c('obl-recover-password-form') : _vm._e()], 1)], 1), _vm._v(" "), _c('b-row', {
     staticClass: "what-we-do-section justify-content-center",
     attrs: {
       "id": "what-we-do-sec"
@@ -941,7 +972,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "col-md-3 order-md-2 what-we-do-images",
     attrs: {
-      "src": __webpack_require__(10),
+      "src": this.$path.global + '/images/think-big.svg',
       "alt": "Think big",
       "height": "100px",
       "width": "100px"
@@ -957,7 +988,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "col-md-3 what-we-do-images",
     attrs: {
-      "src": __webpack_require__(11),
+      "src": this.$path.global + '/images/start-small.svg',
       "alt": "Start small",
       "height": "100px",
       "width": "100px"
@@ -973,7 +1004,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "col-md-3 order-md-2 what-we-do-images",
     attrs: {
-      "src": __webpack_require__(12),
+      "src": this.$path.global + '/images/scale-fast.svg',
       "alt": "Scale fast",
       "height": "100px",
       "width": "100px"
@@ -1000,7 +1031,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('b-row', [_c('img', {
     staticClass: "rounded-circle mx-auto d-block",
     attrs: {
-      "src": __webpack_require__(13),
+      "src": this.$path.global + '/images/andrea.jpg',
       "alt": "Member photo",
       "height": "200px",
       "width": "200px"
@@ -1017,7 +1048,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('b-row', [_c('img', {
     staticClass: "rounded-circle mx-auto d-block",
     attrs: {
-      "src": __webpack_require__(14),
+      "src": this.$path.global + '/images/alessandro.jpg',
       "alt": "Member photo",
       "height": "200px",
       "width": "200px"
@@ -1034,7 +1065,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('b-row', [_c('img', {
     staticClass: "rounded-circle mx-auto d-block",
     attrs: {
-      "src": __webpack_require__(15),
+      "src": this.$path.global + '/images/ezechiele.jpg',
       "alt": "Member photo",
       "height": "200px",
       "width": "200px"
@@ -1054,42 +1085,12 @@ if (false) {
 }
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "./build/think-big.svg?0b5270d25504b35eaafaa9d302f1f587";
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "./build/start-small.svg?f5b3e59919c82315a54bfd8b0f1648aa";
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "./build/scale-fast.svg?c82a88c1953371a33716e9290fb9d12a";
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "./build/andrea.jpg?d6da6ebb635d19e837a1e6d1ff5c9bf9";
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "./build/alessandro.jpg?14310e21a91a161d8f68e7c0ce0fcd5d";
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "./build/ezechiele.jpg?bc49c04967afa85e4c510857203a1023";
-
-/***/ }),
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1168,7 +1169,7 @@ exports = module.exports = __webpack_require__(0)(true);
 
 
 // module
-exports.push([module.i, "\n.nav-link{\n    color: whitesmoke!important;\n    font-weight: bold;\n}\n.nav-link:hover{\n    color: white!important;\n}\n.navbar-brand{\n    color: white!important;\n    font-weight: bold;\n}\n.custom-toggler.navbar-toggler {\n    border-color: whitesmoke;\n}\n.custom-toggler .navbar-toggler-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n}\n", "", {"version":3,"sources":["/usr/local/app/client/components/navbar.vue?b163f00c"],"names":[],"mappings":";AACA;IACA,4BAAA;IACA,kBAAA;CACA;AAEA;IACA,uBAAA;CACA;AAEA;IACA,uBAAA;IACA,kBAAA;CACA;AACA;IACA,yBAAA;CACA;AACA;IACA,0QAAA;CACA","file":"navbar.vue","sourcesContent":["<style>\n.nav-link{\n    color: whitesmoke!important;\n    font-weight: bold;\n}\n\n.nav-link:hover{\n    color: white!important;\n}\n\n.navbar-brand{\n    color: white!important;\n    font-weight: bold;\n}\n.custom-toggler.navbar-toggler {\n    border-color: whitesmoke;\n}\n.custom-toggler .navbar-toggler-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n}\n</style>\n\n<template>\n    <b-navbar toggleable=\"md\" type=\"dark\">\n\n        <b-navbar-toggle target=\"nav_collapse\"></b-navbar-toggle>\n\n        <b-navbar-brand href=\"#\">\n            <img src=\"../images/logo-white.svg\" alt=\"Logo white\" height=\"60px\" width=\"60px\" />Oblatum\n        </b-navbar-brand>\n\n    <b-collapse is-nav id=\"nav_collapse\">\n\n        <b-navbar-nav class=\"ml-auto\">\n            <b-nav-item>LOGIN</b-nav-item>\n        </b-navbar-nav>\n\n    </b-collapse>\n\n    </b-navbar>\n</template>\n\n<script>\n</script>\n\n"],"sourceRoot":""}]);
+exports.push([module.i, "\n.nav-link{\n    color: whitesmoke!important;\n    font-weight: bold;\n}\n.nav-link:hover{\n    color: white!important;\n}\n.navbar-brand{\n    color: white!important;\n    font-weight: bold;\n}\n.custom-toggler.navbar-toggler {\n    border-color: whitesmoke;\n}\n.custom-toggler .navbar-toggler-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n}\n", "", {"version":3,"sources":["/usr/local/app/client/components/navbar.vue?70d19e2e"],"names":[],"mappings":";AACA;IACA,4BAAA;IACA,kBAAA;CACA;AAEA;IACA,uBAAA;CACA;AAEA;IACA,uBAAA;IACA,kBAAA;CACA;AACA;IACA,yBAAA;CACA;AACA;IACA,0QAAA;CACA","file":"navbar.vue","sourcesContent":["<style>\n.nav-link{\n    color: whitesmoke!important;\n    font-weight: bold;\n}\n\n.nav-link:hover{\n    color: white!important;\n}\n\n.navbar-brand{\n    color: white!important;\n    font-weight: bold;\n}\n.custom-toggler.navbar-toggler {\n    border-color: whitesmoke;\n}\n.custom-toggler .navbar-toggler-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n}\n</style>\n\n<template>\n    <b-navbar toggleable=\"md\" type=\"dark\">\n\n        <b-navbar-toggle target=\"nav_collapse\"></b-navbar-toggle>\n\n        <b-navbar-brand to=\"/\">\n            <img src=\"../images/logo-white.svg\" alt=\"Logo white\" height=\"60px\" width=\"60px\" />Oblatum\n        </b-navbar-brand>\n\n    <b-collapse is-nav id=\"nav_collapse\">\n\n        <b-navbar-nav class=\"ml-auto\">\n            <b-nav-item :to=\"this.$path.home\" v-if=\"!isHome\">REGISTER</b-nav-item>\n            <b-nav-item :to=\"this.$path.login\" v-if=\"isHome\">LOGIN</b-nav-item>\n        </b-navbar-nav>\n\n    </b-collapse>\n\n    </b-navbar>\n</template>\n\n<script>\nmodule.exports = {\n  computed: {\n        isHome: function(){\n            return this.$route.path == \"/\";\n        }\n  }\n}\n</script>\n\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -1219,7 +1220,15 @@ exports.push([module.i, "\n.nav-link{\n    color: whitesmoke!important;\n    fon
 //
 //
 //
+//
 
+module.exports = {
+  computed: {
+        isHome: function(){
+            return this.$route.path == "/";
+        }
+  }
+}
 
 
 /***/ }),
@@ -1238,7 +1247,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('b-navbar-brand', {
     attrs: {
-      "href": "#"
+      "to": "/"
     }
   }, [_c('img', {
     attrs: {
@@ -1254,7 +1263,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('b-navbar-nav', {
     staticClass: "ml-auto"
-  }, [_c('b-nav-item', [_vm._v("LOGIN")])], 1)], 1)], 1)
+  }, [(!_vm.isHome) ? _c('b-nav-item', {
+    attrs: {
+      "to": this.$path.home
+    }
+  }, [_vm._v("REGISTER")]) : _vm._e(), _vm._v(" "), (_vm.isHome) ? _c('b-nav-item', {
+    attrs: {
+      "to": this.$path.login
+    }
+  }, [_vm._v("LOGIN")]) : _vm._e()], 1)], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -1349,7 +1366,7 @@ exports = module.exports = __webpack_require__(0)(true);
 
 
 // module
-exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/register-form.vue?1d802c98"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"register-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Sign up!</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group>\n    <label class=\"textfield-label\">Name:</label>\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"icon ion-person\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"name\" type=\"text\" v-model=\"form.name\"></b-form-input>\n    </b-input-group>\n</b-form-group>\n\n<b-form-group>\n    <label class=\"textfield-label\">Surname:</label>\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"icon ion-person\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"surname\" type=\"text\" v-model=\"form.surname\"></b-form-input>\n    </b-input-group>\n</b-form-group>\n\n<b-form-group>\n    <label class=\"textfield-label\">Email:</label>\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email\"></b-form-input>\n    </b-input-group>\n    <b-form-text>We'll never share your email with anyone else.</b-form-text>\n</b-form-group>\n\n<b-form-group>\n    <label class=\"textfield-label\">Password:</label>\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"password\" type=\"password\" v-model=\"form.password\"></b-form-input>\n    </b-input-group>\n</b-form-group>\n\n<b-form-group>\n    <label class=\"textfield-label\">Confirm password:</label>\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"confirm-password\" type=\"password\" v-model=\"form.confirm\"></b-form-input>\n    </b-input-group>\n</b-form-group>\n\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Register!</b-button>\n    <b-form-text><a href=\"#\">Forgot your password?</a></b-form-text>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data () {\n    return {\n      form: {\n        email: '',\n        name: '',\n        surname: '',\n        password: '',\n        confirm: ''\n      }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
+exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/register-form.vue?940b6ee6"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"register-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Sign up!</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Name:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"icon ion-person\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"name\" type=\"text\" v-model=\"form.name\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Surname:\">\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"icon ion-person\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"surname\" type=\"text\" v-model=\"form.surname\"></b-form-input>\n    </b-input-group>\n</b-form-group>\n\n<b-form-group \n    label=\"Email:\" \n    description=\"We'll never share your email with anyone else.\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Password:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"password\" type=\"password\" v-model=\"form.password\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Confirm password:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"confirm-password\" type=\"password\" v-model=\"form.confirm\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Register</b-button>\n    <b-form-text>\n        <router-link :to=\"this.$path.recover\">Forgot your password?</router-link>\n    </b-form-text>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data () {\n    return {\n      form: {\n        email: '',\n        name: '',\n        surname: '',\n        password: '',\n        confirm: ''\n      }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n        console.log(appVar);\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
 
 // exports
 
@@ -1360,6 +1377,16 @@ exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1471,6 +1498,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     onSubmit (e) {
+        console.log(appVar);
       e.preventDefault();
       alert(JSON.stringify(this.form));
     }
@@ -1498,9 +1526,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "submit": _vm.onSubmit
     }
-  }, [_c('b-form-group', [_c('label', {
-    staticClass: "textfield-label"
-  }, [_vm._v("Name:")]), _vm._v(" "), _c('b-input-group', [_c('b-input-group-addon', [_c('span', {
+  }, [_c('b-form-group', {
+    attrs: {
+      "label": "Name:"
+    }
+  }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "icon ion-person"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
@@ -1514,9 +1544,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "form.name"
     }
-  })], 1)], 1), _vm._v(" "), _c('b-form-group', [_c('label', {
-    staticClass: "textfield-label"
-  }, [_vm._v("Surname:")]), _vm._v(" "), _c('b-input-group', [_c('b-input-group-addon', [_c('span', {
+  })], 1)], 1), _vm._v(" "), _c('b-form-group', {
+    attrs: {
+      "label": "Surname:"
+    }
+  }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "icon ion-person"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
@@ -1530,9 +1562,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "form.surname"
     }
-  })], 1)], 1), _vm._v(" "), _c('b-form-group', [_c('label', {
-    staticClass: "textfield-label"
-  }, [_vm._v("Email:")]), _vm._v(" "), _c('b-input-group', [_c('b-input-group-addon', [_c('span', {
+  })], 1)], 1), _vm._v(" "), _c('b-form-group', {
+    attrs: {
+      "label": "Email:",
+      "description": "We'll never share your email with anyone else."
+    }
+  }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-email"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
@@ -1546,9 +1581,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "form.email"
     }
-  })], 1), _vm._v(" "), _c('b-form-text', [_vm._v("We'll never share your email with anyone else.")])], 1), _vm._v(" "), _c('b-form-group', [_c('label', {
-    staticClass: "textfield-label"
-  }, [_vm._v("Password:")]), _vm._v(" "), _c('b-input-group', [_c('b-input-group-addon', [_c('span', {
+  })], 1)], 1), _vm._v(" "), _c('b-form-group', {
+    attrs: {
+      "label": "Password:"
+    }
+  }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-locked"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
@@ -1562,9 +1599,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "form.password"
     }
-  })], 1)], 1), _vm._v(" "), _c('b-form-group', [_c('label', {
-    staticClass: "textfield-label"
-  }, [_vm._v("Confirm password:")]), _vm._v(" "), _c('b-input-group', [_c('b-input-group-addon', [_c('span', {
+  })], 1)], 1), _vm._v(" "), _c('b-form-group', {
+    attrs: {
+      "label": "Confirm password:"
+    }
+  }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-locked"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
@@ -1587,11 +1626,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "submit",
       "variant": "primary"
     }
-  }, [_vm._v("Register!")]), _vm._v(" "), _c('b-form-text', [_c('a', {
+  }, [_vm._v("Register")]), _vm._v(" "), _c('b-form-text', [_c('router-link', {
     attrs: {
-      "href": "#"
+      "to": this.$path.recover
     }
-  }, [_vm._v("Forgot your password?")])])], 1)], 1)], 1)], 1)
+  }, [_vm._v("Forgot your password?")])], 1)], 1)], 1)], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -1879,6 +1918,483 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "./build/logo-black.svg?e6c9522a6f1e99a0f24f28d4ffde7dc5";
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(34)
+}
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(36),
+  /* template */
+  __webpack_require__(37),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/usr/local/app/client/components/login-form.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] login-form.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1cba3d8e", Component.options)
+  } else {
+    hotAPI.reload("data-v-1cba3d8e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(35);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(1)("57365ba2", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1cba3d8e\",\"scoped\":false,\"hasInlineConfig\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./login-form.vue", function() {
+     var newContent = require("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1cba3d8e\",\"scoped\":false,\"hasInlineConfig\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./login-form.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(true);
+// imports
+
+
+// module
+exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/login-form.vue?fa533f82"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"login-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Sign in!</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Email:\" >\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Password:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"password\" type=\"password\" v-model=\"form.password\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Login</b-button>\n    <b-form-text><router-link :to=\"this.$path.recover\">Forgot your password?</router-link></b-form-text>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data () {\n    return {\n      form: {\n        email: '',\n        password: ''\n      }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data () {
+    return {
+      form: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    onSubmit (e) {
+      e.preventDefault();
+      alert(JSON.stringify(this.form));
+    }
+  }
+});
+
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('b-container', {
+    staticClass: "form-container"
+  }, [_c('legend', {
+    staticClass: "text-center"
+  }, [_c('b', [_vm._v("Sign in!")]), _vm._v(" "), _c('p', {
+    staticStyle: {
+      "font-size": "9pt"
+    },
+    attrs: {
+      "id": "description"
+    }
+  }, [_vm._v("Something written here")])]), _vm._v(" "), _c('b-form', {
+    on: {
+      "submit": _vm.onSubmit
+    }
+  }, [_c('b-form-group', {
+    attrs: {
+      "label": "Email:"
+    }
+  }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
+    staticClass: "ion-email"
+  })]), _vm._v(" "), _c('b-form-input', {
+    attrs: {
+      "id": "email",
+      "type": "text"
+    },
+    model: {
+      value: (_vm.form.email),
+      callback: function($$v) {
+        _vm.$set(_vm.form, "email", $$v)
+      },
+      expression: "form.email"
+    }
+  })], 1)], 1), _vm._v(" "), _c('b-form-group', {
+    attrs: {
+      "label": "Password:"
+    }
+  }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
+    staticClass: "ion-locked"
+  })]), _vm._v(" "), _c('b-form-input', {
+    attrs: {
+      "id": "password",
+      "type": "password"
+    },
+    model: {
+      value: (_vm.form.password),
+      callback: function($$v) {
+        _vm.$set(_vm.form, "password", $$v)
+      },
+      expression: "form.password"
+    }
+  })], 1)], 1), _vm._v(" "), _c('b-form-group', {
+    staticClass: "text-center"
+  }, [_c('b-button', {
+    staticClass: "text-center",
+    attrs: {
+      "id": "signup",
+      "type": "submit",
+      "variant": "primary"
+    }
+  }, [_vm._v("Login")]), _vm._v(" "), _c('b-form-text', [_c('router-link', {
+    attrs: {
+      "to": this.$path.recover
+    }
+  }, [_vm._v("Forgot your password?")])], 1)], 1)], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1cba3d8e", module.exports)
+  }
+}
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(39)
+}
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(41),
+  /* template */
+  __webpack_require__(42),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/usr/local/app/client/components/recover-password-form.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] recover-password-form.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b9dbdee8", Component.options)
+  } else {
+    hotAPI.reload("data-v-b9dbdee8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(40);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(1)("645f5bba", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b9dbdee8\",\"scoped\":false,\"hasInlineConfig\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./recover-password-form.vue", function() {
+     var newContent = require("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b9dbdee8\",\"scoped\":false,\"hasInlineConfig\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./recover-password-form.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(true);
+// imports
+
+
+// module
+exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/recover-password-form.vue?c7ca9658"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"recover-password-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Recover your password</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Email:\" >\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Send email</b-button>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data () {\n    return {\n      form: {\n        email: ''\n      }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data () {
+    return {
+      form: {
+        email: ''
+      }
+    }
+  },
+  methods: {
+    onSubmit (e) {
+      e.preventDefault();
+      alert(JSON.stringify(this.form));
+    }
+  }
+});
+
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('b-container', {
+    staticClass: "form-container"
+  }, [_c('legend', {
+    staticClass: "text-center"
+  }, [_c('b', [_vm._v("Recover your password")]), _vm._v(" "), _c('p', {
+    staticStyle: {
+      "font-size": "9pt"
+    },
+    attrs: {
+      "id": "description"
+    }
+  }, [_vm._v("Something written here")])]), _vm._v(" "), _c('b-form', {
+    on: {
+      "submit": _vm.onSubmit
+    }
+  }, [_c('b-form-group', {
+    attrs: {
+      "label": "Email:"
+    }
+  }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
+    staticClass: "ion-email"
+  })]), _vm._v(" "), _c('b-form-input', {
+    attrs: {
+      "id": "email",
+      "type": "text"
+    },
+    model: {
+      value: (_vm.form.email),
+      callback: function($$v) {
+        _vm.$set(_vm.form, "email", $$v)
+      },
+      expression: "form.email"
+    }
+  })], 1)], 1), _vm._v(" "), _c('b-form-group', {
+    staticClass: "text-center"
+  }, [_c('b-button', {
+    staticClass: "text-center",
+    attrs: {
+      "id": "signup",
+      "type": "submit",
+      "variant": "primary"
+    }
+  }, [_vm._v("Send email")])], 1)], 1)], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-b9dbdee8", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
