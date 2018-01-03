@@ -41,7 +41,7 @@ For further informations follow "[How to install docker-compose](https://docs.do
 
 `docker-compose exec app npm install`
 
-##### 6. Start webpack daemon to build and watch for changes in frontend files:
+##### 6. Start webpack daemon to build fronted files and watch for changes:
 
 `docker-compose exec app webpack --watch`
 
