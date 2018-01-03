@@ -2,9 +2,9 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-    entry: './public/routes.js',
+    entry: './client/routes.js',
     output: {
-        path: path.resolve(__dirname, './public/build'),
+        path: path.resolve(__dirname, './client/build'),
         publicPath: '/',
         filename: 'build.js'
     },
