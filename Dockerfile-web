@@ -32,4 +32,4 @@ RUN \
     && echo '}' >> /etc/nginx/sites-enabled/default \
     && echo 'daemon off;' >> /etc/nginx/nginx.conf
 
-ADD app /usr/local/
+ADD app /usr/local/app/
