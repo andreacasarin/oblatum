@@ -6,8 +6,9 @@
   "scripts": {
     "start": "node ./bin/www",
     "watch": "nodemon ./bin/www",
-    "test": "jest",
-    "coverage": "jest --coverage",
+    "test-watch": "mocha --watch",
+    "test": "mocha",
+    "coverage": "istanbul cover _mocha",
     "linter": "eslint ./"
   },
   "dependencies": {
@@ -26,15 +27,17 @@
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
+    "babel-register": "^6.26.0",
     "eslint": "^4.14.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
-    "jest": "^22.0.3",
     "nodemon": "^1.14.3",
     "vue-loader": "^12.2.1",
     "vue-template-compiler": "^2.5.13",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^4.1.0",
   }
 }

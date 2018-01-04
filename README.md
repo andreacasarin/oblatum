@@ -29,17 +29,17 @@ For further informations follow "[How to install docker-compose](https://docs.do
 
 `cd oblatum`
 
-##### 3. Build dockerized application:
+##### 3. Define default env:
+
+`cp .env.dist .env`
+
+##### 4. Build dockerized application:
 
 `docker-compose build`
 
-###### 4. Run dockerized application:
+###### 5. Run dockerized application:
 
 `docker-compose up -d`
-
-##### 5. Install node dependencies
-
-`docker-compose exec app npm install`
 
 ##### 6. Check that the application is installed and configured correctly:
 
@@ -51,6 +51,10 @@ Open `http://localhost/` in a browser to see application running.
 ###### Run unit tests:
 
 `docker-compose exec app npm run test`
+
+###### Run unit tests live:
+
+`docker-compose exec app npm run test-watch`
 
 ###### Run code coverage tests:
 

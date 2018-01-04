@@ -1,5 +1,9 @@
 const models = require('../models/index');
 
+exports.create = (req, res) => {
+  res.json('NOT IMPLEMENTED: User create');
+};
+
 exports.read = (req, res) => {
   if (req.params.userId) {
     models.User.findById(req.params.userId).then((user) => {
@@ -10,10 +14,6 @@ exports.read = (req, res) => {
       res.json(users);
     });
   }
-};
-
-exports.create = (req, res) => {
-  res.json('NOT IMPLEMENTED: User create');
 };
 
 exports.update = (req, res) => {
