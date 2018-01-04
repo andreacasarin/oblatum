@@ -10,7 +10,7 @@ describe('User', () => {
       email: 'test@example.com',
       password: '12345678',
       passwordConfirmation: '12345678',
-      confirmed: true,
+      // confirmed: true,
       role: 'user',
     };
     models.User.create(data).then((user) => {
@@ -18,7 +18,7 @@ describe('User', () => {
       assert.equal(user.surname, data.surname);
       assert.equal(user.email, data.email);
       assert.equal(user.password, data.password);
-      assert.equal(user.confirmed, data.confirmed);
+      // assert.equal(user.confirmed, data.confirmed);
       assert.equal(user.role, data.role);
 
       const data2 = {
@@ -27,13 +27,13 @@ describe('User', () => {
         email: 'test2@example.com',
         password: 'test',
         passwordConfirmation: 'test',
-        confirmed: false,
+        // confirmed: false,
         role: 'user',
       };
-      return models.User.update(data2, { where: { id: user.id } }).then((affected) => {
+      models.User.update(data2, { where: { id: user.id } }).then((affected) => {
         assert.equal(affected, 1);
 
-        return models.User.destroy({ where: { id: user.id } }).then((affected2) => {
+        models.User.destroy({ where: { id: user.id } }).then((affected2) => {
           assert.equal(affected2, 1);
         }).catch(() => {
           assert.ok(false);
@@ -72,9 +72,6 @@ describe('User', () => {
     models.User.create({}).then((user) => {
       assert.ok(false, user);
     }).catch((error) => {
-
-      console.log(error);
-
       assert.equal(error.errors[0].path, 'name');
       assert.equal(error.errors[0].type, 'notNull Violation');
 
@@ -102,7 +99,7 @@ describe('User', () => {
       email: 'test2@example.com',
       password: '12345678',
       passwordConfirmation: '123456789',
-      confirmed: true,
+      // confirmed: true,
       role: 'user',
     }).then((user) => {
       assert.ok(false, user);
@@ -119,7 +116,7 @@ describe('User', () => {
       email: 'test3@example.com',
       password: '12345678',
       passwordConfirmation: '12345678',
-      confirmed: true,
+      // confirmed: true,
       role: 'user',
     }).then((user) => {
       assert.ok(true, user);
@@ -130,7 +127,7 @@ describe('User', () => {
         email: 'test3@example.com',
         password: '123456789',
         passwordConfirmation: '123456789',
-        confirmed: true,
+        // confirmed: true,
         role: 'user',
       }).then((user) => {
         assert.ok(false, user);

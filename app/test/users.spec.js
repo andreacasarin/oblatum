@@ -11,7 +11,7 @@ describe('Users', () => {
         email: 'test@example.com',
         password: '12345678',
         passwordConfirmation: '12345678',
-        confirmed: true,
+        // confirmed: true,
         role: 'user',
       },
     };
@@ -75,7 +75,7 @@ describe('Users', () => {
         email: 'test@example.com',
         password: '12345678',
         passwordConfirmation: '12345678',
-        confirmed: true,
+        // confirmed: true,
         role: 'user',
       },
       params: { id: 1 },
