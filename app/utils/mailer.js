@@ -1,6 +1,11 @@
 const nodemailer = require('nodemailer');
 
-exports.configure = (options = {
+exports.send = (options = {
+  from: '"Oblatum 👻" <support@oblatum.it>',
+  to: 'support@oblatum.it',
+  subject: 'Hello ✔',
+  body: 'Someone is interested in Oblatum!',
+}, transporter = nodemailer.createTransport({
   host: process.env.SMTP_SERVER,
   port: process.env.SMTP_PORT,
   secure: true,
@@ -8,14 +13,7 @@ exports.configure = (options = {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
-}) => nodemailer.createTransport(options);
-
-exports.send = (options = {
-  from: '"Oblatum 👻" <noreply@oblatum.it>',
-  to: 'noreply@oblatum.it',
-  subject: 'Hello ✔',
-  body: 'Someone is interested in Oblatum!',
-}, transporter = this.configure()) => {
+})) => {
   const mailOptions = {
     from: options.from,
     to: options.to,

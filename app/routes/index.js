@@ -1,6 +1,7 @@
 const express = require('express');
+
 const users = require('../controllers/users');
-const misc = require('../controllers/misc');
+const extras = require('../controllers/extras');
 
 const router = express.Router();
 
@@ -10,13 +11,13 @@ const router = express.Router();
 // });
 
 /* Users */
-// router.post('/users/:userId', users.create);
-// router.get('/users', users.read);
-// router.get('/users/:userId', users.read);
-// router.put('/users/:userId', users.update);
-// router.delete('/users/:userId', users.delete);
+router.post('/users', users.create);
+router.get('/users', users.read);
+router.get('/users/:id', users.read);
+router.put('/users/:id', users.update);
+router.delete('/users/:id', users.delete);
 
 /* Misc */
-router.post('/sendmail', misc.sendmail);
+router.post('/sendmail', extras.sendmail);
 
 module.exports = router;

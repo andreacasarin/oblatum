@@ -5,6 +5,10 @@ module.exports = {
     password: process.env.DB_PASS,
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    define: {
+      charset: 'utf8',
+      collate: 'utf8_general_ci',
+    },
   },
   test: {
     database: process.env.DB_NAME,
@@ -12,6 +16,10 @@ module.exports = {
     password: process.env.DB_PASS,
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    define: {
+      charset: 'utf8',
+      collate: 'utf8_general_ci',
+    },
   },
   production: {
     database: process.env.DB_NAME,
@@ -19,5 +27,9 @@ module.exports = {
     password: process.env.DB_PASS,
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    define: {
+      charset: 'utf8',
+      collate: 'utf8_general_ci',
+    },
   },
 };
