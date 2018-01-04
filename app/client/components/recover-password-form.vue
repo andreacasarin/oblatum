@@ -31,13 +31,15 @@
 <b-form @submit="onSubmit">
 
 <b-form-group 
-    label="Email:" >
+    label="Email:" 
+    :state="form.email.state"
+    :invalid-feedback="form.email.invalidFeedback">
 
     <b-input-group>
         <b-input-group-addon>
             <span class="ion-email"></span>
         </b-input-group-addon>
-        <b-form-input id="email" type="text" v-model="form.email"></b-form-input>
+        <b-form-input id="email" type="text" v-model="form.email.value" :state="form.email.state"></b-form-input>
     </b-input-group>
 
 </b-form-group>
@@ -55,10 +57,14 @@
 
 <script>
 export default {
-  data () {
+  data: function(){
     return {
       form: {
-        email: ''
+          email: {
+              value: '',
+              state: null,
+              invalidFeedback: 'invalid'
+          },
       }
     }
   },
