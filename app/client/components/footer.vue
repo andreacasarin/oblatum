@@ -79,7 +79,7 @@
 
             <b-row class="justify-content-center justify-content-md-start">
                 <span class="icon-align"><i class="ion-email icon-padding"></i>
-                <a class="email-link" href="mailto:reaalessandro95@gmail.com">reaalessandro95@gmail.com</a></span>
+                <a class="email-link" href="mailto:oblatum@support.it">oblatum@support.it</a></span>
             </b-row>
         </b-col>
 

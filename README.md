@@ -41,7 +41,11 @@ For further informations follow "[How to install docker-compose](https://docs.do
 
 `docker-compose up -d`
 
-##### 6. Check that the application is installed and configured correctly:
+##### 6. Start webpack daemon to build fronted files and watch for changes:
+
+`docker-compose exec app webpack --watch`
+
+##### 7. Check that the application is installed and configured correctly:
 
 Open `http://localhost/` in a browser to see application running.
 
