@@ -14,3 +14,11 @@ body {
 .text-white{
     color: whitesmoke;
 }
+
+.text-oblatum-color{
+	color: #35465c;
+}
+
+.router-link{
+	color: red !important;
+}

@@ -31,25 +31,29 @@
 <b-form @submit="onSubmit">
 
 <b-form-group 
-    label="Email:" >
+    label="Email:" 
+    :state="form.email.state"
+    :invalid-feedback="form.email.invalidFeedback">
 
     <b-input-group>
         <b-input-group-addon>
             <span class="ion-email"></span>
         </b-input-group-addon>
-        <b-form-input id="email" type="text" v-model="form.email"></b-form-input>
+        <b-form-input id="email" type="text" v-model="form.email.value"></b-form-input>
     </b-input-group>
 
 </b-form-group>
 
 <b-form-group 
-    label="Password:">
+    label="Password:"
+    :state="form.password.state"
+    :invalid-feedback="form.password.invalidFeedback">
 
     <b-input-group>
         <b-input-group-addon>
             <span class="ion-locked"></span>
         </b-input-group-addon>
-        <b-form-input id="password" type="password" v-model="form.password"></b-form-input>
+        <b-form-input id="password" type="password" v-model="form.password.value"></b-form-input>
     </b-input-group>
 
 </b-form-group>
@@ -57,7 +61,7 @@
 
 <b-form-group class="text-center">
     <b-button id="signup" type="submit" variant="primary" class="text-center">Login</b-button>
-    <b-form-text><router-link :to="this.$path.recover">Forgot your password?</router-link></b-form-text>
+    <b-form-text><router-link :to="this.$path.recover" class="text-oblatum-color">Forgot your password?</router-link></b-form-text>
 </b-form-group>
 
 
@@ -72,8 +76,16 @@ export default {
   data () {
     return {
       form: {
-        email: '',
-        password: ''
+        email: {
+            value: '',
+            state: null,
+            invalidFeedback: 'invalid'
+        },
+        password: {
+            value: '',
+            state: null,
+            invalidFeedback: 'invalid'
+        }
       }
     }
   },
