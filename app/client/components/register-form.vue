@@ -126,7 +126,7 @@ export default {
     onSubmit (e) {
       e.preventDefault();
 
-      axios.post(this.$api.createUser, JSON.parse(JSON.stringify(this.form)))
+      axios.post(this.$api.createUser, this.form)
       .then(response => {
         console.log(response)
       })
