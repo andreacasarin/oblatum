@@ -17,6 +17,10 @@
         
     }
 
+    #description{
+        font-size: 10px;
+    }
+
 </style>
 
 <template>
@@ -25,7 +29,7 @@
 
     <legend class="text-center">
         <b>Sign up!</b>
-        <p id="description" style="font-size: 9pt">Something written here</p>
+        <p id="description">Something written here</p>
     </legend>
 
 <b-form @submit="onSubmit">
@@ -84,7 +88,7 @@
         <b-input-group-addon>
             <span class="ion-locked"></span>
         </b-input-group-addon>
-        <b-form-input id="confirm-password" type="password" v-model="form.confirm"></b-form-input>
+        <b-form-input id="confirm-password" type="password" v-model="form.passwordConfirmation"></b-form-input>
     </b-input-group>
 
 </b-form-group>
@@ -113,14 +117,22 @@ export default {
             name: '',
             surname: '',
             password: '',
-            confirm: ''
+            passwordConfirmation: '',
+            role: 'user'
         }
     }
   },
   methods: {
     onSubmit (e) {
       e.preventDefault();
-      alert(JSON.stringify(this.form));
+
+      axios.post(this.$api.createUser, JSON.parse(JSON.stringify(this.form)))
+      .then(response => {
+        console.log(response)
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
     }
   }
 }

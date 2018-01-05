@@ -20,6 +20,11 @@ Vue.prototype.$path = {
 	recover: globalPath + '/recover'
 }
 
+var apiPath = globalPath + '/api/';
+Vue.prototype.$api = {
+  api: apiPath,
+  createUser: apiPath + '/users'
+}
 
 //Routes
 const routes = [
@@ -35,7 +40,6 @@ const router = new VueRouter({
   routes: routes 
 })
 
-var testVar = "ciao";
 
 //Creation of the app instance
 const app = new Vue({
