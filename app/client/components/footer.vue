@@ -97,7 +97,7 @@
         <b-col md="9" order-md="1" class="footer-section footer-logo">
             <b-row class="justify-content-center justify-content-md-start">
                     <img class="float-right" 
-                    src="../images/logo-black.svg" 
+                    :src="this.$path.global + '/images/logo-black.svg'"
                     alt="Logo black"
                     height="100px"
                     width="100px" 
