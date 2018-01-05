@@ -503,7 +503,7 @@ Vue.prototype.$path = {
 	recover: globalPath + '/recover'
 }
 
-var apiPath = globalPath + '/api/';
+var apiPath = globalPath + '/api';
 Vue.prototype.$api = {
   api: apiPath,
   createUser: apiPath + '/users'
