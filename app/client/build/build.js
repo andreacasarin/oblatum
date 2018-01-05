@@ -1359,7 +1359,7 @@ exports = module.exports = __webpack_require__(0)(true);
 
 
 // module
-exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/register-form.vue?265d6fec"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"register-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Sign up!</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Name:\"\n    :state=\"form.name.state\"\n    :invalid-feedback=\"form.name.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"icon ion-person\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"name\" type=\"text\" v-model=\"form.name.value\" :state=\"form.name.state\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Surname:\"    \n    :state=\"form.surname.state\"\n    :invalid-feedback=\"form.surname.invalidFeedback\">\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"icon ion-person\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"surname\" type=\"text\" v-model=\"form.surname.value\" :state=\"form.surname.state\"></b-form-input>\n    </b-input-group>\n</b-form-group>\n\n<b-form-group \n    label=\"Email:\" \n    description=\"We'll never share your email with anyone else.\"\n    :state=\"form.email.state\"\n    :invalid-feedback=\"form.email.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email.value\" :state=\"form.email.state\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Password:\"\n    :state=\"form.password.state\"\n    :invalid-feedback=\"form.password.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"password\" type=\"password\" v-model=\"form.password.value\" :state=\"form.password.state\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Confirm password:\"    \n    :state=\"form.confirm.state\"\n    :invalid-feedback=\"form.confirm.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"confirm-password\" type=\"password\" v-model=\"form.confirm.value\" :state=\"form.confirm.state\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Register</b-button>\n    <b-form-text>\n        <router-link :to=\"this.$path.recover\" class=\"text-oblatum-color\">Forgot your password?</router-link>\n    </b-form-text>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data: function(){\n      return {\n        form: {\n            email: {\n                value: '',\n                state: null,\n                invalidFeedback: 'invalid'\n            },\n            name: {\n                value: '',\n                state: null,\n                invalidFeedback: 'invalid'\n            },\n            surname: {\n                value: '',\n                state: null,\n                invalidFeedback: 'invalid'\n            },\n            password: {\n                value: '',\n                state: null,\n                invalidFeedback: 'invalid'\n            },\n            confirm: {\n                value: '',\n                state: null,\n                invalidFeedback: 'invalid'\n            },\n        }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      this.form.name.state = false;\n      this.form.confirm.state = false;\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
+exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/register-form.vue?500260fb"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"register-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Sign up!</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Name:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"icon ion-person\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"name\" type=\"text\" v-model=\"form.name\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Surname:\">\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"icon ion-person\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"surname\" type=\"text\" v-model=\"form.surname\"></b-form-input>\n    </b-input-group>\n</b-form-group>\n\n<b-form-group \n    label=\"Email:\" \n    description=\"We'll never share your email with anyone else.\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Password:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"password\" type=\"password\" v-model=\"form.password\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Confirm password:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"confirm-password\" type=\"password\" v-model=\"form.confirm\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Register</b-button>\n    <b-form-text>\n        <router-link :to=\"this.$path.recover\" class=\"text-oblatum-color\">Forgot your password?</router-link>\n    </b-form-text>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data: function(){\n      return {\n        form: {\n            email: '',\n            name: '',\n            surname: '',\n            password: '',\n            confirm: ''\n        }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
 
 // exports
 
@@ -1476,53 +1476,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function(){
       return {
         form: {
-            email: {
-                value: '',
-                state: null,
-                invalidFeedback: 'invalid'
-            },
-            name: {
-                value: '',
-                state: null,
-                invalidFeedback: 'invalid'
-            },
-            surname: {
-                value: '',
-                state: null,
-                invalidFeedback: 'invalid'
-            },
-            password: {
-                value: '',
-                state: null,
-                invalidFeedback: 'invalid'
-            },
-            confirm: {
-                value: '',
-                state: null,
-                invalidFeedback: 'invalid'
-            },
+            email: '',
+            name: '',
+            surname: '',
+            password: '',
+            confirm: ''
         }
     }
   },
   methods: {
     onSubmit (e) {
-      this.form.name.state = false;
-      this.form.confirm.state = false;
       e.preventDefault();
       alert(JSON.stringify(this.form));
     }
@@ -1552,109 +1520,94 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('b-form-group', {
     attrs: {
-      "label": "Name:",
-      "state": _vm.form.name.state,
-      "invalid-feedback": _vm.form.name.invalidFeedback
+      "label": "Name:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "icon ion-person"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
       "id": "name",
-      "type": "text",
-      "state": _vm.form.name.state
+      "type": "text"
     },
     model: {
-      value: (_vm.form.name.value),
+      value: (_vm.form.name),
       callback: function($$v) {
-        _vm.$set(_vm.form.name, "value", $$v)
+        _vm.$set(_vm.form, "name", $$v)
       },
-      expression: "form.name.value"
+      expression: "form.name"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     attrs: {
-      "label": "Surname:",
-      "state": _vm.form.surname.state,
-      "invalid-feedback": _vm.form.surname.invalidFeedback
+      "label": "Surname:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "icon ion-person"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
       "id": "surname",
-      "type": "text",
-      "state": _vm.form.surname.state
+      "type": "text"
     },
     model: {
-      value: (_vm.form.surname.value),
+      value: (_vm.form.surname),
       callback: function($$v) {
-        _vm.$set(_vm.form.surname, "value", $$v)
+        _vm.$set(_vm.form, "surname", $$v)
       },
-      expression: "form.surname.value"
+      expression: "form.surname"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     attrs: {
       "label": "Email:",
-      "description": "We'll never share your email with anyone else.",
-      "state": _vm.form.email.state,
-      "invalid-feedback": _vm.form.email.invalidFeedback
+      "description": "We'll never share your email with anyone else."
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-email"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
       "id": "email",
-      "type": "text",
-      "state": _vm.form.email.state
+      "type": "text"
     },
     model: {
-      value: (_vm.form.email.value),
+      value: (_vm.form.email),
       callback: function($$v) {
-        _vm.$set(_vm.form.email, "value", $$v)
+        _vm.$set(_vm.form, "email", $$v)
       },
-      expression: "form.email.value"
+      expression: "form.email"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     attrs: {
-      "label": "Password:",
-      "state": _vm.form.password.state,
-      "invalid-feedback": _vm.form.password.invalidFeedback
+      "label": "Password:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-locked"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
       "id": "password",
-      "type": "password",
-      "state": _vm.form.password.state
+      "type": "password"
     },
     model: {
-      value: (_vm.form.password.value),
+      value: (_vm.form.password),
       callback: function($$v) {
-        _vm.$set(_vm.form.password, "value", $$v)
+        _vm.$set(_vm.form, "password", $$v)
       },
-      expression: "form.password.value"
+      expression: "form.password"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     attrs: {
-      "label": "Confirm password:",
-      "state": _vm.form.confirm.state,
-      "invalid-feedback": _vm.form.confirm.invalidFeedback
+      "label": "Confirm password:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-locked"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
       "id": "confirm-password",
-      "type": "password",
-      "state": _vm.form.confirm.state
+      "type": "password"
     },
     model: {
-      value: (_vm.form.confirm.value),
+      value: (_vm.form.confirm),
       callback: function($$v) {
-        _vm.$set(_vm.form.confirm, "value", $$v)
+        _vm.$set(_vm.form, "confirm", $$v)
       },
-      expression: "form.confirm.value"
+      expression: "form.confirm"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     staticClass: "text-center"
@@ -2038,7 +1991,7 @@ exports = module.exports = __webpack_require__(0)(true);
 
 
 // module
-exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/login-form.vue?1426a08c"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"login-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Sign in!</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Email:\" \n    :state=\"form.email.state\"\n    :invalid-feedback=\"form.email.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email.value\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Password:\"\n    :state=\"form.password.state\"\n    :invalid-feedback=\"form.password.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"password\" type=\"password\" v-model=\"form.password.value\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Login</b-button>\n    <b-form-text><router-link :to=\"this.$path.recover\" class=\"text-oblatum-color\">Forgot your password?</router-link></b-form-text>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data () {\n    return {\n      form: {\n        email: {\n            value: '',\n            state: null,\n            invalidFeedback: 'invalid'\n        },\n        password: {\n            value: '',\n            state: null,\n            invalidFeedback: 'invalid'\n        }\n      }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
+exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/login-form.vue?398151ca"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"login-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Sign in!</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Email:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Password:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"password\" type=\"password\" v-model=\"form.password\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Login</b-button>\n    <b-form-text><router-link :to=\"this.$path.recover\" class=\"text-oblatum-color\">Forgot your password?</router-link></b-form-text>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data () {\n    return {\n      form: {\n        email: '',\n        password: ''\n      }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
 
 // exports
 
@@ -2118,25 +2071,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data () {
     return {
       form: {
-        email: {
-            value: '',
-            state: null,
-            invalidFeedback: 'invalid'
-        },
-        password: {
-            value: '',
-            state: null,
-            invalidFeedback: 'invalid'
-        }
+        email: '',
+        password: ''
       }
     }
   },
@@ -2171,9 +2112,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('b-form-group', {
     attrs: {
-      "label": "Email:",
-      "state": _vm.form.email.state,
-      "invalid-feedback": _vm.form.email.invalidFeedback
+      "label": "Email:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-email"
@@ -2183,17 +2122,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "text"
     },
     model: {
-      value: (_vm.form.email.value),
+      value: (_vm.form.email),
       callback: function($$v) {
-        _vm.$set(_vm.form.email, "value", $$v)
+        _vm.$set(_vm.form, "email", $$v)
       },
-      expression: "form.email.value"
+      expression: "form.email"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     attrs: {
-      "label": "Password:",
-      "state": _vm.form.password.state,
-      "invalid-feedback": _vm.form.password.invalidFeedback
+      "label": "Password:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-locked"
@@ -2203,11 +2140,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "password"
     },
     model: {
-      value: (_vm.form.password.value),
+      value: (_vm.form.password),
       callback: function($$v) {
-        _vm.$set(_vm.form.password, "value", $$v)
+        _vm.$set(_vm.form, "password", $$v)
       },
-      expression: "form.password.value"
+      expression: "form.password"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     staticClass: "text-center"
@@ -2312,7 +2249,7 @@ exports = module.exports = __webpack_require__(0)(true);
 
 
 // module
-exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/recover-password-form.vue?64f114df"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"recover-password-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Recover your password</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Email:\" \n    :state=\"form.email.state\"\n    :invalid-feedback=\"form.email.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email.value\" :state=\"form.email.state\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Send email</b-button>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data: function(){\n    return {\n      form: {\n          email: {\n              value: '',\n              state: null,\n              invalidFeedback: 'invalid'\n          },\n      }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
+exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/recover-password-form.vue?07c2577a"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"recover-password-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Recover your password</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Email:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Send email</b-button>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data: function(){\n    return {\n      form: {\n          email: '',\n      }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
 
 // exports
 
@@ -2378,18 +2315,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function(){
     return {
       form: {
-          email: {
-              value: '',
-              state: null,
-              invalidFeedback: 'invalid'
-          },
+          email: '',
       }
     }
   },
@@ -2424,24 +2355,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('b-form-group', {
     attrs: {
-      "label": "Email:",
-      "state": _vm.form.email.state,
-      "invalid-feedback": _vm.form.email.invalidFeedback
+      "label": "Email:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-email"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
       "id": "email",
-      "type": "text",
-      "state": _vm.form.email.state
+      "type": "text"
     },
     model: {
-      value: (_vm.form.email.value),
+      value: (_vm.form.email),
       callback: function($$v) {
-        _vm.$set(_vm.form.email, "value", $$v)
+        _vm.$set(_vm.form, "email", $$v)
       },
-      expression: "form.email.value"
+      expression: "form.email"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     staticClass: "text-center"
