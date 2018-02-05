@@ -5,11 +5,6 @@ const extras = require('../controllers/extras');
 
 const router = express.Router();
 
-/* Express. */
-// router.get('/', (req, res, next) => {
-//   res.render('index', { title: 'Express' });
-// });
-
 /* Users */
 router.post('/users', users.create);
 router.get('/users', users.read);

@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     email: { type: DataTypes.STRING, allowNull: false, unique: true },
     password: { type: DataTypes.STRING, allowNull: false },
     passwordConfirmation: { type: DataTypes.STRING, allowNull: false, field: 'password' },
-    // confirmed: DataTypes.BOOLEAN,
     role: { type: DataTypes.STRING, allowNull: false },
   }, {
     classMethods: {

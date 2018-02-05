@@ -11,13 +11,12 @@ describe('Users', () => {
         email: 'test@example.com',
         password: '12345678',
         passwordConfirmation: '12345678',
-        // confirmed: true,
         role: 'user',
       },
     };
     const res = {
       json: (data) => {
-        assert.equal(data.dataValues.id, 1);
+        assert.equal(data.status, 'success');
       },
     };
     const modelsStub = {
@@ -35,7 +34,7 @@ describe('Users', () => {
     const req = { params: {} };
     const res = {
       json: (data) => {
-        assert.equal(data.dataValues.length, 2);
+        assert.equal(data.status, 'success');
       },
     };
     const modelsStub = {
@@ -53,7 +52,7 @@ describe('Users', () => {
     const req = { params: { id: 1 } };
     const res = {
       json: (data) => {
-        assert.equal(data.dataValues.id, 1);
+        assert.equal(data.status, 'success');
       },
     };
     const modelsStub = {
@@ -75,14 +74,13 @@ describe('Users', () => {
         email: 'test@example.com',
         password: '12345678',
         passwordConfirmation: '12345678',
-        // confirmed: true,
         role: 'user',
       },
       params: { id: 1 },
     };
     const res = {
       json: (data) => {
-        assert.equal(data, 1);
+        assert.equal(data.status, 'success');
       },
     };
     const modelsStub = {
@@ -103,7 +101,7 @@ describe('Users', () => {
     };
     const res = {
       json: (data) => {
-        assert.equal(data, 1);
+        assert.equal(data.status, 'success');
       },
     };
     const modelsStub = {
@@ -124,7 +122,7 @@ describe('Users', () => {
     };
     const res = {
       json: (data) => {
-        assert.ok(data.errors.length >= 1);
+        assert.equal(data.status, 'failure');
       },
     };
     const modelsStub = {
