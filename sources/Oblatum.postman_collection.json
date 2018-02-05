@@ -59,7 +59,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Name\": \"Name\",\n    \"surname\": \"Surname\",\n    \"email\": \"test@example.com\",\n    \"password\": \"12345678\",\n    \"passwordConfirmation\": \"12345678\",\n    \"role\": \"user\"\n}"
+					"raw": "{\n\t\"name\": \"Name\",\n    \"surname\": \"Surname\",\n    \"email\": \"test@example.com\",\n    \"password\": \"12345678\",\n    \"passwordConfirmation\": \"12345678\",\n    \"role\": \"user\"\n}"
 				},
 				"url": {
 					"raw": "localhost/api/users",

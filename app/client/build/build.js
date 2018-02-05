@@ -502,7 +502,12 @@ Vue.prototype.$path = {
   recover: '/recover',
 };
 
-// Routes
+Vue.prototype.$api = {
+  api: '/api/',
+  createUser: '/api/users',
+};
+
+//Routes
 const routes = [
   { path: Vue.prototype.$path.home, component: __WEBPACK_IMPORTED_MODULE_0__components_home_vue___default.a },
   { path: Vue.prototype.$path.login, component: __WEBPACK_IMPORTED_MODULE_0__components_home_vue___default.a },
@@ -512,7 +517,7 @@ const routes = [
 // Creation of the route instance
 const router = new VueRouter({
   routes: routes,
-})
+});
 
 // Creation of the app instance
 const app = new Vue({
@@ -1157,7 +1162,7 @@ exports = module.exports = __webpack_require__(0)(true);
 
 
 // module
-exports.push([module.i, "\n.nav-link{\n    color: whitesmoke!important;\n    font-weight: bold;\n}\n.nav-link:hover{\n    color: white!important;\n}\n.navbar-brand{\n    color: white!important;\n    font-weight: bold;\n}\n.custom-toggler.navbar-toggler {\n    border-color: whitesmoke;\n}\n.custom-toggler .navbar-toggler-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n}\n", "", {"version":3,"sources":["/usr/local/app/client/components/navbar.vue?ab91edc0"],"names":[],"mappings":";AACA;IACA,4BAAA;IACA,kBAAA;CACA;AAEA;IACA,uBAAA;CACA;AAEA;IACA,uBAAA;IACA,kBAAA;CACA;AACA;IACA,yBAAA;CACA;AACA;IACA,0QAAA;CACA","file":"navbar.vue","sourcesContent":["<style>\n.nav-link{\n    color: whitesmoke!important;\n    font-weight: bold;\n}\n\n.nav-link:hover{\n    color: white!important;\n}\n\n.navbar-brand{\n    color: white!important;\n    font-weight: bold;\n}\n.custom-toggler.navbar-toggler {\n    border-color: whitesmoke;\n}\n.custom-toggler .navbar-toggler-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n}\n</style>\n\n<template>\n    <b-navbar toggleable=\"md\" type=\"dark\">\n\n        <b-navbar-toggle target=\"nav_collapse\"></b-navbar-toggle>\n\n        <b-navbar-brand to=\"/\">\n            <img src=\"../assets/images/logo-white.svg\" alt=\"Logo white\" height=\"60px\" width=\"60px\" />Oblatum\n        </b-navbar-brand>\n\n    <b-collapse is-nav id=\"nav_collapse\">\n\n        <b-navbar-nav class=\"ml-auto\">\n            <b-nav-item :to=\"this.$path.home\" v-if=\"!isHome\">REGISTER</b-nav-item>\n            <b-nav-item :to=\"this.$path.login\" v-if=\"isHome\">LOGIN</b-nav-item>\n        </b-navbar-nav>\n\n    </b-collapse>\n\n    </b-navbar>\n</template>\n\n<script>\nmodule.exports = {\n  computed: {\n        isHome: function(){\n            return this.$route.path == \"/\";\n        }\n  }\n}\n</script>\n\n"],"sourceRoot":""}]);
+exports.push([module.i, "\n.nav-link{\n    color: whitesmoke!important;\n    font-weight: bold;\n}\n.nav-link:hover{\n    color: white!important;\n}\n.navbar-brand{\n    color: white!important;\n    font-weight: bold;\n}\n.custom-toggler.navbar-toggler {\n    border-color: whitesmoke;\n}\n.custom-toggler .navbar-toggler-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n}\n", "", {"version":3,"sources":["/usr/local/app/client/components/navbar.vue?5ed54730"],"names":[],"mappings":";AACA;IACA,4BAAA;IACA,kBAAA;CACA;AAEA;IACA,uBAAA;CACA;AAEA;IACA,uBAAA;IACA,kBAAA;CACA;AAEA;IACA,yBAAA;CACA;AAEA;IACA,0QAAA;CACA","file":"navbar.vue","sourcesContent":["<style>\n.nav-link{\n    color: whitesmoke!important;\n    font-weight: bold;\n}\n\n.nav-link:hover{\n    color: white!important;\n}\n\n.navbar-brand{\n    color: white!important;\n    font-weight: bold;\n}\n\n.custom-toggler.navbar-toggler {\n    border-color: whitesmoke;\n}\n\n.custom-toggler .navbar-toggler-icon {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n}\n</style>\n\n<template>\n    <b-navbar toggleable=\"md\" type=\"dark\">\n        <b-navbar-toggle target=\"nav_collapse\"></b-navbar-toggle>\n        <b-navbar-brand to=\"/\">\n            <img src=\"../assets/images/logo-white.svg\" alt=\"Logo white\" height=\"60px\" width=\"60px\" />Oblatum\n        </b-navbar-brand>\n        <b-collapse is-nav id=\"nav_collapse\">\n            <b-navbar-nav class=\"ml-auto\">\n                <b-nav-item :to=\"this.$path.home\" v-if=\"!isHome\">REGISTER</b-nav-item>\n                <b-nav-item :to=\"this.$path.login\" v-if=\"isHome\">LOGIN</b-nav-item>\n            </b-navbar-nav>\n        </b-collapse>\n    </b-navbar>\n</template>\n\n<script>\nmodule.exports = {\n  computed: {\n    isHome: () => this.$route.path === '/',\n  },\n};\n</script>\n\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -1205,18 +1210,12 @@ exports.push([module.i, "\n.nav-link{\n    color: whitesmoke!important;\n    fon
 //
 //
 //
-//
-//
-//
-//
 
 module.exports = {
   computed: {
-        isHome: function(){
-            return this.$route.path == "/";
-        }
-  }
-}
+    isHome: () => this.$route.path === '/',
+  },
+};
 
 
 /***/ }),
@@ -1354,7 +1353,7 @@ exports = module.exports = __webpack_require__(0)(true);
 
 
 // module
-exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/register-form.vue?265d6fec"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"register-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Sign up!</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Name:\"\n    :state=\"form.name.state\"\n    :invalid-feedback=\"form.name.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"icon ion-person\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"name\" type=\"text\" v-model=\"form.name.value\" :state=\"form.name.state\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Surname:\"    \n    :state=\"form.surname.state\"\n    :invalid-feedback=\"form.surname.invalidFeedback\">\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"icon ion-person\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"surname\" type=\"text\" v-model=\"form.surname.value\" :state=\"form.surname.state\"></b-form-input>\n    </b-input-group>\n</b-form-group>\n\n<b-form-group \n    label=\"Email:\" \n    description=\"We'll never share your email with anyone else.\"\n    :state=\"form.email.state\"\n    :invalid-feedback=\"form.email.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email.value\" :state=\"form.email.state\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Password:\"\n    :state=\"form.password.state\"\n    :invalid-feedback=\"form.password.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"password\" type=\"password\" v-model=\"form.password.value\" :state=\"form.password.state\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Confirm password:\"    \n    :state=\"form.confirm.state\"\n    :invalid-feedback=\"form.confirm.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"confirm-password\" type=\"password\" v-model=\"form.confirm.value\" :state=\"form.confirm.state\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Register</b-button>\n    <b-form-text>\n        <router-link :to=\"this.$path.recover\" class=\"text-oblatum-color\">Forgot your password?</router-link>\n    </b-form-text>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data: function(){\n      return {\n        form: {\n            email: {\n                value: '',\n                state: null,\n                invalidFeedback: 'invalid'\n            },\n            name: {\n                value: '',\n                state: null,\n                invalidFeedback: 'invalid'\n            },\n            surname: {\n                value: '',\n                state: null,\n                invalidFeedback: 'invalid'\n            },\n            password: {\n                value: '',\n                state: null,\n                invalidFeedback: 'invalid'\n            },\n            confirm: {\n                value: '',\n                state: null,\n                invalidFeedback: 'invalid'\n            },\n        }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      this.form.name.state = false;\n      this.form.confirm.state = false;\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
+exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n#description{\n    font-size: 10px;\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/register-form.vue?08cdb310"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA;AAEA;IACA,gBAAA;CACA","file":"register-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n    #description{\n        font-size: 10px;\n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Sign up!</b>\n        <p id=\"description\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Name:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"icon ion-person\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"name\" type=\"text\" v-model=\"form.name\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Surname:\">\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"icon ion-person\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"surname\" type=\"text\" v-model=\"form.surname\"></b-form-input>\n    </b-input-group>\n</b-form-group>\n\n<b-form-group \n    label=\"Email:\" \n    description=\"We'll never share your email with anyone else.\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Password:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"password\" type=\"password\" v-model=\"form.password\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Confirm password:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"confirm-password\" type=\"password\" v-model=\"form.passwordConfirmation\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Register</b-button>\n    <b-form-text>\n        <router-link :to=\"this.$path.recover\" class=\"text-oblatum-color\">Forgot your password?</router-link>\n    </b-form-text>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data: function(){\n      return {\n        form: {\n            email: '',\n            name: '',\n            surname: '',\n            password: '',\n            passwordConfirmation: '',\n            role: 'user'\n        }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n\n      axios.post(this.$api.createUser, this.form)\n      .then(response => {\n        console.log(response)\n      })\n      .catch(e => {\n        this.errors.push(e)\n      })\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
 
 // exports
 
@@ -1475,51 +1474,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function(){
       return {
         form: {
-            email: {
-                value: '',
-                state: null,
-                invalidFeedback: 'invalid'
-            },
-            name: {
-                value: '',
-                state: null,
-                invalidFeedback: 'invalid'
-            },
-            surname: {
-                value: '',
-                state: null,
-                invalidFeedback: 'invalid'
-            },
-            password: {
-                value: '',
-                state: null,
-                invalidFeedback: 'invalid'
-            },
-            confirm: {
-                value: '',
-                state: null,
-                invalidFeedback: 'invalid'
-            },
+            email: '',
+            name: '',
+            surname: '',
+            password: '',
+            passwordConfirmation: '',
+            role: 'user'
         }
     }
   },
   methods: {
     onSubmit (e) {
-      this.form.name.state = false;
-      this.form.confirm.state = false;
       e.preventDefault();
-      alert(JSON.stringify(this.form));
+
+      axios.post(this.$api.createUser, this.form)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
     }
   }
 });
@@ -1535,9 +1514,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('legend', {
     staticClass: "text-center"
   }, [_c('b', [_vm._v("Sign up!")]), _vm._v(" "), _c('p', {
-    staticStyle: {
-      "font-size": "9pt"
-    },
     attrs: {
       "id": "description"
     }
@@ -1547,109 +1523,94 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('b-form-group', {
     attrs: {
-      "label": "Name:",
-      "state": _vm.form.name.state,
-      "invalid-feedback": _vm.form.name.invalidFeedback
+      "label": "Name:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "icon ion-person"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
       "id": "name",
-      "type": "text",
-      "state": _vm.form.name.state
+      "type": "text"
     },
     model: {
-      value: (_vm.form.name.value),
+      value: (_vm.form.name),
       callback: function($$v) {
-        _vm.$set(_vm.form.name, "value", $$v)
+        _vm.$set(_vm.form, "name", $$v)
       },
-      expression: "form.name.value"
+      expression: "form.name"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     attrs: {
-      "label": "Surname:",
-      "state": _vm.form.surname.state,
-      "invalid-feedback": _vm.form.surname.invalidFeedback
+      "label": "Surname:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "icon ion-person"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
       "id": "surname",
-      "type": "text",
-      "state": _vm.form.surname.state
+      "type": "text"
     },
     model: {
-      value: (_vm.form.surname.value),
+      value: (_vm.form.surname),
       callback: function($$v) {
-        _vm.$set(_vm.form.surname, "value", $$v)
+        _vm.$set(_vm.form, "surname", $$v)
       },
-      expression: "form.surname.value"
+      expression: "form.surname"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     attrs: {
       "label": "Email:",
-      "description": "We'll never share your email with anyone else.",
-      "state": _vm.form.email.state,
-      "invalid-feedback": _vm.form.email.invalidFeedback
+      "description": "We'll never share your email with anyone else."
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-email"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
       "id": "email",
-      "type": "text",
-      "state": _vm.form.email.state
+      "type": "text"
     },
     model: {
-      value: (_vm.form.email.value),
+      value: (_vm.form.email),
       callback: function($$v) {
-        _vm.$set(_vm.form.email, "value", $$v)
+        _vm.$set(_vm.form, "email", $$v)
       },
-      expression: "form.email.value"
+      expression: "form.email"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     attrs: {
-      "label": "Password:",
-      "state": _vm.form.password.state,
-      "invalid-feedback": _vm.form.password.invalidFeedback
+      "label": "Password:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-locked"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
       "id": "password",
-      "type": "password",
-      "state": _vm.form.password.state
+      "type": "password"
     },
     model: {
-      value: (_vm.form.password.value),
+      value: (_vm.form.password),
       callback: function($$v) {
-        _vm.$set(_vm.form.password, "value", $$v)
+        _vm.$set(_vm.form, "password", $$v)
       },
-      expression: "form.password.value"
+      expression: "form.password"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     attrs: {
-      "label": "Confirm password:",
-      "state": _vm.form.confirm.state,
-      "invalid-feedback": _vm.form.confirm.invalidFeedback
+      "label": "Confirm password:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-locked"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
       "id": "confirm-password",
-      "type": "password",
-      "state": _vm.form.confirm.state
+      "type": "password"
     },
     model: {
-      value: (_vm.form.confirm.value),
+      value: (_vm.form.passwordConfirmation),
       callback: function($$v) {
-        _vm.$set(_vm.form.confirm, "value", $$v)
+        _vm.$set(_vm.form, "passwordConfirmation", $$v)
       },
-      expression: "form.confirm.value"
+      expression: "form.passwordConfirmation"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     staticClass: "text-center"
@@ -1754,7 +1715,7 @@ exports = module.exports = __webpack_require__(0)(true);
 
 
 // module
-exports.push([module.i, "\n    /*FOOTER*/\n.footer{\n    padding-top:25px;\n    background-color: whitesmoke;\n    padding-bottom: 25px;\n}\n.footer-logo{\n    padding-left: 75px;\n}\n\n\n\n/*workaround*/\n@media (max-width: 768px){\n.footer-logo{\n        padding-left: 0px;\n}\n.footer-aboutus{\n        padding-left: 50px;\n        padding-right: 50px;\n        text-align: center;\n}\n}\n.copyright{\n    padding-left: 20px;\n}\n.footer-label{\n    font-size: 18px;\n    font-weight: bold;\n    margin-bottom: 15px;\n}\n.footer-section{\n    margin-top: 15px;\n}\n.icon-padding{\n    padding-right: 10px;\n    font-size: 24px;\n    vertical-align: middle;\n}\n.icon-align{\n    text-align: middle;\n}\n.email-link{\n    color: black;\n}\n.email-link:hover{\n    color: lightgrey;\n}\n", "", {"version":3,"sources":["/usr/local/app/client/components/footer.vue?d4c78f54"],"names":[],"mappings":";IACA,UAAA;AACA;IACA,iBAAA;IACA,6BAAA;IACA,qBAAA;CACA;AAEA;IACA,mBAAA;CACA;;;;AAIA,cAAA;AACA;AACA;QACA,kBAAA;CACA;AAEA;QACA,mBAAA;QACA,oBAAA;QACA,mBAAA;CACA;CACA;AAGA;IACA,mBAAA;CACA;AAGA;IACA,gBAAA;IACA,kBAAA;IACA,oBAAA;CACA;AAGA;IACA,iBAAA;CACA;AAGA;IACA,oBAAA;IACA,gBAAA;IACA,uBAAA;CACA;AAEA;IACA,mBAAA;CACA;AAEA;IACA,aAAA;CACA;AAEA;IACA,iBAAA;CACA","file":"footer.vue","sourcesContent":["<style>\n    /*FOOTER*/\n.footer{\n    padding-top:25px;\n    background-color: whitesmoke;\n    padding-bottom: 25px;\n}\n\n.footer-logo{\n    padding-left: 75px;\n}\n\n\n\n/*workaround*/\n@media (max-width: 768px){\n    .footer-logo{\n        padding-left: 0px;\n    }\n\n    .footer-aboutus{\n        padding-left: 50px;\n        padding-right: 50px;\n        text-align: center;\n    }\n}\n\n\n.copyright{\n    padding-left: 20px;\n}\n\n\n.footer-label{\n    font-size: 18px;\n    font-weight: bold;\n    margin-bottom: 15px;\n}\n\n\n.footer-section{\n    margin-top: 15px;\n}\n\n\n.icon-padding{\n    padding-right: 10px;\n    font-size: 24px;\n    vertical-align: middle;\n}\n\n.icon-align{\n    text-align: middle;\n}\n\n.email-link{\n    color: black;\n}\n\n.email-link:hover{\n    color: lightgrey;\n}\n</style>\n\n<template>\n<footer id=\"contacts-sec\">\n  <div class=\"footer container-fluid\">\n    <b-row class=\"justify-content-between\">\n\n\n        <!-- footer contact us -->\n      <b-col col md=\"3\" order-md=\"2\" class=\"footer-section\">\n            <b-row class=\"footer-label justify-content-center justify-content-md-between\">\n                Contacts\n            </b-row>\n            <b-row class=\"justify-content-center justify-content-md-start\">\n                <span class=\"icon-align\"><i class=\"ion-ios-telephone icon-padding\"></i>+39 3278562208</span>\n            </b-row>\n\n            <b-row class=\"justify-content-center justify-content-md-start\">\n                <span class=\"icon-align\"><i class=\"ion-email icon-padding\"></i>\n                <a class=\"email-link\" href=\"mailto:oblatum@support.it\">oblatum@support.it</a></span>\n            </b-row>\n        </b-col>\n\n        <!-- footer About Us -->\n        <!--<div class=\"col-md-3 footer-section order-md-3\">\n            <p class=\"row footer-label justify-content-center justify-content-md-start\">\n                About Us\n            </p>\n            <p class=\"row footer-aboutus\">\n                Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\n            </p>\n        </div>-->\n\n        <!-- footer logo -->\n        <b-col md=\"9\" order-md=\"1\" class=\"footer-section footer-logo\">\n            <b-row class=\"justify-content-center justify-content-md-start\">\n                    <img class=\"float-right\"\n                    src=\"../assets/images/logo-black.svg\"\n                    alt=\"Logo black\"\n                    height=\"100px\"\n                    width=\"100px\"\n                    />\n                <h1 class=\"footer-logo-text my-auto\">Oblatum</h1>\n            </b-row>\n            <b-row class=\"copyright justify-content-center justify-content-md-start\">Oblatum © 2018</b-row>\n        </b-col>\n    </b-row>\n  </div>\n</footer>\n</template>\n\n<script>\n</script>"],"sourceRoot":""}]);
+exports.push([module.i, "\n/* footer */\n.footer{\n    padding-top:25px;\n    background-color: whitesmoke;\n    padding-bottom: 25px;\n}\n.footer-logo{\n    padding-left: 75px;\n}\n\n/* workaround */\n@media (max-width: 768px){\n.footer-logo{\n        padding-left: 0px;\n}\n.footer-aboutus{\n        padding-left: 50px;\n        padding-right: 50px;\n        text-align: center;\n}\n}\n.copyright{\n    padding-left: 20px;\n}\n.footer-label{\n    font-size: 18px;\n    font-weight: bold;\n    margin-bottom: 15px;\n}\n.footer-section{\n    margin-top: 15px;\n}\n.icon-padding{\n    padding-right: 10px;\n    font-size: 24px;\n    vertical-align: middle;\n}\n.icon-align{\n    text-align: middle;\n}\n.email-link{\n    color: black;\n}\n.email-link:hover{\n    color: lightgrey;\n}\n", "", {"version":3,"sources":["/usr/local/app/client/components/footer.vue?1ed007a2"],"names":[],"mappings":";AACA,YAAA;AACA;IACA,iBAAA;IACA,6BAAA;IACA,qBAAA;CACA;AAEA;IACA,mBAAA;CACA;;AAEA,gBAAA;AACA;AACA;QACA,kBAAA;CACA;AAEA;QACA,mBAAA;QACA,oBAAA;QACA,mBAAA;CACA;CACA;AAEA;IACA,mBAAA;CACA;AAEA;IACA,gBAAA;IACA,kBAAA;IACA,oBAAA;CACA;AAEA;IACA,iBAAA;CACA;AAEA;IACA,oBAAA;IACA,gBAAA;IACA,uBAAA;CACA;AAEA;IACA,mBAAA;CACA;AAEA;IACA,aAAA;CACA;AAEA;IACA,iBAAA;CACA","file":"footer.vue","sourcesContent":["<style>\n/* footer */\n.footer{\n    padding-top:25px;\n    background-color: whitesmoke;\n    padding-bottom: 25px;\n}\n\n.footer-logo{\n    padding-left: 75px;\n}\n\n/* workaround */\n@media (max-width: 768px){\n    .footer-logo{\n        padding-left: 0px;\n    }\n\n    .footer-aboutus{\n        padding-left: 50px;\n        padding-right: 50px;\n        text-align: center;\n    }\n}\n\n.copyright{\n    padding-left: 20px;\n}\n\n.footer-label{\n    font-size: 18px;\n    font-weight: bold;\n    margin-bottom: 15px;\n}\n\n.footer-section{\n    margin-top: 15px;\n}\n\n.icon-padding{\n    padding-right: 10px;\n    font-size: 24px;\n    vertical-align: middle;\n}\n\n.icon-align{\n    text-align: middle;\n}\n\n.email-link{\n    color: black;\n}\n\n.email-link:hover{\n    color: lightgrey;\n}\n</style>\n\n<template>\n    <footer id=\"contacts-sec\">\n      <div class=\"footer container-fluid\">\n        <b-row class=\"justify-content-between\">\n            <b-col col md=\"3\" order-md=\"2\" class=\"footer-section\">\n                <b-row class=\"footer-label justify-content-center justify-content-md-between\">\n                    Contacts\n                </b-row>\n                <b-row class=\"justify-content-center justify-content-md-start\">\n                    <span class=\"icon-align\"><i class=\"ion-ios-telephone icon-padding\"></i>+39 3278562208</span>\n                </b-row>\n\n                <b-row class=\"justify-content-center justify-content-md-start\">\n                    <span class=\"icon-align\"><i class=\"ion-email icon-padding\"></i>\n                        <a class=\"email-link\" href=\"mailto:oblatum@support.it\">oblatum@support.it</a></span>\n                    </b-row>\n                </b-col>\n                <b-col md=\"9\" order-md=\"1\" class=\"footer-section footer-logo\">\n                    <b-row class=\"justify-content-center justify-content-md-start\">\n                        <img class=\"float-right\"\n                        src=\"../assets/images/logo-black.svg\"\n                        alt=\"Logo black\"\n                        height=\"100px\"\n                        width=\"100px\"\n                        />\n                        <h1 class=\"footer-logo-text my-auto\">Oblatum</h1>\n                    </b-row>\n                    <b-row class=\"copyright justify-content-center justify-content-md-start\">Oblatum © 2018</b-row>\n                </b-col>\n            </b-row>\n        </div>\n    </footer>\n</template>\n<script>\n</script>"],"sourceRoot":""}]);
 
 // exports
 
@@ -1763,28 +1724,6 @@ exports.push([module.i, "\n    /*FOOTER*/\n.footer{\n    padding-top:25px;\n    
 /* 24 */
 /***/ (function(module, exports) {
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2033,7 +1972,7 @@ exports = module.exports = __webpack_require__(0)(true);
 
 
 // module
-exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/login-form.vue?1426a08c"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"login-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Sign in!</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Email:\" \n    :state=\"form.email.state\"\n    :invalid-feedback=\"form.email.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email.value\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Password:\"\n    :state=\"form.password.state\"\n    :invalid-feedback=\"form.password.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"password\" type=\"password\" v-model=\"form.password.value\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Login</b-button>\n    <b-form-text><router-link :to=\"this.$path.recover\" class=\"text-oblatum-color\">Forgot your password?</router-link></b-form-text>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data () {\n    return {\n      form: {\n        email: {\n            value: '',\n            state: null,\n            invalidFeedback: 'invalid'\n        },\n        password: {\n            value: '',\n            state: null,\n            invalidFeedback: 'invalid'\n        }\n      }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
+exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/login-form.vue?398151ca"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"login-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Sign in!</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Email:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group \n    label=\"Password:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-locked\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"password\" type=\"password\" v-model=\"form.password\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Login</b-button>\n    <b-form-text><router-link :to=\"this.$path.recover\" class=\"text-oblatum-color\">Forgot your password?</router-link></b-form-text>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data () {\n    return {\n      form: {\n        email: '',\n        password: ''\n      }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
 
 // exports
 
@@ -2113,25 +2052,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data () {
     return {
       form: {
-        email: {
-            value: '',
-            state: null,
-            invalidFeedback: 'invalid'
-        },
-        password: {
-            value: '',
-            state: null,
-            invalidFeedback: 'invalid'
-        }
+        email: '',
+        password: ''
       }
     }
   },
@@ -2166,9 +2093,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('b-form-group', {
     attrs: {
-      "label": "Email:",
-      "state": _vm.form.email.state,
-      "invalid-feedback": _vm.form.email.invalidFeedback
+      "label": "Email:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-email"
@@ -2178,17 +2103,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "text"
     },
     model: {
-      value: (_vm.form.email.value),
+      value: (_vm.form.email),
       callback: function($$v) {
-        _vm.$set(_vm.form.email, "value", $$v)
+        _vm.$set(_vm.form, "email", $$v)
       },
-      expression: "form.email.value"
+      expression: "form.email"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     attrs: {
-      "label": "Password:",
-      "state": _vm.form.password.state,
-      "invalid-feedback": _vm.form.password.invalidFeedback
+      "label": "Password:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-locked"
@@ -2198,11 +2121,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "password"
     },
     model: {
-      value: (_vm.form.password.value),
+      value: (_vm.form.password),
       callback: function($$v) {
-        _vm.$set(_vm.form.password, "value", $$v)
+        _vm.$set(_vm.form, "password", $$v)
       },
-      expression: "form.password.value"
+      expression: "form.password"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     staticClass: "text-center"
@@ -2307,7 +2230,7 @@ exports = module.exports = __webpack_require__(0)(true);
 
 
 // module
-exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/recover-password-form.vue?64f114df"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"recover-password-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Recover your password</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Email:\" \n    :state=\"form.email.state\"\n    :invalid-feedback=\"form.email.invalidFeedback\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email.value\" :state=\"form.email.state\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Send email</b-button>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data: function(){\n    return {\n      form: {\n          email: {\n              value: '',\n              state: null,\n              invalidFeedback: 'invalid'\n          },\n      }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
+exports.push([module.i, "\n.form-container{\n    background-color: whitesmoke;\n    border-radius: 10px;\n    max-width: 450px;\n\n    padding-bottom: 30px;\n    padding-left: 15px;\n    padding-right: 15px;\n    padding-top: 30px;\n\n    margin-bottom: 45px;\n    margin-top: 75px;\n}\n.textfield-label{\n}\n\n", "", {"version":3,"sources":["/usr/local/app/client/components/recover-password-form.vue?07c2577a"],"names":[],"mappings":";AACA;IACA,6BAAA;IACA,oBAAA;IACA,iBAAA;;IAEA,qBAAA;IACA,mBAAA;IACA,oBAAA;IACA,kBAAA;;IAEA,oBAAA;IACA,iBAAA;CACA;AAEA;CAEA","file":"recover-password-form.vue","sourcesContent":["<style>\n    .form-container{\n        background-color: whitesmoke;\n        border-radius: 10px;\n        max-width: 450px;\n\n        padding-bottom: 30px;\n        padding-left: 15px;\n        padding-right: 15px;\n        padding-top: 30px;\n\n        margin-bottom: 45px;\n        margin-top: 75px;\n    }\n\n    .textfield-label{\n        \n    }\n\n</style>\n\n<template>\n<div>\n<b-container class=\"form-container\">\n\n    <legend class=\"text-center\">\n        <b>Recover your password</b>\n        <p id=\"description\" style=\"font-size: 9pt\">Something written here</p>\n    </legend>\n\n<b-form @submit=\"onSubmit\">\n\n<b-form-group \n    label=\"Email:\">\n\n    <b-input-group>\n        <b-input-group-addon>\n            <span class=\"ion-email\"></span>\n        </b-input-group-addon>\n        <b-form-input id=\"email\" type=\"text\" v-model=\"form.email\"></b-form-input>\n    </b-input-group>\n\n</b-form-group>\n\n<b-form-group class=\"text-center\">\n    <b-button id=\"signup\" type=\"submit\" variant=\"primary\" class=\"text-center\">Send email</b-button>\n</b-form-group>\n\n\n</b-form>\n</b-container>\n\n</div>\n</template>\n\n<script>\nexport default {\n  data: function(){\n    return {\n      form: {\n          email: '',\n      }\n    }\n  },\n  methods: {\n    onSubmit (e) {\n      e.preventDefault();\n      alert(JSON.stringify(this.form));\n    }\n  }\n}\n</script>\n\n<!-- b-form-1.vue -->"],"sourceRoot":""}]);
 
 // exports
 
@@ -2373,18 +2296,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function(){
     return {
       form: {
-          email: {
-              value: '',
-              state: null,
-              invalidFeedback: 'invalid'
-          },
+          email: '',
       }
     }
   },
@@ -2419,24 +2336,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('b-form-group', {
     attrs: {
-      "label": "Email:",
-      "state": _vm.form.email.state,
-      "invalid-feedback": _vm.form.email.invalidFeedback
+      "label": "Email:"
     }
   }, [_c('b-input-group', [_c('b-input-group-addon', [_c('span', {
     staticClass: "ion-email"
   })]), _vm._v(" "), _c('b-form-input', {
     attrs: {
       "id": "email",
-      "type": "text",
-      "state": _vm.form.email.state
+      "type": "text"
     },
     model: {
-      value: (_vm.form.email.value),
+      value: (_vm.form.email),
       callback: function($$v) {
-        _vm.$set(_vm.form.email, "value", $$v)
+        _vm.$set(_vm.form, "email", $$v)
       },
-      expression: "form.email.value"
+      expression: "form.email"
     }
   })], 1)], 1), _vm._v(" "), _c('b-form-group', {
     staticClass: "text-center"
