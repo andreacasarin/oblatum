@@ -26,7 +26,7 @@
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
         <b-navbar-brand to="/">
-            <img src="../images/logo-white.svg" alt="Logo white" height="60px" width="60px" />Oblatum
+            <img src="../assets/images/logo-white.svg" alt="Logo white" height="60px" width="60px" />Oblatum
         </b-navbar-brand>
 
     <b-collapse is-nav id="nav_collapse">

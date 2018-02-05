@@ -87,7 +87,7 @@
         <!--<div class="col-md-3 footer-section order-md-3">
             <p class="row footer-label justify-content-center justify-content-md-start">
                 About Us
-            </p> 
+            </p>
             <p class="row footer-aboutus">
                 Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
             </p>
@@ -96,11 +96,11 @@
         <!-- footer logo -->
         <b-col md="9" order-md="1" class="footer-section footer-logo">
             <b-row class="justify-content-center justify-content-md-start">
-                    <img class="float-right" 
-                    src="../images/logo-black.svg" 
+                    <img class="float-right"
+                    src="../assets/images/logo-black.svg"
                     alt="Logo black"
                     height="100px"
-                    width="100px" 
+                    width="100px"
                     />
                 <h1 class="footer-logo-text my-auto">Oblatum</h1>
             </b-row>

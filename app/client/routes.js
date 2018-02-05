@@ -12,36 +12,30 @@ Vue.component('obl-login-form', LoginForm);
 Vue.component('obl-recover-password-form', RecoverPasswordForm);
 
 // Paths
-var globalPath = "";
 Vue.prototype.$path = {
-	global: globalPath,
-	home: globalPath + '/',
-	login: globalPath + '/login',
-	recover: globalPath + '/recover'
-}
+  global: '',
+  home: '/',
+  login: '/login',
+  recover: '/recover',
+};
 
-
-//Routes
+// Routes
 const routes = [
-  { path: Vue.prototype.$path.home, component: Home }, 
+  { path: Vue.prototype.$path.home, component: Home },
   { path: Vue.prototype.$path.login, component: Home },
-  { path: Vue.prototype.$path.recover, component: Home }
+  { path: Vue.prototype.$path.recover, component: Home },
 ];
 
-
-
-//Creation of the route instance
+// Creation of the route instance
 const router = new VueRouter({
-  routes: routes 
+  routes: routes,
 })
 
-var testVar = "ciao";
-
-//Creation of the app instance
+// Creation of the app instance
 const app = new Vue({
   el: '#app',
   data: {
-    foo: 'foo'
+    foo: 'foo',
   },
-  router: router
-})
+  router: router,
+});

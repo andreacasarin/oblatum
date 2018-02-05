@@ -1,48 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Metatags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="Description" CONTENT="Oblatum enables people to trace, store and insure their most valuable assets.">
-    <meta name="robots" content="noindex,nofollow">
+    <head>
+        <!-- Metatags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <meta name="Description" CONTENT="Oblatum enables people to trace, store and insure their most valuable assets.">
+        <meta name="robots" content="noindex,nofollow">
 
-    <link rel="icon" href="favicon.ico" />
-    <!-- CSS -->
-<!-- Add this to <head> -->
+        <link rel="icon" href="./assets/images/favicon.ico" />
+        <!-- CSS -->
+        <link rel="stylesheet" href="./vendor/stylesheets/ionicons.css">
+        <link rel="stylesheet" href="./vendor/stylesheets/bootstrap.min.css"/>
+        <link rel="stylesheet" href="./assets/stylesheets/style.css">
+        <!-- JS -->
+        <!-- Development only --> <script src="./vendor/javascripts/vue.js"></script>
+        <!-- Production <script src="./vendor/javascripts/vue.min.js"></script> -->
+        <script src="./vendor/javascripts/vue-router.js"></script>
 
+        <script src="./vendor/javascripts/polyfill.min.js"></script>
+        <script src="./vendor/javascripts/bootstrap-vue.js"></script>
 
-    <link rel="stylesheet" href="./stylesheets/global.css">
-    <link rel="stylesheet" href="./stylesheets/ionicons.css">
-    <link rel="stylesheet" href="./stylesheets/bootstrap.min.css"/>
-    <!-- JS -->
-    <!-- Development only --> <script src="./javascripts/import/vue.js"></script>
-    <!-- Production <script src="./javascripts/import/vue.min.js"></script> -->
-    <script src="./javascripts/import/vue-router.js"></script>
+        <title>Oblatum</title>
+    </head>
 
-    <script src="./javascripts/import/polyfill.min.js"></script>
-    <script src="./javascripts/import/bootstrap-vue.js"></script>
-
-    <title>Oblatum</title>
-</head>
-
-<body>
-
-<div id="app">
-
-  <obl-navbar></obl-navbar>
-
-  <!-- All the routes inside routes.js will be rendered here-->
-  <router-view></router-view>
-
-  <obl-footer></obl-footer>
-</div>
-
-
-
-
-</body>
-<script src="./build/build.js"></script>
+    <body>
+        <div id="app">
+            <obl-navbar></obl-navbar>
+            <!-- All the routes inside routes.js will be rendered here-->
+            <router-view></router-view>
+            <obl-footer></obl-footer>
+        </div>
+    </body>
+    <script src="./build/build.js"></script>
 </html>
