@@ -13,10 +13,10 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
-  app:
+  server:
     build:
       context: .
-      dockerfile: Dockerfile-app
+      dockerfile: Dockerfile-server
     networks:
       - app_net
     user: node
@@ -37,7 +37,7 @@ services:
       context: .
       dockerfile: Dockerfile-web
     depends_on:
-      - app
+      - server
       - db
     networks:
       - app_net

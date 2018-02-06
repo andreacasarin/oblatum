@@ -1,8 +1,10 @@
-FROM debian:jessie
+FROM debian:latest
 
 RUN \
     apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install nginx \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install nginx curl gnupg2 ca-certificates \
+    && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install build-essential libssl-dev nodejs \
     && rm -rf /usr/share/locale/* \
     && rm -rf /var/cache/debconf/*-old \
     && rm -rf /var/lib/apt/lists/* \
@@ -18,13 +20,16 @@ RUN \
     && echo '  server_name _;' >>  /etc/nginx/sites-enabled/default \
     && echo '  charset utf-8;' >>/etc/nginx/sites-enabled/default \
     && echo '  location / {' >>/etc/nginx/sites-enabled/default \
-    && echo '    alias /usr/local/app/client/;' >>  /etc/nginx/sites-enabled/default \
+    && echo '    alias /usr/local/app/build/;' >>  /etc/nginx/sites-enabled/default \
     && echo '  }' >> /etc/nginx/sites-enabled/default \
-    && echo '  location /public/ {' >>/etc/nginx/sites-enabled/default \
-    && echo '    alias /usr/local/app/public/;' >>  /etc/nginx/sites-enabled/default \
+    && echo '  location /dev/ {' >>/etc/nginx/sites-enabled/default \
+    && echo '    proxy_pass http://web:3000/;' >> /etc/nginx/sites-enabled/default \
+    && echo '    proxy_set_header Host $host;' >>/etc/nginx/sites-enabled/default \
+    && echo '    proxy_set_header X-Real-IP $remote_addr;' >>/etc/nginx/sites-enabled/default \
+    && echo '    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;' >>/etc/nginx/sites-enabled/default \
     && echo '  }' >> /etc/nginx/sites-enabled/default \
     && echo '  location /api/ {' >>  /etc/nginx/sites-enabled/default \
-    && echo '    proxy_pass http://app:3000/;' >> /etc/nginx/sites-enabled/default \
+    && echo '    proxy_pass http://server:3000/;' >> /etc/nginx/sites-enabled/default \
     && echo '    proxy_set_header Host $host;' >>/etc/nginx/sites-enabled/default \
     && echo '    proxy_set_header X-Real-IP $remote_addr;' >>/etc/nginx/sites-enabled/default \
     && echo '    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;' >>/etc/nginx/sites-enabled/default \
@@ -32,4 +37,8 @@ RUN \
     && echo '}' >> /etc/nginx/sites-enabled/default \
     && echo 'daemon off;' >> /etc/nginx/nginx.conf
 
-ADD app /usr/local/app/
+ADD client/package.json client/package-lock.json /usr/local/app/
+WORKDIR /usr/local/app/
+RUN npm install --only=production
+ADD client /usr/local/app/
+RUN npm run build

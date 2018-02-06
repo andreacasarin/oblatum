@@ -3,15 +3,9 @@ version: '2.3'
 services:
   db:
 
-  app:
-    # build:
-    #   args:
-    #     APP_ADD_PATH: "app"
+  server:
     command: "npm start"
 
   web:
-    # build:
-    #   args:
-    #     APP_ADD_PATH: "app"
     ports:
       - 80

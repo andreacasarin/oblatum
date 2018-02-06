@@ -5,16 +5,18 @@ services:
     ports:
       - 3306:3306
 
-  app:
+  server:
     volumes:
-      - ./app:/usr/local/app
-      - ./app/node_modules:/usr/local/app/node_modules
+      - ./server:/usr/local/app
+      - ./server/node_modules:/usr/local/app/node_modules
     ports:
       - 3000:3000
     command: bash -c "npm install && npm run watch"
 
   web:
-    volumes_from:
-      - app
+    volumes:
+      - ./client:/usr/local/app
+      - ./client/node_modules:/usr/local/app/node_modules
     ports:
       - 80:80
+    command: bash -c "npm install && nginx"

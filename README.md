@@ -41,14 +41,37 @@ For further informations follow "[How to install docker-compose](https://docs.do
 
 `docker-compose up -d`
 
-##### 6. Start webpack daemon to build fronted files and watch for changes:
+###### 6. Run sequelize migrations:
 
-`docker-compose exec app webpack --watch`
+`docker-compose exec server sequelize db:migrate`
 
-##### 7. Check that the application is installed and configured correctly:
+###### 7. Import sequelize seeds:
+
+`docker-compose exec server sequelize db:seed:all`
+
+##### 8. Check that the application is installed and configured correctly:
 
 Open `http://localhost/` in a browser to see application running.
 
+### React development server
+
+##### 9. Start react development server to build fronted files and watch for changes:
+
+`docker-compose exec web npm start`
+
+##### 10. Check that react server is working:
+
+Open `http://localhost/dev/` in a browser to see application running.
+
+### Npm-watch build react
+
+##### 9. Start npm-watch to build fronted files and watch for changes:
+
+`docker-compose exec web npm watch`
+
+##### 10. Check that auto reloading is working:
+
+Open `http://localhost/` in a browser to see application running.
 
 ## Tests
 
@@ -95,18 +118,10 @@ Complete all initialization steps again if required (like re-configuring tests).
 
 `docker-compose exec app bash`
 
-###### Install new node dependencies:
+###### Install new node app dependencies:
 
 `docker-compose exec app npm install`
 
-###### Update composer dependencies:
+###### Update node app dependencies:
 
 `docker-compose exec app npm update`
-
-###### Run sequelize migrations:
-
-`docker-compose exec app sequelize db:migrate`
-
-###### Import sequelize seeds:
-
-`docker-compose exec app sequelize db:seed:all`
