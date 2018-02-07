@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import thinkBig from '../images/think-big.svg';
-import startSmall from '../images/start-small.svg';
-import scaleFast from '../images/scale-fast.svg';
+import thinkBig from './images/think-big.svg';
+import startSmall from './images/start-small.svg';
+import scaleFast from './images/scale-fast.svg';
 
 class Description extends Component {
   render() {

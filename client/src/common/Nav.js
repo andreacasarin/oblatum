@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import logoWhite from '../images/logo-white.svg';
+import logoWhite from './images/logo-white.svg';
 
 class Nav extends Component {
   render() {

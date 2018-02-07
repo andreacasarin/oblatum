@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import andreaCasarin from '../images/andrea.jpg';
-import alessandroRea from '../images/alessandro.jpg';
+import andreaCasarin from './images/andrea.jpg';
+import alessandroRea from './images/alessandro.jpg';
 
 class Team extends Component {
   render() {

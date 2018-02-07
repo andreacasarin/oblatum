@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import logoBlack from '../images/logo-black.svg';
+import logoBlack from './images/logo-black.svg';
 
 class Footer extends Component {
   render() {

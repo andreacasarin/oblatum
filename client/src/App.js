@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Header from './components/Header.js';
-import Main from './components/Main.js';
-import Footer from './components/Footer.js';
+import Header from './common/Header.js';
+import Main from './common/Main.js';
+import Footer from './common/Footer.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';

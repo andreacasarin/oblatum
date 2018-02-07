@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Nav from './Nav.js';
-import User from './User.js';
+import User from '../user/User.js';
 
 class Header extends Component {
   render() {
