@@ -1,28 +1,42 @@
-.App {
-  text-align: center;
+/* DEFAULT */
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #212529;
+    background-color: whitesmoke;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+/* LAYOUT */
+.light-background {
+    background-color: whitesmoke;
+}
+.dark-background {
+    background-color: #35465c;
+}
+.light-text {
+    color: whitesmoke;
+}
+.dark-text {
+    color: #212529;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+/* TYPOGRAFY */
+h1, .h1-alike {
+    font-size: 46px;
+}
+h2, .h2-alike {
+    font-size: 32px;
+}
+h3 .h3-alike {
+    font-size: 26px;
+}
+h4, .h4-alike {
+    font-size: 22px;
+}
+h5, .h5-alike {
+    font-size: 18px;
+}
+h6, .h6-alike {
+    font-size: 16px;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+/* EDGE CASES */

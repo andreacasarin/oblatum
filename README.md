@@ -61,7 +61,7 @@ Open `http://localhost/` in a browser to see application running.
 
 ##### 10. Check that react server is working:
 
-Open `http://localhost/dev/` in a browser to see application running.
+Open `http://localhost:3000/` in a browser to see application running.
 
 ### Npm-watch build react
 
