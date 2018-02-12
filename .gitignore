@@ -1,4 +1,11 @@
 .env
+
 server/node_modules
 server/coverage
+
+client.bak/node_modules
+client.bak/build
+
 client/node_modules
+client/build
+client/dist

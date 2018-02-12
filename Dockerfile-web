@@ -20,19 +20,22 @@ RUN \
     && echo '  server_name _;' >>  /etc/nginx/sites-enabled/default \
     && echo '  charset utf-8;' >>/etc/nginx/sites-enabled/default \
     && echo '  location / {' >>/etc/nginx/sites-enabled/default \
-    && echo '    alias /usr/local/app/build/;' >>  /etc/nginx/sites-enabled/default \
+    && echo '    alias /usr/local/app/dist/;' >>  /etc/nginx/sites-enabled/default \
     && echo '  }' >> /etc/nginx/sites-enabled/default \
     && echo '  location /api/ {' >>  /etc/nginx/sites-enabled/default \
-    && echo '    proxy_pass http://server:9000/;' >> /etc/nginx/sites-enabled/default \
+    && echo '    proxy_pass http://server:3000/;' >> /etc/nginx/sites-enabled/default \
     && echo '    proxy_set_header Host $host;' >>/etc/nginx/sites-enabled/default \
     && echo '    proxy_set_header X-Real-IP $remote_addr;' >>/etc/nginx/sites-enabled/default \
     && echo '    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;' >>/etc/nginx/sites-enabled/default \
     && echo '  }' >> /etc/nginx/sites-enabled/default \
-    && echo '}' >> /etc/nginx/sites-enabled/default \
-    && echo 'daemon off;' >> /etc/nginx/nginx.conf
+    && echo '}' >> /etc/nginx/sites-enabled/default
+
+    # Removing to use it in background on dev
+    # && echo 'daemon off;' >> /etc/nginx/nginx.conf
 
 ADD client/package.json client/package-lock.json /usr/local/app/
 WORKDIR /usr/local/app/
-RUN npm install --only=production
+# RUN npm install --only=production
+RUN npm install
 ADD client /usr/local/app/
 RUN npm run build

@@ -4,8 +4,10 @@ services:
   db:
 
   server:
+    ports: []
     command: "npm start"
 
   web:
     ports:
       - 80
+    command: "nginx -g 'daemon off;'"

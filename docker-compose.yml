@@ -41,7 +41,6 @@ services:
       - db
     networks:
       - app_net
-    command: nginx
 
 networks:
   app_net:
