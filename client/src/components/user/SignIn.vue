@@ -43,7 +43,7 @@ export default {
     onSubmit() {
       axios
         .post(
-          'http://localhost/api/users',
+          'http://localhost/api/sessions',
           {
             email: this.email.trim() || null,
             password: this.password.trim() || null,
