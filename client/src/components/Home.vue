@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <ob-header />
       <div class="container">
         <div class="row justify-content-center pb-5">
           <div class="col">
@@ -81,7 +81,7 @@
           </div>
         </div>
       </div>
-    <Footer />
+    <ob-footer />
   </div>
 </template>
 
@@ -92,8 +92,8 @@ import Footer from './common/Footer';
 export default {
   name: 'Home',
   components: {
-    Header,
-    Footer,
+    'ob-header': Header,
+    'ob-footer': Footer,
   },
   data() {
     return {

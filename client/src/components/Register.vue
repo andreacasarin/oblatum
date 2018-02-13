@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Header />
-    <SignUp />
-    <Footer />
+    <ob-header />
+    <ob-signup />
+    <ob-footer />
   </div>
 </template>
 
@@ -14,9 +14,9 @@ import SignUp from './user/SignUp';
 export default {
   name: 'Login',
   components: {
-    Header,
-    Footer,
-    SignUp,
+    'ob-header': Header,
+    'ob-footer': Footer,
+    'ob-signup': SignUp,
   },
   data() {
     return {

@@ -20,5 +20,8 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
   });
+  User.hook('beforeValidate', (user) => {
+    user.role = 'user';
+  });
   return User;
 };
