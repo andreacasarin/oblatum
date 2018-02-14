@@ -7,6 +7,8 @@ import Logout from '@/components/Logout';
 import Register from '@/components/Register';
 import Dashboard from '@/components/Dashboard';
 
+import middleware from '@/utils/middleware';
+
 Vue.use(Router);
 
 export default new Router({
@@ -34,6 +36,7 @@ export default new Router({
     {
       path: '/dashboard',
       name: 'Dashboard',
+      beforeEnter: middleware.auth,
       component: Dashboard,
     },
   ],

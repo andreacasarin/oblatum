@@ -1,16 +1,19 @@
 <template>
   <div>
     <ob-header />
-    Welcome to Oblatum {{ name }}, {{ surname }}!
+    <div class="container">
+      <div class="mx-auto col-5 pb-3">
+        Welcome to Oblatum {{ user.name }} {{ user.surname }}!
+      </div>
+    </div>
     <ob-footer />
   </div>
 </template>
 
 <script>
-import Header from './common/Header';
-import Footer from './common/Footer';
-
-import { sessionsRead } from '../utils/api';
+import Header from '@/components/common/Header';
+import Footer from '@/components/common/Footer';
+import auth from '@/utils/auth';
 
 export default {
   name: 'Dashboard',
@@ -20,20 +23,12 @@ export default {
   },
   data() {
     return {
-      name: '',
-      surname: '',
-      email: '',
-      password: '',
-      passwordConfirmation: '',
     };
   },
-  mounted: () => {
-    sessionsRead()
-      .then((response) => {
-        this.data = response.data;
-      });
-  },
-  methods: {
+  computed: {
+    user() {
+      return auth.getInfo().data.user;
+    },
   },
 };
 </script>

@@ -1,16 +1,17 @@
 <template>
   <div class="container">
     <div class="mx-auto col-7 pb-3">
-      <div v-if="errors.length > 0" class="error">
-        Can't register:
-        <ul>
-          <li v-for="error in errors">{{ error.message }}</li>
-        </ul>
+      <div v-if="response.length > 0">
+        <div class="card mb-5">
+          <div class="card-header">
+            Messages:
+          </div>
+          <ul class="card-body">
+            <li v-for="item in response" class="list-unstyled">{{ item.message }}</li>
+          </ul>
+        </div>
       </div>
-      <div v-if="success" class="success">
-        Registered, please login.
-      </div>
-      <form v-else v-on:submit.prevent="handleSignUp">
+      <form v-on:submit.prevent="handleSignUp">
         <div class="form-group">
           <!-- <label class="light-text" for="name">Name</label> -->
           <input type="text" class="form-control" id="name" v-model="name" placeholder="Enter your name" />
@@ -39,7 +40,8 @@
 </template>
 
 <script>
-import { usersCreate } from '../../utils/api';
+import auth from '@/utils/auth';
+import router from '@/router';
 
 export default {
   name: 'SignUp',
@@ -50,29 +52,27 @@ export default {
       email: '',
       password: '',
       passwordConfirmation: '',
-      success: false,
-      errors: [],
-      data: [],
+      response: [],
     };
   },
   methods: {
     handleSignUp() {
-      usersCreate(
+      auth.signUp(
         this.name.trim() || null,
         this.surname.trim() || null,
         this.email.trim() || null,
         this.password.trim() || null,
         this.passwordConfirmation.trim() || null,
-      )
-        .then((response) => {
-          this.success = true;
-          this.errors = [];
-          this.data = response.data;
-        })
-        .catch((error) => {
-          this.success = false;
-          this.errors = error.response.data.errors;
-        });
+      ).then((response) => {
+        if (response.status === 'success') {
+          this.response = response.data;
+          router.push({
+            name: 'Login',
+          });
+        } else {
+          this.response = response.data;
+        }
+      });
     },
   },
 };

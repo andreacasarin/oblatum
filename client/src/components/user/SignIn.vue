@@ -1,16 +1,17 @@
 <template>
   <div class="container">
     <div class="mx-auto col-5 pb-3">
-      <div v-if="errors.length > 0" class="error">
-        Can't login:
-        <ul>
-          <li v-for="error in errors">{{ error.message }}</li>
-        </ul>
+      <div v-if="response.length > 0">
+        <div class="card mb-5">
+          <div class="card-header">
+            Messages:
+          </div>
+          <ul class="card-body">
+            <li v-for="item in response" class="list-unstyled">{{ item.message }}</li>
+          </ul>
+        </div>
       </div>
-      <div v-if="success" class="success">
-        Logged in.
-      </div>
-      <form v-else v-on:submit.prevent="handleSignIn">
+      <form v-on:submit.prevent="handleSignIn">
         <div class="form-group">
           <!-- <label class="light-text" for="email">Email address</label> -->
           <input type="email" class="form-control" id="email" v-model="email" placeholder="Enter your email" />
@@ -26,7 +27,8 @@
 </template>
 
 <script>
-import { sessionsCreate } from '../../utils/api';
+import auth from '@/utils/auth';
+import router from '@/router';
 
 export default {
   name: 'SignIn',
@@ -34,27 +36,25 @@ export default {
     return {
       email: '',
       password: '',
-      success: false,
-      errors: [],
-      data: [],
+      response: [],
     };
   },
   methods: {
     handleSignIn() {
-      sessionsCreate(
+      auth.signIn(
         this.email.trim() || null,
         this.password.trim() || null,
-      )
-        .then((response) => {
-          this.success = true;
-          this.errors = [];
-          this.data = response.data;
-          localStorage.setItem('token', response.data.token);
-        })
-        .catch((error) => {
-          this.success = false;
-          this.errors = error.response.data.errors;
-        });
+      ).then((response) => {
+        if (response.status === 'success') {
+          this.response = response.data;
+          router.push({
+            name: 'Dashboard',
+          });
+        } else {
+          console.log(response);
+          this.response = response.data;
+        }
+      });
     },
   },
 };

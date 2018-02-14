@@ -3,12 +3,11 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.min.css';
 import Vue from 'vue';
-import './main.css';
-import App from './App';
-import router from './router';
+import App from '@/App';
+import router from '@/router';
+import '@/main.css';
 
 Vue.config.productionTip = false;
-Vue.config.baseUrl = 'localhost';
 
 /* eslint-disable no-new */
 new Vue({

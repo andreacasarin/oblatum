@@ -2,24 +2,28 @@
   <div class="container">
     <div class="mx-auto col-7 pb-3">
       <div class="success">
-        Logged out.
+        Logging out...
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { sessionsDestroy } from '../../utils/api';
+import auth from '@/utils/auth';
+import router from '@/router';
 
 export default {
   name: 'SignOut',
   data() {
     return {
-      success: false,
     };
   },
   mounted: () => {
-    this.success = sessionsDestroy();
+    if (auth.signOut()) {
+      router.push({
+        name: 'Home',
+      });
+    }
   },
 };
 </script>

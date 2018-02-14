@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Nav from './Nav';
+import Nav from '@/components/common/Nav';
 
 export default {
   name: 'Header',

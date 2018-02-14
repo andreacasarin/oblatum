@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Header from './common/Header';
-import Footer from './common/Footer';
-import SignOut from './user/SignOut';
+import Header from '@/components/common/Header';
+import Footer from '@/components/common/Footer';
+import SignOut from '@/components/user/SignOut';
 
 export default {
   name: 'Login',

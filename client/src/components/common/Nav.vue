@@ -12,17 +12,17 @@
 
     <div class="collapse navbar-collapse" id="main-nav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <router-link to="/register" class="nav-link light-text font-weight-bold">Sign up</router-link>
-        </li>
-        <li class="nav-item">
+        <li v-if="!authenticated" class="nav-item">
           <router-link to="/login" class="nav-link light-text font-weight-bold">Sign in</router-link>
         </li>
-        <li class="nav-item">
-          <router-link to="/logout" class="nav-link light-text font-weight-bold">Sign out</router-link>
+        <li v-if="!authenticated" class="nav-item">
+          <router-link to="/register" class="nav-link light-text font-weight-bold">Sign up</router-link>
         </li>
-        <li class="nav-item">
+        <li v-if="authenticated" class="nav-item">
           <router-link to="/dashboard" class="nav-link light-text font-weight-bold">Dashboard</router-link>
+        </li>
+        <li v-if="authenticated" class="nav-item">
+          <router-link to="/logout" class="nav-link light-text font-weight-bold">Sign out</router-link>
         </li>
       </ul>
     </div>
@@ -30,11 +30,18 @@
 </template>
 
 <script>
+import store from '@/store';
+
 export default {
   name: 'Nav',
   data() {
     return {
     };
+  },
+  computed: {
+    authenticated() {
+      return store.state.authenticated;
+    },
   },
 };
 </script>
