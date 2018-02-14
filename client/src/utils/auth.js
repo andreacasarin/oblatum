@@ -10,12 +10,8 @@ export default {
           `${config.baseUrl()}/api/users`,
           { name, surname, email, password, passwordConfirmation },
         )
-        .then((response) => {
-          return { status: 'success', data: ['User created.'] };
-        })
-        .catch((error) => {
-          return { status: 'failure', data: error.response.data.errors };
-        });
+        .then(() => ({ status: 'success', data: ['User created.'] }))
+        .catch(error => ({ status: 'failure', data: error.response.data.errors }));
     } catch (error) {
       return { status: 'failure', data: ['Can\'t create user.'] };
     }
@@ -32,11 +28,18 @@ export default {
           store.commit('signIn');
           return { status: 'success', data: ['User logged in.'] };
         })
-        .catch((error) => {
-          return { status: 'failure', data: error.response.data.errors };
-        });
+        .catch(error => ({ status: 'failure', data: error.response.data.errors }));
     } catch (error) {
       return { status: 'failure', data: ['Can\'t login user.'] };
+    }
+  },
+  signOut() {
+    try {
+      localStorage.removeItem('token');
+      store.commit('signOut');
+      return { status: 'success', data: ['User logged out.'] };
+    } catch (error) {
+      return { status: 'failure', data: ['Can\'t logout user.'] };
     }
   },
   check() {
@@ -56,15 +59,6 @@ export default {
         });
     } catch (error) {
       return { status: 'failure', data: ['Can\'t authenticate user'] };
-    }
-  },
-  signOut() {
-    try {
-      localStorage.removeItem('token');
-      store.commit('signOut');
-      return { status: 'success', data: ['User logged out.'] };
-    } catch (error) {
-      return { status: 'failure', data: ['Can\'t logout user.'] };
     }
   },
   getInfo() {

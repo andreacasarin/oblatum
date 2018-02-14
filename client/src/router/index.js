@@ -2,9 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Home from '@/components/Home';
-import Login from '@/components/Login';
-import Logout from '@/components/Logout';
-import Register from '@/components/Register';
+import User from '@/components/User';
 import Dashboard from '@/components/Dashboard';
 
 import middleware from '@/utils/middleware';
@@ -21,23 +19,48 @@ export default new Router({
     {
       path: '/login',
       name: 'Login',
-      component: Login,
+      component: User,
+      props: { signIn: true, signUp: false, signOut: false },
     },
     {
       path: '/logout',
       name: 'Logout',
-      component: Logout,
+      component: User,
+      props: { signIn: false, signUp: false, signOut: true },
     },
     {
       path: '/register',
       name: 'Register',
-      component: Register,
+      component: User,
+      props: { signIn: false, signUp: true, signOut: false },
     },
     {
       path: '/dashboard',
       name: 'Dashboard',
       beforeEnter: middleware.auth,
       component: Dashboard,
+      props: { show: true, create: false, list: false, transfer: false },
+    },
+    {
+      path: '/create-assets',
+      name: 'createAssets',
+      beforeEnter: middleware.auth,
+      component: Dashboard,
+      props: { show: false, create: true, list: false, transfer: false },
+    },
+    {
+      path: '/list-assets',
+      name: 'listAssets',
+      beforeEnter: middleware.auth,
+      component: Dashboard,
+      props: { show: false, create: false, list: true, transfer: false },
+    },
+    {
+      path: '/transfer-assets',
+      name: 'transferAssets',
+      beforeEnter: middleware.auth,
+      component: Dashboard,
+      props: { show: false, create: false, list: false, transfer: true },
     },
   ],
 });

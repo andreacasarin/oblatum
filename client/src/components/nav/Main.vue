@@ -6,23 +6,31 @@
           Oblatum
         </router-link>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="main-nav">
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li v-if="!authenticated" class="nav-item">
-          <router-link to="/login" class="nav-link light-text font-weight-bold">Sign in</router-link>
+          <router-link :to="{ name: 'Login' }" class="nav-link light-text font-weight-bold">
+            Sign in
+          </router-link>
         </li>
         <li v-if="!authenticated" class="nav-item">
-          <router-link to="/register" class="nav-link light-text font-weight-bold">Sign up</router-link>
+          <router-link :to="{ name: 'Register' }" class="nav-link light-text font-weight-bold">
+            Sign up
+          </router-link>
         </li>
         <li v-if="authenticated" class="nav-item">
-          <router-link to="/dashboard" class="nav-link light-text font-weight-bold">Dashboard</router-link>
+          <router-link :to="{ name: 'Dashboard' }" class="nav-link light-text font-weight-bold">
+            Dashboard
+          </router-link>
         </li>
         <li v-if="authenticated" class="nav-item">
-          <router-link to="/logout" class="nav-link light-text font-weight-bold">Sign out</router-link>
+          <router-link :to="{ name: 'Logout' }" class="nav-link light-text font-weight-bold">
+            Sign out
+          </router-link>
         </li>
       </ul>
     </div>
@@ -33,7 +41,7 @@
 import store from '@/store';
 
 export default {
-  name: 'Nav',
+  name: 'MainNav',
   data() {
     return {
     };

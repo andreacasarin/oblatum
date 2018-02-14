@@ -18,7 +18,10 @@
               width="100px"
               />
               <div class="col-md-9 order-md-1 d-flex align-items-center">
-                Oblatum mission is to organize the world’s asset in a transparent and secure way that enables people prosperity and promote financial inclusion.
+                Oblatum mission is to organize the world’s asset
+                in a transparent and secure way
+                that enables people prosperity and
+                promote financial inclusion.
               </div>
             </div>
 
@@ -29,7 +32,12 @@
               height="100px"
               width="100px" />
               <div class="col-md-9 order-md-1 d-flex align-items-center">
-                We have chosen to start from tracing bicycle. We leverage the Ethereum blockchain to create a digital certificate associated with the bicycle which enhances transparency and prevents the reselling of stolen bicycles.
+                We have chosen to start from tracing bicycle.
+                We leverage the Ethereum blockchain
+                to create a digital certificate
+                associated with the bicycle
+                which enhances transparency
+                and prevents the reselling of stolen bicycles.
               </div>
             </div>
 
@@ -40,7 +48,13 @@
               height="100px"
               width="100px"/>
               <div class="col-md-9 order-md-1 d-flex align-items-center">
-                Our solution can be easily applied to different assets and can be complemented with many different services attached to any registered asset. By relaying on the Ethereum blockchain we contribute to the Ethereum community, the most active community in the crypto-world, and we benefit from the open innovation.
+                Our solution can be easily applied to different assets
+                and can be complemented with many different services
+                attached to any registered asset.
+                By relaying on the Ethereum blockchain
+                we contribute to the Ethereum community,
+                the most active community in the crypto-world,
+                and we benefit from the open innovation.
               </div>
             </div>
           </div>
@@ -63,8 +77,12 @@
                 alt="Alessandro Rea"
                 height="200px"
                 width="200px" />
-                <h5 class="row justify-content-center light-text font-weight-bold">Alessandro Rea</h5>
-                <div class="row justify-content-center light-text font-italic">Founder & CEO</div>
+                <h5 class="row justify-content-center light-text font-weight-bold">
+                  Alessandro Rea
+                </h5>
+                <div class="row justify-content-center light-text font-italic">
+                  Founder & CEO
+                </div>
               </div>
 
               <div class="col-md-6">
@@ -74,8 +92,12 @@
                 alt="Andrea Casarin"
                 height="200px"
                 width="200px" />
-                <h5 class="row justify-content-center light-text font-weight-bold">Andrea Casarin</h5>
-                <div class="row justify-content-center light-text font-italic">CTO</div>
+                <h5 class="row justify-content-center light-text font-weight-bold">
+                  Andrea Casarin
+                </h5>
+                <div class="row justify-content-center light-text font-italic">
+                  CTO
+                </div>
               </div>
             </div>
           </div>
