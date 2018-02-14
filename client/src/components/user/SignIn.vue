@@ -10,7 +10,7 @@
       <div v-if="success" class="success">
         Logged in.
       </div>
-      <form v-else v-on:submit.prevent="onSubmit">
+      <form v-else v-on:submit.prevent="handleSignIn">
         <div class="form-group">
           <!-- <label class="light-text" for="email">Email address</label> -->
           <input type="email" class="form-control" id="email" v-model="email" placeholder="Enter your email" />
@@ -26,10 +26,10 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { sessionsCreate } from '../../utils/api';
 
 export default {
-  name: 'SignIp',
+  name: 'SignIn',
   data() {
     return {
       email: '',
@@ -40,19 +40,16 @@ export default {
     };
   },
   methods: {
-    onSubmit() {
-      axios
-        .post(
-          'http://localhost/api/sessions',
-          {
-            email: this.email.trim() || null,
-            password: this.password.trim() || null,
-          },
-        )
+    handleSignIn() {
+      sessionsCreate(
+        this.email.trim() || null,
+        this.password.trim() || null,
+      )
         .then((response) => {
           this.success = true;
           this.errors = [];
           this.data = response.data;
+          localStorage.setItem('token', response.data.token);
         })
         .catch((error) => {
           this.success = false;

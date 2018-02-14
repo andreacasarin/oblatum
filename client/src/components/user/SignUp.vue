@@ -10,7 +10,7 @@
       <div v-if="success" class="success">
         Registered, please login.
       </div>
-      <form v-else v-on:submit.prevent="onSubmit">
+      <form v-else v-on:submit.prevent="handleSignUp">
         <div class="form-group">
           <!-- <label class="light-text" for="name">Name</label> -->
           <input type="text" class="form-control" id="name" v-model="name" placeholder="Enter your name" />
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { usersCreate } from '../../utils/api';
 
 export default {
   name: 'SignUp',
@@ -56,18 +56,14 @@ export default {
     };
   },
   methods: {
-    onSubmit() {
-      axios
-        .post(
-          'http://localhost/api/users',
-          {
-            name: this.name.trim() || null,
-            surname: this.surname.trim() || null,
-            email: this.email.trim() || null,
-            password: this.password.trim() || null,
-            passwordConfirmation: this.passwordConfirmation.trim() || null,
-          },
-        )
+    handleSignUp() {
+      usersCreate(
+        this.name.trim() || null,
+        this.surname.trim() || null,
+        this.email.trim() || null,
+        this.password.trim() || null,
+        this.passwordConfirmation.trim() || null,
+      )
         .then((response) => {
           this.success = true;
           this.errors = [];

@@ -23,6 +23,7 @@ services:
     environment:
       PORT: ${NODE_PORT}
       NODE_ENV: ${NODE_ENV}
+      JWT_SECRET: ${JWT_SECRET}
       DB_HOST: ${MYSQL_HOST}
       DB_NAME: ${MYSQL_DATABASE}
       DB_USER: ${MYSQL_USER}

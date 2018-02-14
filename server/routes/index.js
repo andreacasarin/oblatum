@@ -10,11 +10,12 @@ const router = express.Router();
 router.post('/users', users.create);
 router.get('/users', users.read);
 router.get('/users/:id', users.read);
-router.put('/users/:id', users.update);
-router.delete('/users/:id', users.delete);
+router.put('/users/:id', sessions.verify, users.update);
+router.delete('/users/:id', sessions.verify, users.delete);
 
 /* Sessions */
 router.post('/sessions', sessions.create);
+router.get('/sessions', sessions.verify, sessions.read);
 
 /* Misc */
 router.post('/sendmail', extras.sendmail);

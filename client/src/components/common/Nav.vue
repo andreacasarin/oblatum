@@ -18,6 +18,12 @@
         <li class="nav-item">
           <router-link to="/login" class="nav-link light-text font-weight-bold">Sign in</router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/logout" class="nav-link light-text font-weight-bold">Sign out</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/dashboard" class="nav-link light-text font-weight-bold">Dashboard</router-link>
+        </li>
       </ul>
     </div>
   </nav>
