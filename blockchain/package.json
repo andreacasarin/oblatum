@@ -1,0 +1,17 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "A blockchain test project",
+  "author": "Andrea Casarin <git@andreacasarin.com>",
+  "scripts": {
+    "start": "ganache-cli",
+    "test": "truffle test",
+    "compile": "truffle compile",
+    "migrate": "truffle migrate"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ganache-cli": "^6.0.3",
+    "truffle": "^4.0.6"
+  }
+}

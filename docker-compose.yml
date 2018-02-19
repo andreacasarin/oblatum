@@ -19,6 +19,8 @@ services:
       dockerfile: Dockerfile-server
     networks:
       - app_net
+    depends_on:
+      - db
     user: node
     environment:
       PORT: ${NODE_PORT}

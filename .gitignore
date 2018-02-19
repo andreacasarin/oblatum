@@ -4,9 +4,8 @@ server/node_modules
 server/coverage
 server/.nyc_output
 
-client.bak/node_modules
-client.bak/build
-
 client/node_modules
 client/build
 client/dist
+
+blockchain/node_modules

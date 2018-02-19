@@ -1,0 +1,7 @@
+FROM node:9
+
+ADD server/package.json server/package-lock.json /usr/local/app/
+WORKDIR /usr/local/app/
+RUN npm install --only=production
+
+ADD blockchain /usr/local/app/
