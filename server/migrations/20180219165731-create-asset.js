@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.createTable(
-    'Users',
+    'Assets',
     {
       id: {
         allowNull: false,
@@ -8,27 +8,22 @@ module.exports = {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
       },
-      name: {
+      manufacturer: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
-      surname: {
+      model: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
-      email: {
+      serial: {
         type: Sequelize.STRING,
-        allowNull: false,
-        unique: true,
       },
-      password: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      role: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: 'user',
+      walletId: {
+        type: Sequelize.UUID,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Wallets',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
@@ -43,5 +38,5 @@ module.exports = {
       charset: 'utf8',
     },
   ),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('Users'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('Assets'),
 };
