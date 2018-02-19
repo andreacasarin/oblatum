@@ -1,9 +1,9 @@
 const orm = require('../models/index');
-const jwt = require('jsonwebtoken');
+const jsonwebtoken = require('jsonwebtoken');
 
 const secret = process.env.JWT_SECRET;
 
-exports.create = (req, res, next, models = orm) => {
+exports.create = (req, res, next, models = orm, jwt = jsonwebtoken) => {
   models.User.findAll({
     where: {
       email: req.body.email,
@@ -24,18 +24,17 @@ exports.create = (req, res, next, models = orm) => {
 };
 
 exports.read = (req, res, next) => {
-  res.json({ user: req.tokenDecoded });
-  next();
+  res.status(200).json({ user: req.tokenDecoded });
 };
 
-exports.verify = (req, res, next) => {
+exports.verify = (req, res, next, jwt = jsonwebtoken) => {
   try {
     const token = req.headers.authorization.split(' ')[1];
     const decoded = jwt.verify(token, secret);
     req.tokenDecoded = decoded;
     next();
   } catch (error) {
-    res.status(401).json({ errors: [{ message: 'Bad credentials' }] });
+    res.status(403).json({ errors: [{ message: 'Forbidden' }] });
   }
 };
 

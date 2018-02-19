@@ -16,8 +16,17 @@ describe('Sessions', () => {
         return res;
       },
       json: (data) => {
-        assert.equal('test', data.name);
+        assert.equal('test', data.user.name);
+        assert.equal('123', data.token);
         done();
+      },
+    };
+    const jwtStub = {
+      sign: (options, secret) => {
+        assert.equal(Math.floor(Date.now() / 1000) + (60 * 60), options.exp);
+        assert.equal('test', options.data.user.name);
+        assert.ok(secret !== '');
+        return '123';
       },
     };
     const modelsStub = {
@@ -36,7 +45,7 @@ describe('Sessions', () => {
         },
       },
     };
-    sessions.create(req, res, {}, modelsStub);
+    sessions.create(req, res, {}, modelsStub, jwtStub);
   });
 
   it('should not create session if password is wrong', (done) => {
@@ -53,7 +62,7 @@ describe('Sessions', () => {
         return res;
       },
       json: (data) => {
-        assert.equal('Bad credentials', data.errors[0]);
+        assert.equal('Bad credentials', data.errors[0].message);
         done();
       },
     };
@@ -86,12 +95,11 @@ describe('Sessions', () => {
     };
     const res = {
       status: (code) => {
-        assert.equal(400, code);
+        assert.equal(401, code);
         return res;
       },
       json: (data) => {
-        assert.equal(0, data.errors[0]);
-        assert.equal(1, data.errors[1]);
+        assert.equal('Bad credentials', data.errors[0].message);
         done();
       },
     };
@@ -104,5 +112,80 @@ describe('Sessions', () => {
       },
     };
     sessions.create(req, res, {}, modelsStub);
+  });
+
+  it('should read session form middleware', (done) => {
+    const req = {
+      tokenDecoded: '123',
+      params: {},
+    };
+    const res = {
+      status: (code) => {
+        assert.equal(200, code);
+        return res;
+      },
+      json: (data) => {
+        assert.equal('123', data.user);
+        done();
+      },
+    };
+    sessions.read(req, res, {});
+  });
+
+  it('should verify session with valid token', (done) => {
+    const req = {
+      headers: {
+        authorization: 'Bearer 123',
+      },
+      body: {},
+      params: {},
+    };
+    const res = {};
+    const jwtStub = {
+      verify: (token, secret) => {
+        assert.equal('123', token);
+        assert.ok(secret !== '');
+        return 321;
+      },
+    };
+    const nextStub = () => {
+      assert.equal('321', req.tokenDecoded);
+      assert.ok(true);
+      done();
+    };
+    sessions.verify(req, res, nextStub, jwtStub);
+  });
+
+  it('should not verify session with invalid token', (done) => {
+    const req = {
+      headers: {
+        authorization: 'Bearer 123',
+      },
+      body: {},
+      params: {},
+    };
+    const res = {
+      status: (code) => {
+        assert.equal(403, code);
+        return res;
+      },
+      json: (data) => {
+        assert.equal('Forbidden', data.errors[0].message);
+        done();
+      },
+    };
+    const jwtStub = {
+      verify: (token, secret) => {
+        assert.equal('123', token);
+        assert.ok(secret !== '');
+        throw new Error('error');
+      },
+    };
+    const nextStub = () => {
+      assert.equal('321', req.tokenDecoded);
+      assert.ok(true);
+      done();
+    };
+    sessions.verify(req, res, nextStub, jwtStub);
   });
 });
