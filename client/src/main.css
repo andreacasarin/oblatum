@@ -26,7 +26,8 @@ a:hover {
 
 a:hover,
 a.light-text:hover,
-a.dark-text:hover {
+a.dark-text:hover,
+a.active {
     text-decoration: underline;
 }
 
@@ -65,4 +66,8 @@ h6, .h6-alike {
 
 .navbar-brand a:hover {
     text-decoration: none;
+}
+
+footer img {
+    max-height: 200px;
 }

@@ -70,7 +70,7 @@
             </div>
 
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-sm-6 pb-3">
                 <img
                 src="../assets/alessandro.jpg"
                 class="rounded-circle mx-auto d-block pb-3"
@@ -85,7 +85,7 @@
                 </div>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-sm-6 pb-3">
                 <img
                 src="../assets/andrea.jpg"
                 class="rounded-circle mx-auto d-block pb-3"

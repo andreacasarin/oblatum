@@ -2,7 +2,7 @@
   <div>
     <ob-header />
     <div class="container">
-      <div class="mx-auto col-5 pb-3">
+      <div class="mx-auto col-md-6 pb-3">
 
         <div v-if="response.length > 0">
           <div class="card mb-5">

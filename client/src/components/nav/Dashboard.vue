@@ -1,23 +1,23 @@
 <template>
   <nav>
-    <ul class="list-unstyled">
-      <li class="list-unstyled mb-3">
-        <router-link :to="{ name: 'Dashboard' }" class="font-weight-bold">
+    <ul class="nav">
+      <li class="nav-item">
+        <router-link :to="{ name: 'Dashboard' }" class="nav-link font-weight-bold">
           Dashboard
         </router-link>
       </li>
-      <li class="list-unstyled mb-3">
-        <router-link :to="{ name: 'createAssets' }" class="font-weight-bold">
+      <li class="nav-item">
+        <router-link :to="{ name: 'createAssets' }" class="nav-link font-weight-bold">
           Create asset
         </router-link>
       </li>
-      <li class="list-unstyled mb-3">
-        <router-link :to="{ name: 'listAssets' }" class="font-weight-bold">
+      <li class="nav-item">
+        <router-link :to="{ name: 'listAssets' }" class="nav-link font-weight-bold">
           List asset
         </router-link>
       </li>
-      <li class="list-unstyled mb-3">
-        <router-link :to="{ name: 'transferAssets' }" class="font-weight-bold">
+      <li class="nav-item">
+        <router-link :to="{ name: 'transferAssets' }" class="nav-link font-weight-bold">
           Transfer asset
         </router-link>
       </li>

@@ -4,23 +4,23 @@
     <div class="container">
       <div class="row">
 
-        <div class="mx-auto col-3 pb-3">
+        <div class="mx-auto col-lg-2 col-md-3 pb-3">
           <ob-dnav />
         </div>
 
-        <div v-if="show" class="mx-auto col-9 pb-3">
+        <div v-if="show" class="mx-auto col-md-9 pb-3">
           Welcome to Oblatum {{ user.name }} {{ user.surname }}!
         </div>
 
-        <div v-else-if="create" class="mx-auto col-9 pb-3">
+        <div v-else-if="create" class="mx-auto col-md-9 pb-3">
           Create assets
         </div>
 
-        <div v-else-if="list" class="mx-auto col-9 pb-3">
+        <div v-else-if="list" class="mx-auto col-md-9 pb-3">
           List assets
         </div>
 
-        <div v-else-if="transfer" class="mx-auto col-9 pb-3">
+        <div v-else-if="transfer" class="mx-auto col-md-9 pb-3">
           Transfer assets
         </div>
 
