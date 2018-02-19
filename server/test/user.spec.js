@@ -13,18 +13,18 @@ describe('User', () => {
       role: 'user',
     };
     models.User.create(data).then((user) => {
-      assert.equal(user.name, data.name);
-      assert.equal(user.surname, data.surname);
-      assert.equal(user.email, data.email);
-      assert.equal(user.password, data.password);
-      assert.equal(user.role, data.role);
+      assert.equal(data.name, user.name);
+      assert.equal(data.surname, user.surname);
+      assert.equal(data.email, user.email);
+      assert.ok(user.checkPassword(data.password));
+      assert.equal(data.role, user.role);
 
       const data2 = {
         name: 'Name2',
         surname: 'Surname2',
         email: 'test2@example.com',
-        password: 'test',
-        passwordConfirmation: 'test',
+        password: 'test1234',
+        passwordConfirmation: 'test1234',
         role: 'user',
       };
       return models.User.update(data2, { where: { id: user.id } }).then((affected) => {
@@ -68,23 +68,7 @@ describe('User', () => {
     models.User.create({}).then((user) => {
       assert.ok(false, user);
     }).catch((error) => {
-      assert.equal(error.errors[0].path, 'name');
-      assert.equal(error.errors[0].type, 'notNull Violation');
-
-      assert.equal(error.errors[1].path, 'surname');
-      assert.equal(error.errors[1].type, 'notNull Violation');
-
-      assert.equal(error.errors[2].path, 'email');
-      assert.equal(error.errors[2].type, 'notNull Violation');
-
-      assert.equal(error.errors[3].path, 'password');
-      assert.equal(error.errors[3].type, 'notNull Violation');
-
-      assert.equal(error.errors[4].path, 'passwordConfirmation');
-      assert.equal(error.errors[4].type, 'notNull Violation');
-
-      assert.equal(error.errors[5].path, 'role');
-      assert.equal(error.errors[5].type, 'notNull Violation');
+      assert.equal(5, error.errors.length);
     }).then(done, done);
   });
 

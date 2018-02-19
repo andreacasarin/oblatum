@@ -2,6 +2,7 @@
 
 server/node_modules
 server/coverage
+server/.nyc_output
 
 client.bak/node_modules
 client.bak/build
