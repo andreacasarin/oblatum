@@ -33,7 +33,6 @@ exports.read = (req, res, next, models = orm) => {
     }).then((assets) => {
       res.status(200).json({ asset: assets[0] });
     }).catch((error) => {
-      console.log(error);
       res.status(400).json({ errors: error.errors });
     });
   } else {
@@ -47,24 +46,40 @@ exports.read = (req, res, next, models = orm) => {
     }).then((assets) => {
       res.status(200).json({ assets });
     }).catch((error) => {
-      console.log(error);
       res.status(400).json({ errors: error.errors });
     });
   }
 };
 
-// exports.update = (req, res, next, models = orm) => {
-//   models.Asset.update(req.body, { where: { id: req.params.id } }).then((asset) => {
-//     res.status(200).json({ asset });
-//   }).catch((error) => {
-//     res.status(400).json({ errors: error.errors });
-//   });
-// };
-
-// exports.delete = (req, res, next, models = orm) => {
-//   models.Asset.destroy({ where: { id: req.params.id } }).then((asset) => {
-//     res.status(200).json({ asset });
-//   }).catch((error) => {
-//     res.status(400).json({ errors: error.errors });
-//   });
-// };
+exports.update = (req, res, next, models = orm) => {
+  models.User.findOrCreate({
+    where: {
+      email: req.body.email,
+    },
+    defaults: {
+      name: req.body.name,
+      surname: req.body.surname,
+      password: req.body.password,
+      passwordConfirmation: req.body.passwordConfirmation,
+      Wallets: [{}],
+    },
+    include: [{
+      association: models.User.Wallets,
+    }],
+  }).spread((user, created) => {
+    models.Asset.findById(req.params.id)
+      .then((asset) => {
+        user.Wallets[0].addAsset(asset)
+          .then(() => {
+            res.status(200).json({ asset, created });
+          }).catch((error) => {
+            res.status(400).json({ errors: error.errors });
+          });
+      }).catch((error) => {
+        res.status(400).json({ errors: error.errors });
+      });
+  }).catch((error) => {
+    console.log(error);
+    res.status(400).json({ errors: error.errors });
+  });
+};

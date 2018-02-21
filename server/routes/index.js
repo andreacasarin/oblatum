@@ -18,8 +18,7 @@ router.delete('/users/:id', sessions.verify, users.delete);
 router.post('/assets', sessions.verify, assets.create);
 router.get('/assets', sessions.verify, assets.read);
 router.get('/assets/:id', sessions.verify, assets.read);
-// router.put('/assets/:id', sessions.verify, assets.update);
-// router.delete('/assets/:id', sessions.verify, assets.delete);
+router.put('/assets/:id', sessions.verify, assets.update);
 
 /* Sessions */
 router.post('/sessions', sessions.create);

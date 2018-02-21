@@ -82,11 +82,69 @@
           </div>
 
           <div v-else-if="transfer">
-            <h2 class="pb-5">List asset</h2>
-          </div>
+            <h2 class="pb-5">Transfer asset</h2>
+            <form v-on:submit.prevent="handleTransfer" autocomplete="off">
+              <div class="form-group">
+                <label for="asset-select">Select your asset:</label>
+                <select v-model="id" class="form-control" id="asset-select">
+                  <option v-for="item in assets" v-bind:key="item.id" v-bind:value="item.id">
+                    {{ item.manufacturer }} - {{ item.model }} - {{ item.serial }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input
+                  v-model="email"
+                  autocomplete="off"
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter new owner's email" />
+                <small id="emailHelp" class="form-text light-text">
+                  We'll never share this email with anyone else.
+                </small>
+              </div>
 
-          <div v-else-if="remove">
-            <h2 class="pb-5">List asset</h2>
+              <p>If the new owner is not in Oblatum yet, you will need to fill those fields:</p>
+
+              <div class="form-group">
+                <input
+                  v-model="name"
+                  autocomplete="off"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter new owner's name" />
+              </div>
+              <div class="form-group">
+                <input
+                  v-model="surname"
+                  autocomplete="off"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter new owner's surname" />
+              </div>
+              <div class="form-group">
+                <input
+                  v-model="password"
+                  autocomplete="off"
+                  type="password"
+                  class="form-control"
+                  placeholder="Enter new owner's password" />
+              </div>
+              <div class="form-group">
+                <input
+                  v-model="passwordConfirmation"
+                  autocomplete="off"
+                  type="password"
+                  class="form-control"
+                  placeholder="Enter new owner's password again" />
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-secondary mx-auto d-block mt-5">
+                Transfer asset
+              </button>
+            </form>
           </div>
         </div>
 
@@ -114,9 +172,15 @@ export default {
   props: ['show', 'create', 'list', 'transfer', 'remove'],
   data() {
     return {
+      id: '',
       manufacturer: '',
       model: '',
       serial: '',
+      name: '',
+      surname: '',
+      password: '',
+      passwordConfirmation: '',
+      email: '',
       response: '',
       assets: [],
     };
@@ -154,6 +218,22 @@ export default {
         } else {
           this.response = response.data;
           this.assets = [];
+        }
+      });
+    },
+    handleTransfer() {
+      return api.assetUpdate(
+        this.id.trim() || null,
+        this.name.trim() || null,
+        this.surname.trim() || null,
+        this.email.trim() || null,
+        this.password.trim() || null,
+        this.passwordConfirmation.trim() || null,
+      ).then((response) => {
+        if (response.status === 'success') {
+          this.response = response.data;
+        } else {
+          this.response = response.data;
         }
       });
     },
