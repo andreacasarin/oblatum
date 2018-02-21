@@ -79,7 +79,6 @@ exports.update = (req, res, next, models = orm) => {
         res.status(400).json({ errors: error.errors });
       });
   }).catch((error) => {
-    console.log(error);
     res.status(400).json({ errors: error.errors });
   });
 };
