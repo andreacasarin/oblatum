@@ -30,8 +30,8 @@ exports.read = (req, res, next) => {
 exports.verify = (req, res, next, jwt = jsonwebtoken) => {
   try {
     const token = req.headers.authorization.split(' ')[1];
-    const decoded = jwt.verify(token, secret);
-    req.tokenDecoded = decoded;
+    req.tokenDecoded = jwt.verify(token, secret);
+    req.user = req.tokenDecoded.data.user;
     next();
   } catch (error) {
     res.status(403).json({ errors: [{ message: 'Forbidden' }] });

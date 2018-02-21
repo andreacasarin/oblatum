@@ -14,22 +14,34 @@
     <div class="ml-auto">
       <ul class="navbar-nav">
         <li v-if="!authenticated" class="nav-item">
-          <router-link :to="{ name: 'Login' }" class="nav-link light-text font-weight-bold" exact-active-class="active">
+          <router-link
+            :to="{ name: 'Login' }"
+            class="nav-link light-text font-weight-bold"
+            exact-active-class="active">
             Sign in
           </router-link>
         </li>
         <li v-if="!authenticated" class="nav-item">
-          <router-link :to="{ name: 'Register' }" class="nav-link light-text font-weight-bold" exact-active-class="active">
+          <router-link
+            :to="{ name: 'Register' }"
+            class="nav-link light-text font-weight-bold"
+            exact-active-class="active">
             Sign up
           </router-link>
         </li>
         <li v-if="authenticated" class="nav-item">
-          <router-link :to="{ name: 'Dashboard' }" class="nav-link light-text font-weight-bold" exact-active-class="active">
+          <router-link
+            :to="{ name: 'Dashboard' }"
+            class="nav-link light-text font-weight-bold"
+            exact-active-class="active">
             Dashboard
           </router-link>
         </li>
         <li v-if="authenticated" class="nav-item">
-          <router-link :to="{ name: 'Logout' }" class="nav-link light-text font-weight-bold" exact-active-class="active">
+          <router-link
+            :to="{ name: 'Logout' }"
+            class="nav-link light-text font-weight-bold"
+            exact-active-class="active">
             Sign out
           </router-link>
         </li>

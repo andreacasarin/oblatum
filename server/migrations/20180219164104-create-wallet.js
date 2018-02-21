@@ -10,15 +10,20 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       address: {
         type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
       },
       key: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       userId: {
         type: Sequelize.UUID,
+        allowNull: false,
         onDelete: 'CASCADE',
         references: {
           model: 'Users',

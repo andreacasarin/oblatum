@@ -1,5 +1,3 @@
-const orm = require('../models/index');
-
 module.exports = (sequelize, DataTypes) => {
   const Asset = sequelize.define(
     'Asset',
@@ -29,10 +27,16 @@ module.exports = (sequelize, DataTypes) => {
     {},
   );
 
-  Asset.prototype.belongsTo(orm.Wallet, {
-    foreignKey: 'walletId',
-    onDelete: 'CASCADE',
-  });
+  Asset.associate = (models) => {
+    Asset.Wallet = Asset.belongsTo(models.Wallet);
+    // The upper association has to be 'Wallets' with the second one enabled
+    // something like:
+    // Asset.belongsTo(models.Wallet, { as: 'Wallet' });
+    // will almost do the trick.
+    // Asset.User = Asset.belongsToMany(models.User, {
+    //   through: models.Wallet,
+    // });
+  };
 
   return Asset;
 };

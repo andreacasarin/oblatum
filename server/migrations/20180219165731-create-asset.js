@@ -10,15 +10,19 @@ module.exports = {
       },
       manufacturer: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       model: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       serial: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       walletId: {
         type: Sequelize.UUID,
+        allowNull: false,
         onDelete: 'CASCADE',
         references: {
           model: 'Wallets',

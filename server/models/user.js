@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const orm = require('../models/index');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
@@ -68,10 +67,12 @@ module.exports = (sequelize, DataTypes) => {
     return bcrypt.compareSync(value, this.getDataValue('password'));
   };
 
-  User.prototype.hasMany(orm.Wallet, {
-    foreignKey: 'userId',
-    onDelete: 'CASCADE',
-  });
+  User.associate = (models) => {
+    User.Wallets = User.hasMany(models.Wallet);
+    // User.Assets = User.belongsToMany(models.Asset, {
+    //   through: models.Wallet,
+    // });
+  };
 
   return User;
 };

@@ -10,10 +10,10 @@ export default {
           `${config.baseUrl()}/api/users`,
           { name, surname, email, password, passwordConfirmation },
         )
-        .then(() => ({ status: 'success', data: ['User created.'] }))
+        .then(() => ({ status: 'success', data: [{ message: 'User created.' }] }))
         .catch(error => ({ status: 'failure', data: error.response.data.errors }));
     } catch (error) {
-      return { status: 'failure', data: ['Can\'t create user.'] };
+      return { status: 'failure', data: [{ message: 'Can\'t create user.' }] };
     }
   },
   signIn(email, password) {
@@ -26,20 +26,20 @@ export default {
         .then((response) => {
           localStorage.setItem('token', response.data.token);
           store.commit('signIn');
-          return { status: 'success', data: ['User logged in.'] };
+          return { status: 'success', data: [{ message: 'User logged in.' }] };
         })
         .catch(error => ({ status: 'failure', data: error.response.data.errors }));
     } catch (error) {
-      return { status: 'failure', data: ['Can\'t login user.'] };
+      return { status: 'failure', data: [{ message: 'Can\'t login user.' }] };
     }
   },
   signOut() {
     try {
       localStorage.removeItem('token');
       store.commit('signOut');
-      return { status: 'success', data: ['User logged out.'] };
+      return { status: 'success', data: [{ message: 'User logged out.' }] };
     } catch (error) {
-      return { status: 'failure', data: ['Can\'t logout user.'] };
+      return { status: 'failure', data: [{ message: 'Can\'t logout user.' }] };
     }
   },
   check() {
@@ -58,7 +58,7 @@ export default {
           return { status: 'failure', data: error.response.data.errors };
         });
     } catch (error) {
-      return { status: 'failure', data: ['Can\'t authenticate user'] };
+      return { status: 'failure', data: [{ message: 'Can\'t authenticate user' }] };
     }
   },
   getInfo() {
