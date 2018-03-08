@@ -1,7 +1,7 @@
-const orm = require('../models/index');
+const models = require('../models/index');
 
-exports.create = (req, res, next, models = orm) => {
-  models.User.create({
+exports.create = (req, res, next, orm = models) => {
+  orm.User.create({
     name: req.body.name,
     surname: req.body.surname,
     email: req.body.email,
@@ -10,7 +10,7 @@ exports.create = (req, res, next, models = orm) => {
     Wallets: [{}],
   }, {
     include: [{
-      association: models.User.Wallets,
+      association: orm.User.Wallets,
     }],
   }).then((user) => {
     res.status(200).json({ user });
@@ -19,15 +19,15 @@ exports.create = (req, res, next, models = orm) => {
   });
 };
 
-exports.read = (req, res, next, models = orm) => {
+exports.read = (req, res, next, orm = models) => {
   if (req.params.id) {
-    models.User.findById(req.params.id).then((user) => {
+    orm.User.findById(req.params.id).then((user) => {
       res.status(200).json({ user });
     }).catch((error) => {
       res.status(400).json({ errors: error.errors });
     });
   } else {
-    models.User.findAll().then((users) => {
+    orm.User.findAll().then((users) => {
       res.status(200).json({ users });
     }).catch((error) => {
       res.status(400).json({ errors: error.errors });
@@ -35,16 +35,16 @@ exports.read = (req, res, next, models = orm) => {
   }
 };
 
-exports.update = (req, res, next, models = orm) => {
-  models.User.update(req.body, { where: { id: req.params.id } }).then((user) => {
+exports.update = (req, res, next, orm = models) => {
+  orm.User.update(req.body, { where: { id: req.params.id } }).then((user) => {
     res.status(200).json({ user });
   }).catch((error) => {
     res.status(400).json({ errors: error.errors });
   });
 };
 
-exports.delete = (req, res, next, models = orm) => {
-  models.User.destroy({ where: { id: req.params.id } }).then((user) => {
+exports.delete = (req, res, next, orm = models) => {
+  orm.User.destroy({ where: { id: req.params.id } }).then((user) => {
     res.status(200).json({ user });
   }).catch((error) => {
     res.status(400).json({ errors: error.errors });

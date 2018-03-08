@@ -1,4 +1,9 @@
-module.exports = (sequelize, DataTypes) => {
+const Web3 = require('web3');
+
+const web3 = new Web3(new Web3.providers.HttpProvider(`http://${process.env.ETH_NODE}:${process.env.ETH_PORT}`));
+// const web3 = new Web3(new Web3.providers.WebsocketProvider(`ws://${process.env.ETH_NODE}:${process.env.ETH_PORT}`));
+
+module.exports = (sequelize, DataTypes, provider = web3) => {
   const Wallet = sequelize.define(
     'Wallet', {
       id: {
@@ -10,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: { equals: 'default', notEmpty: true },
+        validate: { equals: 'Ethereum', notEmpty: true },
       },
       address: {
         type: DataTypes.STRING,
@@ -27,17 +32,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       hooks: {
         beforeValidate: (wallet) => {
-          wallet.setDataValue('name', 'default');
-
-          function guid() {
-            function s4() {
-              return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-            }
-            return `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
-          }
-
-          wallet.setDataValue('address', guid());
-          wallet.setDataValue('key', guid());
+          const account = provider.eth.accounts.create();
+          wallet.setDataValue('name', 'Ethereum');
+          wallet.setDataValue('address', account.address);
+          wallet.setDataValue('key', account.privateKey);
         },
       },
     },

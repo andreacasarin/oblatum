@@ -64,7 +64,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.prototype.checkPassword = function checkPassword(value) {
-    return bcrypt.compareSync(value, this.getDataValue('password'));
+    return bcrypt.compare(value, this.getDataValue('password'));
   };
 
   User.associate = (models) => {

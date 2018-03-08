@@ -1,12 +1,12 @@
 version: '2.3'
 
 services:
-  db:
+  database:
     image: mysql:5.7
     networks:
-      - app_net
+      - network
     volumes:
-      - app_db:/var/lib/mysql
+      - database:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -18,9 +18,9 @@ services:
       context: .
       dockerfile: Dockerfile-server
     networks:
-      - app_net
+      - network
     depends_on:
-      - db
+      - database
     user: node
     environment:
       PORT: ${NODE_PORT}
@@ -33,6 +33,11 @@ services:
       SMTP_SERVER: ${SMTP_SERVER}
       SMTP_USER: ${SMTP_USER}
       SMTP_PASS: ${SMTP_PASS}
+      ETH_ADDRESS: ${ETH_ADDRESS}
+      ETH_KEY: ${ETH_KEY}
+      ETH_CONTRACT: ${ETH_CONTRACT}
+      ETH_NODE: ${ETH_NODE}
+      ETH_PORT: ${ETH_PORT}
       PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
   web:
@@ -41,12 +46,13 @@ services:
       dockerfile: Dockerfile-web
     depends_on:
       - server
-      - db
+      - database
     networks:
-      - app_net
+      - network
 
 networks:
-  app_net:
+  network:
 
 volumes:
-  app_db:
+  database:
+  blockchain:

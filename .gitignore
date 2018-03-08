@@ -9,3 +9,4 @@ client/build
 client/dist
 
 blockchain/node_modules
+blockchain/build

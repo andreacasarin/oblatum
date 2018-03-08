@@ -1,7 +1,8 @@
-const orm = require('../models/index');
+const models = require('../models/index');
+const mailer = require('../utils/mailer');
 
-exports.create = (req, res, next, models = orm) => {
-  models.User.findById(req.user.id).then(user =>
+exports.create = (req, res, next, orm = models) => {
+  orm.User.findById(req.user.id).then(user =>
     user.getWallets().then(wallets =>
       wallets[0].createAsset({
         manufacturer: req.body.manufacturer,
@@ -10,6 +11,7 @@ exports.create = (req, res, next, models = orm) => {
       }).then((asset) => {
         res.status(200).json({ asset });
       }).catch((error) => {
+        console.log(error);
         res.status(400).json({ errors: error.errors });
       })).catch((error) => {
       res.status(400).json({ errors: error.errors });
@@ -18,14 +20,14 @@ exports.create = (req, res, next, models = orm) => {
   });
 };
 
-exports.read = (req, res, next, models = orm) => {
+exports.read = (req, res, next, orm = models) => {
   if (req.params.id) {
-    models.Asset.findAll({
+    orm.Asset.findAll({
       where: {
         id: req.params.id,
       },
       include: [{
-        model: models.Wallet,
+        model: orm.Wallet,
         where: {
           userId: req.user.id,
         },
@@ -36,9 +38,9 @@ exports.read = (req, res, next, models = orm) => {
       res.status(400).json({ errors: error.errors });
     });
   } else {
-    models.Asset.findAll({
+    orm.Asset.findAll({
       include: [{
-        model: models.Wallet,
+        model: orm.Wallet,
         where: {
           userId: req.user.id,
         },
@@ -51,8 +53,8 @@ exports.read = (req, res, next, models = orm) => {
   }
 };
 
-exports.update = (req, res, next, models = orm) => {
-  models.User.findOrCreate({
+exports.update = (req, res, next, orm = models, mail = mailer) => {
+  orm.User.findOrCreate({
     where: {
       email: req.body.email,
     },
@@ -64,21 +66,26 @@ exports.update = (req, res, next, models = orm) => {
       Wallets: [{}],
     },
     include: [{
-      association: models.User.Wallets,
+      association: orm.User.Wallets,
     }],
-  }).spread((user, created) => {
-    models.Asset.findById(req.params.id)
-      .then((asset) => {
-        user.Wallets[0].addAsset(asset)
+  }).spread((user, created) =>
+    orm.Asset.findById(req.params.id)
+      .then(asset =>
+        asset.setWallet(user.Wallets[0])
+        // user.Wallets[0].addAsset(asset)
           .then(() => {
+            // mail.send({
+            //   from: '"Oblatum 👻" <support@oblatum.it>',
+            //   to: 'support@oblatum.it',
+            //   subject: 'Congratulations ✔',
+            //   body: `Someone just registered ${asset.manufacturer} ${asset.model} (${asset.serial}) to you in Oblatum. Log in on http://www.oblatum.it to see more!`,
+            // });
             res.status(200).json({ asset, created });
           }).catch((error) => {
             res.status(400).json({ errors: error.errors });
-          });
-      }).catch((error) => {
+          })).catch((error) => {
         res.status(400).json({ errors: error.errors });
-      });
-  }).catch((error) => {
+      })).catch((error) => {
     res.status(400).json({ errors: error.errors });
   });
 };

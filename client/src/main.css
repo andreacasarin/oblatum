@@ -71,3 +71,7 @@ h6, .h6-alike {
 footer img {
     max-height: 200px;
 }
+
+.scroll-y {
+    overflow-y: scroll;
+}
