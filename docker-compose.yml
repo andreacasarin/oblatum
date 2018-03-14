@@ -21,6 +21,7 @@ services:
       - network
     depends_on:
       - database
+      - blockchain
     user: node
     environment:
       PORT: ${NODE_PORT}
@@ -49,6 +50,24 @@ services:
       - database
     networks:
       - network
+
+  blockchain:
+    build:
+      context: .
+      dockerfile: Dockerfile-blockchain
+    volumes:
+      - blockchain:/var/lib/blockchain
+    networks:
+      - network
+    user: node
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      ETH_ADDRESS: ${ETH_ADDRESS}
+      ETH_CONTRACT: ${ETH_CONTRACT}
+      ETH_NODE: ${ETH_NODE}
+      ETH_PORT: ${ETH_PORT}
+    entrypoint: bash -c "node ./node_modules/ganache-cli/build/cli.node.js -h 0.0.0.0 -a '1' -m 'i topi non avevano nipoti' -i '1' --db=/var/lib/blockchain"
 
 networks:
   network:

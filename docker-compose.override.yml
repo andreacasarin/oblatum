@@ -6,9 +6,6 @@ services:
       - 3306:3306
 
   server:
-    depends_on:
-      - database
-      - blockchain
     volumes:
       - ./server:/usr/local/app
       - ./server/node_modules:/usr/local/app/node_modules
@@ -27,30 +24,9 @@ services:
     # To be able to do this we need to remove daemon directive from /etc/nginx/nginx.conf:
     command: bash -c "npm install && nginx -g 'daemon on;' && npm run dev"
 
-  # blockchain:
-  #   image: trufflesuite/ganache-cli:latest
-  #   networks:
-  #     - network
-  #   ports:
-  #     - 8545:8545
-
   blockchain:
-    build:
-      context: .
-      dockerfile: Dockerfile-blockchain
     volumes:
       - ./blockchain:/usr/local/app
       - ./blockchain/node_modules:/usr/local/app/node_modules
       - blockchain:/var/lib/blockchain
-    networks:
-      - network
-    user: node
-    environment:
-      NODE_ENV: ${NODE_ENV}
-      PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-      ETH_ADDRESS: ${ETH_ADDRESS}
-      ETH_CONTRACT: ${ETH_CONTRACT}
-      ETH_NODE: ${ETH_NODE}
-      ETH_PORT: ${ETH_PORT}
     entrypoint: bash -c "npm install && node ./node_modules/ganache-cli/build/cli.node.js -h 0.0.0.0 -a '1' -m 'i topi non avevano nipoti' -i '1' --db=/var/lib/blockchain"
-
