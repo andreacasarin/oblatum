@@ -25,6 +25,8 @@ services:
     command: bash -c "npm install && nginx -g 'daemon on;' && npm run dev"
 
   blockchain:
+    ports:
+      - 8545:8545
     volumes:
       - ./blockchain:/usr/local/app
       - ./blockchain/node_modules:/usr/local/app/node_modules

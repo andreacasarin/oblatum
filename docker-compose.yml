@@ -40,16 +40,20 @@ services:
       ETH_NODE: ${ETH_NODE}
       ETH_PORT: ${ETH_PORT}
       PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    command: "npm start"
 
   web:
     build:
       context: .
       dockerfile: Dockerfile-web
+    ports:
+      - 80:8080
     depends_on:
       - server
       - database
     networks:
       - network
+    command: "nginx -g 'daemon off;'"
 
   blockchain:
     build:

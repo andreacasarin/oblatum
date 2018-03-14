@@ -5,7 +5,6 @@ server/coverage
 server/.nyc_output
 
 client/node_modules
-client/build
 client/dist
 
 blockchain/node_modules
