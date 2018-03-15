@@ -9,8 +9,6 @@ import '@/main.css';
 
 Vue.config.productionTip = false;
 
-const apiUrl = `${process.env.API_HOST}:${process.env.API_PORT}`;
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
