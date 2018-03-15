@@ -110,7 +110,7 @@ export default {
       response: [],
     };
   },
-  props: ['signIn', 'signOut', 'signUp', 'apiUrl'],
+  props: ['signIn', 'signOut', 'signUp'],
   methods: {
     handleSignIn() {
       auth.signIn(

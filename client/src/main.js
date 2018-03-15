@@ -12,10 +12,7 @@ Vue.config.productionTip = false;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  data: {
-    apiUrl: `${process.env.API_HOST}:${process.env.API_PORT}`,
-  },
   router,
   components: { App },
-  template: '<App/>',
+  template: '<App />',
 });

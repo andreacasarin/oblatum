@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-    <router-view apiUrl="{apiUrl}" />
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
   name: 'App',
+  props: ['apiUrl'],
   data() {
     return {
       user: [],

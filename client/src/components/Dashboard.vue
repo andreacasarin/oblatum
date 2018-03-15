@@ -174,7 +174,7 @@ export default {
     'ob-footer': Footer,
     'ob-dnav': DashboardNav,
   },
-  props: ['show', 'create', 'list', 'transfer', 'remove', 'apiUrl'],
+  props: ['show', 'create', 'list', 'transfer', 'remove'],
   data() {
     return {
       id: '',
