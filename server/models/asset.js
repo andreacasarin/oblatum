@@ -2,7 +2,7 @@ const Web3 = require('web3');
 
 // We need WS to get web3js 1.0 subscriptions
 // const web3 = new Web3(new Web3.providers.HttpProvider(`${process.env.ETH_HOST}:${process.env.ETH_PORT}`));
-const web3 = new Web3(new Web3.providers.WebsocketProvider(`process.env.ETH_HOST}:${process.env.ETH_PORT}`));
+const web3 = new Web3(new Web3.providers.WebsocketProvider(`${process.env.ETH_HOST}:${process.env.ETH_PORT}`));
 
 const deedAuthorityAbi = [
   {
