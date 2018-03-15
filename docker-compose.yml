@@ -7,6 +7,8 @@ services:
       - network
     volumes:
       - database:/var/lib/mysql
+    logging:
+      driver: syslog
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -23,6 +25,8 @@ services:
       - database
       - blockchain
     user: node
+    logging:
+      driver: syslog
     environment:
       PORT: ${NODE_PORT}
       NODE_ENV: ${NODE_ENV}
@@ -53,6 +57,8 @@ services:
       - database
     networks:
       - network
+    logging:
+      driver: syslog
     command: "nginx -g 'daemon off;'"
 
   blockchain:
@@ -64,6 +70,8 @@ services:
     networks:
       - network
     user: node
+    logging:
+      driver: syslog
     environment:
       NODE_ENV: ${NODE_ENV}
       PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin

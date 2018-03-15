@@ -4,6 +4,8 @@ services:
   database:
     ports:
       - 3306:3306
+    logging:
+      driver: json-file
 
   server:
     volumes:
@@ -11,6 +13,8 @@ services:
       - ./server/node_modules:/usr/local/app/node_modules
     ports:
       - 3000:3000
+    logging:
+      driver: json-file
     command: bash -c "npm install && npm run watch"
 
   web:
@@ -20,6 +24,8 @@ services:
     ports:
       - 80:80
       - 8080:8080
+    logging:
+      driver: json-file
     # command: bash -c "npm install && nginx"
     # To be able to do this we need to remove daemon directive from /etc/nginx/nginx.conf:
     command: bash -c "npm install && nginx -g 'daemon on;' && npm run dev"
@@ -31,4 +37,6 @@ services:
       - ./blockchain:/usr/local/app
       - ./blockchain/node_modules:/usr/local/app/node_modules
       - blockchain:/var/lib/blockchain
+    logging:
+      driver: json-file
     entrypoint: bash -c "npm install && node ./node_modules/ganache-cli/build/cli.node.js -h 0.0.0.0 -a '1' -m 'i topi non avevano nipoti' -i '1' --db=/var/lib/blockchain"
