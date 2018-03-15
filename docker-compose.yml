@@ -62,7 +62,7 @@ services:
       API_PORT: ${API_PORT}
     logging:
       driver: journald
-    command: "nginx -g 'daemon off;'"
+    command: bash -c "npm run build && nginx -g 'daemon off;'"
 
   blockchain:
     build:
