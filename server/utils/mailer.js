@@ -6,7 +6,7 @@ exports.send = (options = {
   subject: 'Hello ✔',
   body: 'Someone is interested in Oblatum!',
 }, transporter = nodemailer.createTransport({
-  host: process.env.SMTP_SERVER,
+  host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
   secure: true,
   auth: {

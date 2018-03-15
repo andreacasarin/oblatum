@@ -41,7 +41,7 @@ services:
       ETH_ADDRESS: ${ETH_ADDRESS}
       ETH_KEY: ${ETH_KEY}
       ETH_CONTRACT: ${ETH_CONTRACT}
-      ETH_NODE: ${ETH_NODE}
+      ETH_HOST: ${ETH_HOST}
       ETH_PORT: ${ETH_PORT}
       PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     command: "npm start"
@@ -57,6 +57,9 @@ services:
       - database
     networks:
       - network
+    environment:
+      API_HOST: ${API_HOST}
+      API_PORT: ${API_PORT}
     logging:
       driver: journald
     command: "nginx -g 'daemon off;'"
@@ -77,7 +80,7 @@ services:
       PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       ETH_ADDRESS: ${ETH_ADDRESS}
       ETH_CONTRACT: ${ETH_CONTRACT}
-      ETH_NODE: ${ETH_NODE}
+      ETH_HOST: ${ETH_HOST}
       ETH_PORT: ${ETH_PORT}
     entrypoint: bash -c "node ./node_modules/ganache-cli/build/cli.node.js -h 0.0.0.0 -a '1' -m 'i topi non avevano nipoti' -i '1' --db=/var/lib/blockchain"
 
