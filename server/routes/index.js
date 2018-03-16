@@ -9,8 +9,8 @@ const router = express.Router();
 
 /* Users */
 router.post('/users', users.create);
-router.get('/users', users.read);
-router.get('/users/:id', users.read);
+router.get('/users', sessions.verify, users.read);
+router.get('/users/:id', sessions.verify, users.read);
 router.put('/users/:id', sessions.verify, users.update);
 router.delete('/users/:id', sessions.verify, users.delete);
 
