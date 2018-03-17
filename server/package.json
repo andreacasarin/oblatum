@@ -7,8 +7,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "watch": "nodemon ./bin/www",
-    "test": "mocha --watch",
-    "coverage": "nyc --all mocha",
+    "test": "NODE_ENV=test mocha --watch",
+    "coverage": "NODE_ENV=test nyc --all mocha",
     "linter": "eslint ./"
   },
   "dependencies": {

@@ -1,6 +1,6 @@
-const assert = require('assert');
-
-const extras = require('../controllers/extras');
+const { assert } = require('chai');
+const { describe, it } = require('mocha');
+const extras = require('../../controllers/extras');
 
 describe('Extras', () => {
   it('it should call mailer with right parametes', () => {

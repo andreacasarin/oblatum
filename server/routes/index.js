@@ -22,7 +22,7 @@ router.put('/assets/:id', sessions.verify, assets.update);
 
 /* Sessions */
 router.post('/sessions', sessions.create);
-router.get('/sessions', sessions.verify, sessions.read);
+router.get('/sessions', sessions.read);
 
 /* Misc */
 router.post('/sendmail', extras.sendmail);

@@ -1,5 +1,6 @@
-const assert = require('assert');
-const users = require('../controllers/users');
+const { assert } = require('chai');
+const { describe, it } = require('mocha');
+const users = require('../../controllers/users');
 
 describe('Users', () => {
   it('it should call model with right parameters to create a user', (done) => {
@@ -10,7 +11,6 @@ describe('Users', () => {
         email: 'test@example.com',
         password: '12345678',
         passwordConfirmation: '12345678',
-        role: 'user',
       },
     };
     const res = {
@@ -26,7 +26,11 @@ describe('Users', () => {
     const modelsStub = {
       User: {
         create: (data) => {
-          assert.equal(data, req.body);
+          assert.equal('Name', data.name);
+          assert.equal('Surname', data.surname);
+          assert.equal('test@example.com', data.email);
+          assert.equal('12345678', data.password);
+          assert.equal('12345678', data.passwordConfirmation);
           return Promise.resolve({ id: 1 });
         },
       },
@@ -50,7 +54,7 @@ describe('Users', () => {
     const modelsStub = {
       User: {
         findAll: (data) => {
-          assert.equal(data, null);
+          assert.equal(null, data);
           return Promise.resolve([{ id: 1 }, { id: 2 }]);
         },
       },

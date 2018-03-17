@@ -1,6 +1,6 @@
-const assert = require('assert');
-
-const models = require('../models/index');
+const { assert } = require('chai');
+const { describe, it } = require('mocha');
+const models = require('../../models/index');
 
 describe('User', () => {
   it('it should create, update and delete a user with all datas', (done) => {

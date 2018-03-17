@@ -1,7 +1,5 @@
 const Web3 = require('web3');
 
-// We need WS to get web3js 1.0 subscriptions
-// const web3 = new Web3(new Web3.providers.HttpProvider(`${process.env.ETH_HOST}:${process.env.ETH_PORT}`));
 const web3 = new Web3(new Web3.providers.WebsocketProvider(`${process.env.ETH_HOST}:${process.env.ETH_PORT}`));
 
 const deedAuthorityAbi = [
@@ -358,6 +356,15 @@ module.exports = (
       },
     },
     {
+      scopes: {
+        authorized: (id) => {
+          return {
+            include: [
+              { model: sequelize.models.Wallet.scope({ method: ['authorized', id ] }) },
+            ],
+          };
+        },
+      },
       hooks: {
         beforeUpdate: (asset) => {
           console.log('beforeUpdate');
@@ -373,7 +380,9 @@ module.exports = (
 
             const transfer = parentContract.methods.issue(
               wallet.address,
-              provider.utils.asciiToHex(`${asset.manufacturer}-${asset.model}-${asset.serial}`),
+              provider.utils.asciiToHex(asset.manufacturer),
+              provider.utils.asciiToHex(asset.model),
+              // provider.utils.asciiToHex(asset.serial),
             ).encodeABI();
 
             const tx = {
@@ -468,13 +477,6 @@ module.exports = (
   Asset.associate = (models) => {
     Asset.Wallet = Asset.belongsTo(models.Wallet);
     Asset.PreviousWallet = Asset.belongsTo(models.Wallet, { as: 'PreviousWallet' });
-    // The upper association has to be 'Wallets' with the second one enabled
-    // something like:
-    // Asset.belongsTo(models.Wallet, { as: 'Wallet' });
-    // will almost do the trick.
-    // Asset.User = Asset.belongsToMany(models.User, {
-    //   through: models.Wallet,
-    // });
   };
 
   return Asset;

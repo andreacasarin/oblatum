@@ -51,6 +51,17 @@ module.exports = (sequelize, DataTypes) => {
           }
         },
       },
+      scopes: {
+        defaultScope: {
+          attributes: ['name', 'surname', 'email', 'createdAt', 'updatedAt'],
+        },
+        authorized: ((id) => { return { where: { id } }; }),
+        withWallets: () => {
+          return { include: [{ model: sequelize.models.Wallet }] };
+        },
+        byEmail: ((email) => { return { where: { email } }; }),
+        byId: ((id) => { return { where: { id } }; }),
+      },
       hooks: {
         beforeValidate: (user) => {
           user.setDataValue('role', 'user');
@@ -58,6 +69,9 @@ module.exports = (sequelize, DataTypes) => {
         afterValidate: (user) => {
           user.setDataValue('password', bcrypt.hashSync(user.getDataValue('password'), 10));
           user.setDataValue('passwordConfirmation', bcrypt.hashSync(user.getDataValue('passwordConfirmation'), 10));
+        },
+        afterCreate: (user) => {
+          user.createWallet({});
         },
       },
     },
@@ -69,9 +83,6 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = (models) => {
     User.Wallets = User.hasMany(models.Wallet);
-    // User.Assets = User.belongsToMany(models.Asset, {
-    //   through: models.Wallet,
-    // });
   };
 
   return User;

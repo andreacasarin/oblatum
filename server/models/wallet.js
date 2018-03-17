@@ -1,6 +1,5 @@
 const Web3 = require('web3');
 
-// const web3 = new Web3(new Web3.providers.HttpProvider(`${process.env.ETH_HOST}:${process.env.ETH_PORT}`));
 const web3 = new Web3(new Web3.providers.WebsocketProvider(`${process.env.ETH_HOST}:${process.env.ETH_PORT}`));
 
 module.exports = (sequelize, DataTypes, provider = web3) => {
@@ -30,6 +29,12 @@ module.exports = (sequelize, DataTypes, provider = web3) => {
       },
     },
     {
+      scopes: {
+        defaultScope: {
+          attributes: ['name', 'address', 'userId', 'createdAt', 'updatedAt'],
+        },
+        authorized: ((id) => { return { where: { userId: id } }; }),
+      },
       hooks: {
         beforeValidate: (wallet) => {
           const account = provider.eth.accounts.create();

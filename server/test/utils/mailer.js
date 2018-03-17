@@ -1,5 +1,6 @@
-const assert = require('assert');
-const mailer = require('../utils/mailer');
+const { assert } = require('chai');
+const { describe, it } = require('mocha');
+const mailer = require('../../utils/mailer');
 
 describe('Mailer', () => {
   it('it should call trasport send with right parameters', () => {

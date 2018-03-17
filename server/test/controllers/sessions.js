@@ -1,5 +1,6 @@
-const assert = require('assert');
-const sessions = require('../controllers/sessions');
+const { assert } = require('chai');
+const { describe, it } = require('mocha');
+const sessions = require('../../controllers/sessions');
 
 describe('Sessions', () => {
   it('should create session if params are right', (done) => {
@@ -8,7 +9,6 @@ describe('Sessions', () => {
         email: 'test@example.com',
         password: 'test',
       },
-      params: {},
     };
     const res = {
       status: (code) => {
@@ -31,17 +31,17 @@ describe('Sessions', () => {
     };
     const modelsStub = {
       User: {
-        findAll: (options) => {
+        findOne: (options) => {
           assert.equal('test@example.com', options.where.email);
-          return Promise.resolve([
-            {
-              name: 'test',
-              checkPassword: (password) => {
-                assert.equal('test', password);
-                return true;
-              },
+          return Promise.resolve({
+            name: 'test',
+            password: 'test',
+            passwordConfirmation: 'test',
+            checkPassword: (password) => {
+              assert.equal('test', password);
+              return Promise.resolve(true);
             },
-          ]);
+          });
         },
       },
     };
@@ -54,7 +54,6 @@ describe('Sessions', () => {
         email: 'test@example.com',
         password: 'test',
       },
-      params: {},
     };
     const res = {
       status: (code) => {
@@ -68,17 +67,17 @@ describe('Sessions', () => {
     };
     const modelsStub = {
       User: {
-        findAll: (options) => {
+        findOne: (options) => {
           assert.equal('test@example.com', options.where.email);
-          return Promise.resolve([
-            {
-              name: 'test',
-              checkPassword: (password) => {
-                assert.equal('test', password);
-                return false;
-              },
+          return Promise.resolve({
+            name: 'test',
+            password: 'test',
+            passwordConfirmation: 'test',
+            checkPassword: (password) => {
+              assert.equal('test', password);
+              return Promise.resolve(true);
             },
-          ]);
+          });
         },
       },
     };
@@ -91,7 +90,6 @@ describe('Sessions', () => {
         email: 'test@example.com',
         password: 'test',
       },
-      params: {},
     };
     const res = {
       status: (code) => {
@@ -105,19 +103,20 @@ describe('Sessions', () => {
     };
     const modelsStub = {
       User: {
-        findAll: (options) => {
+        findOne: (options) => {
           assert.equal('test@example.com', options.where.email);
-          return Promise.reject({ errors: [0, 1] });
+          return Promise.reject(new Error([0, 1]));
         },
       },
     };
     sessions.create(req, res, {}, modelsStub);
   });
 
-  it('should read session form middleware', (done) => {
+  it('should read session with valid token', (done) => {
     const req = {
-      tokenDecoded: '123',
-      params: {},
+      headers: {
+        authorization: 'Bearer 123',
+      },
     };
     const res = {
       status: (code) => {
@@ -129,40 +128,26 @@ describe('Sessions', () => {
         done();
       },
     };
-    sessions.read(req, res, {});
-  });
-
-  it('should verify session with valid token', (done) => {
-    const req = {
-      headers: {
-        authorization: 'Bearer 123',
-      },
-      body: {},
-      params: {},
-    };
-    const res = {};
     const jwtStub = {
       verify: (token, secret) => {
         assert.equal('123', token);
         assert.ok(secret !== '');
-        return 321;
+        return { data: { user: 321 } };
       },
     };
     const nextStub = () => {
-      assert.equal('321', req.tokenDecoded);
+      assert.equal('321', req.tokenDecoded.data.user);
       assert.ok(true);
       done();
     };
-    sessions.verify(req, res, nextStub, jwtStub);
+    sessions.read(req, res, nextStub, jwtStub);
   });
 
-  it('should not verify session with invalid token', (done) => {
+  it('should not read session with invalid token', (done) => {
     const req = {
       headers: {
         authorization: 'Bearer 123',
       },
-      body: {},
-      params: {},
     };
     const res = {
       status: (code) => {
@@ -186,6 +171,6 @@ describe('Sessions', () => {
       assert.ok(true);
       done();
     };
-    sessions.verify(req, res, nextStub, jwtStub);
+    sessions.read(req, res, nextStub, jwtStub);
   });
 });
