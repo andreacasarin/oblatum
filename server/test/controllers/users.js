@@ -39,7 +39,7 @@ describe('Users', () => {
   });
 
   it('it should call model with right parameters to read all users', (done) => {
-    const req = { params: {} };
+    const req = { params: {}, user: { id: 1 } };
     const res = {
       status: (data) => {
         assert.equal(200, data);
@@ -53,6 +53,11 @@ describe('Users', () => {
     };
     const modelsStub = {
       User: {
+        scope: (scope1) => {
+          assert.equal('authorized', scope1.method[0]);
+          assert.equal(req.user.id, scope1.method[1]);
+          return modelsStub.User;
+        },
         findAll: (data) => {
           assert.equal(null, data);
           return Promise.resolve([{ id: 1 }, { id: 2 }]);
@@ -63,7 +68,7 @@ describe('Users', () => {
   });
 
   it('it should call model with right parameters to read a user', (done) => {
-    const req = { params: { id: 1 } };
+    const req = { params: { id: 1 }, user: { id: 1 } };
     const res = {
       status: (data) => {
         assert.equal(200, data);
@@ -76,6 +81,11 @@ describe('Users', () => {
     };
     const modelsStub = {
       User: {
+        scope: (scope1) => {
+          assert.equal('authorized', scope1.method[0]);
+          assert.equal(req.user.id, scope1.method[1]);
+          return modelsStub.User;
+        },
         findById: (data) => {
           assert.equal(data, req.params.id);
           return Promise.resolve({ id: 1 });
@@ -96,6 +106,7 @@ describe('Users', () => {
         role: 'user',
       },
       params: { id: 1 },
+      user: { id: 1 },
     };
     const res = {
       status: (data) => {
@@ -109,6 +120,11 @@ describe('Users', () => {
     };
     const modelsStub = {
       User: {
+        scope: (scope1) => {
+          assert.equal('authorized', scope1.method[0]);
+          assert.equal(req.user.id, scope1.method[1]);
+          return modelsStub.User;
+        },
         update: (data, options) => {
           assert.equal(data, req.body);
           assert.equal(options.where.id, req.params.id);
@@ -122,6 +138,7 @@ describe('Users', () => {
   it('it should call model with right parameters to delete a user', (done) => {
     const req = {
       params: { id: 1 },
+      user: { id: 1 },
     };
     const res = {
       status: (data) => {
@@ -135,127 +152,15 @@ describe('Users', () => {
     };
     const modelsStub = {
       User: {
+        scope: (scope1) => {
+          assert.equal('authorized', scope1.method[0]);
+          assert.equal(req.user.id, scope1.method[1]);
+          return modelsStub.User;
+        },
         destroy: (options) => {
           assert.equal(options.where.id, req.params.id);
           return Promise.resolve(1);
         },
-      },
-    };
-    users.delete(req, res, {}, modelsStub);
-  });
-
-  it('create should return one or more errors when called with wrong parameters', (done) => {
-    const req = {
-      params: {},
-      body: {},
-    };
-    const res = {
-      status: (data) => {
-        assert.equal(400, data);
-        return res;
-      },
-      json: (data) => {
-        assert.equal('test', data.errors);
-        done();
-      },
-    };
-    const modelsStub = {
-      User: {
-        create: () => Promise.reject({ errors: 'test' }),
-      },
-    };
-    users.create(req, res, {}, modelsStub);
-  });
-
-  it('readAll should return one or more errors when called with wrong parameters', (done) => {
-    const req = {
-      params: {},
-      body: {},
-    };
-    const res = {
-      status: (data) => {
-        assert.equal(400, data);
-        return res;
-      },
-      json: (data) => {
-        assert.equal('test', data.errors);
-        done();
-      },
-    };
-    const modelsStub = {
-      User: {
-        findAll: () => Promise.reject({ errors: 'test' }),
-      },
-    };
-    users.read(req, res, {}, modelsStub);
-  });
-
-  it('read should return one or more errors when called with wrong parameters', (done) => {
-    const req = {
-      params: {
-        id: 123,
-      },
-      body: {},
-    };
-    const res = {
-      status: (data) => {
-        assert.equal(400, data);
-        return res;
-      },
-      json: (data) => {
-        assert.equal('test', data.errors);
-        done();
-      },
-    };
-    const modelsStub = {
-      User: {
-        findById: () => Promise.reject({ errors: 'test' }),
-      },
-    };
-    users.read(req, res, {}, modelsStub);
-  });
-
-  it('update should return one or more errors when called with wrong parameters', (done) => {
-    const req = {
-      params: {},
-      body: {},
-    };
-    const res = {
-      status: (data) => {
-        assert.equal(400, data);
-        return res;
-      },
-      json: (data) => {
-        assert.equal('test', data.errors);
-        done();
-      },
-    };
-    const modelsStub = {
-      User: {
-        update: () => Promise.reject({ errors: 'test' }),
-      },
-    };
-    users.update(req, res, {}, modelsStub);
-  });
-
-  it('delete should return one or more errors when called with wrong parameters', (done) => {
-    const req = {
-      params: {},
-      body: {},
-    };
-    const res = {
-      status: (data) => {
-        assert.equal(400, data);
-        return res;
-      },
-      json: (data) => {
-        assert.equal('test', data.errors);
-        done();
-      },
-    };
-    const modelsStub = {
-      User: {
-        destroy: () => Promise.reject({ errors: 'test' }),
       },
     };
     users.delete(req, res, {}, modelsStub);

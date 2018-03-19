@@ -17,35 +17,31 @@ describe('Sessions', () => {
       },
       json: (data) => {
         assert.equal('test', data.user.name);
-        assert.equal('123', data.token);
+        assert.equal('test', data.user.password);
+        assert.equal('test', data.user.passwordConfirmation);
+        assert.ok(typeof data.token !== 'undefined');
         done();
-      },
-    };
-    const jwtStub = {
-      sign: (options, secret) => {
-        assert.equal(Math.floor(Date.now() / 1000) + (60 * 60), options.exp);
-        assert.equal('test', options.data.user.name);
-        assert.ok(secret !== '');
-        return '123';
       },
     };
     const modelsStub = {
       User: {
-        findOne: (options) => {
-          assert.equal('test@example.com', options.where.email);
-          return Promise.resolve({
-            name: 'test',
-            password: 'test',
-            passwordConfirmation: 'test',
-            checkPassword: (password) => {
-              assert.equal('test', password);
-              return Promise.resolve(true);
-            },
-          });
+        scope: (scope1) => {
+          assert('byEmail', scope1.method[0]);
+          assert(req.body.email, scope1.method[1]);
+          return modelsStub.User;
         },
+        findOne: () => Promise.resolve({
+          name: 'test',
+          password: 'test',
+          passwordConfirmation: 'test',
+          checkPassword: (password) => {
+            assert.equal('test', password);
+            return Promise.resolve(true);
+          },
+        }),
       },
     };
-    sessions.create(req, res, {}, modelsStub, jwtStub);
+    sessions.create(req, res, {}, modelsStub);
   });
 
   it('should not create session if password is wrong', (done) => {
@@ -67,18 +63,19 @@ describe('Sessions', () => {
     };
     const modelsStub = {
       User: {
-        findOne: (options) => {
-          assert.equal('test@example.com', options.where.email);
-          return Promise.resolve({
-            name: 'test',
-            password: 'test',
-            passwordConfirmation: 'test',
-            checkPassword: (password) => {
-              assert.equal('test', password);
-              return Promise.resolve(true);
-            },
-          });
+        scope: (scope1) => {
+          assert({ method: ['byEmail', req.body.email] }, scope1);
+          return modelsStub.User;
         },
+        findOne: () => Promise.resolve({
+          name: 'test',
+          password: 'test',
+          passwordConfirmation: 'test',
+          checkPassword: (password) => {
+            assert.equal('test', password);
+            return Promise.resolve(true);
+          },
+        }),
       },
     };
     sessions.create(req, res, {}, modelsStub);
@@ -103,10 +100,11 @@ describe('Sessions', () => {
     };
     const modelsStub = {
       User: {
-        findOne: (options) => {
-          assert.equal('test@example.com', options.where.email);
-          return Promise.reject(new Error([0, 1]));
+        scope: (scope1) => {
+          assert({ method: ['byEmail', req.body.email] }, scope1);
+          return modelsStub.User;
         },
+        findOne: () => Promise.reject(new Error([0, 1])),
       },
     };
     sessions.create(req, res, {}, modelsStub);
@@ -124,23 +122,15 @@ describe('Sessions', () => {
         return res;
       },
       json: (data) => {
-        assert.equal('123', data.user);
+        assert.equal('test', data.user.name);
         done();
       },
     };
-    const jwtStub = {
-      verify: (token, secret) => {
-        assert.equal('123', token);
-        assert.ok(secret !== '');
-        return { data: { user: 321 } };
-      },
-    };
-    const nextStub = () => {
-      assert.equal('321', req.tokenDecoded.data.user);
-      assert.ok(true);
-      done();
-    };
-    sessions.read(req, res, nextStub, jwtStub);
+    const readTokenStub = ((header) => {
+      assert.equal('Bearer 123', header);
+      return { data: { user: { name: 'test' } } };
+    });
+    sessions.read(req, res, {}, readTokenStub);
   });
 
   it('should not read session with invalid token', (done) => {

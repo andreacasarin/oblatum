@@ -13,7 +13,7 @@ exports.create = (req, res, next, orm = models) => {
 exports.read = (req, res, next, orm = models) => {
   if (req.params.id) {
     orm.User
-      .scope('authorized', req.user.id)
+      .scope({ method: ['authorized', req.user.id] })
       .findById(req.params.id)
       .then((user) => {
         res.status(200).json({ user });
@@ -22,7 +22,7 @@ exports.read = (req, res, next, orm = models) => {
       });
   } else {
     orm.User
-      .scope('authorized', req.user.id)
+      .scope({ method: ['authorized', req.user.id] })
       .findAll()
       .then((users) => {
         res.status(200).json({ users });

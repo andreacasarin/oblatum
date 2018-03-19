@@ -26,9 +26,13 @@ describe('Assets', () => {
     };
     const modelsStub = {
       User: {
-        findById: (id, options) => {
+        scope: (scope1, scope2) => {
+          assert('withWallets', scope1);
+          assert({ method: ['authorized', req.user.id] }, scope2);
+          return modelsStub.User;
+        },
+        findById: (id) => {
           assert.equal(1, id);
-          assert.ok(typeof options !== 'undefined');
           return Promise.resolve({
             id: 1,
             Wallets: [
