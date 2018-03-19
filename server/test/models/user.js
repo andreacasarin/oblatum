@@ -42,28 +42,6 @@ describe('User', () => {
     });
   });
 
-  // it('it should create a user with all datas', (done) => {
-  //   const data = {
-  //     name: 'Name',
-  //     surname: 'Surname',
-  //     email: 'test@example.com',
-  //     password: '12345678',
-  //     passwordConfirmation: '12345678',
-  //     confirmed: true,
-  //     role: 'user',
-  //   };
-  //   models.User.create(data).then((user) => {
-  //     assert.equal(user.name, data.name);
-  //     assert.equal(user.surname, data.surname);
-  //     assert.equal(user.email, data.email);
-  //     assert.equal(user.password, data.password);
-  //     assert.equal(user.confirmed, data.confirmed);
-  //     assert.equal(user.role, data.role);
-  //   }).catch(() => {
-  //     assert.ok(false);
-  //   }).then(done, done);
-  // });
-
   it('it should not create a user with missing data', (done) => {
     models.User.create({}).then((user) => {
       assert.ok(false, user);
@@ -138,20 +116,4 @@ describe('User', () => {
       assert.ok(false);
     }).then(done, done);
   });
-
-  // it('it should update a user with all datas', (done) => {
-  //   models.User.update({ name: 'Name2'}, { where: { id: 4 } }).then((affected) => {
-  //     assert.equal(affected, 1);
-  //   }).catch((error) => {
-  //     assert.ok(false, error);
-  //   }).then(done, done);
-  // });
-
-  // it('it should delete a user with all datas', (done) => {
-  //   models.User.destroy({ where: { id: 4 } }).then((affected) => {
-  //     assert.equal(affected, 1);
-  //   }).catch(() => {
-  //     assert.ok(false);
-  //   }).then(done, done);
-  // });
 });

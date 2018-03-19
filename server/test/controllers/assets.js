@@ -52,144 +52,130 @@ describe('Assets', () => {
     assets.create(req, res, {}, modelsStub);
   });
 
-  // it('should not create asset if password is wrong', (done) => {
-  //   const req = {
-  //     body: {
-  //       email: 'test@example.com',
-  //       password: 'test',
-  //     },
-  //     params: {},
-  //   };
-  //   const res = {
-  //     status: (code) => {
-  //       assert.equal(401, code);
-  //       return res;
-  //     },
-  //     json: (data) => {
-  //       assert.equal('Bad credentials', data.errors[0].message);
-  //       done();
-  //     },
-  //   };
-  //   const modelsStub = {
-  //     User: {
-  //       findAll: (options) => {
-  //         assert.equal('test@example.com', options.where.email);
-  //         return Promise.resolve([
-  //           {
-  //             name: 'test',
-  //             checkPassword: (password) => {
-  //               assert.equal('test', password);
-  //               return false;
-  //             },
-  //           },
-  //         ]);
-  //       },
-  //     },
-  //   };
-  //   assets.create(req, res, {}, modelsStub);
-  // });
+  it('it should call model with right parameters to read all assets', (done) => {
+    const req = { params: {}, user: { id: 1 } };
+    const res = {
+      status: (data) => {
+        assert.equal(200, data);
+        return res;
+      },
+      json: (data) => {
+        assert.equal(1, data.assets[0].id);
+        assert.equal(2, data.assets[1].id);
+        done();
+      },
+    };
+    const modelsStub = {
+      Asset: {
+        scope: (scope1) => {
+          assert.equal('authorized', scope1.method[0]);
+          assert.equal(req.user.id, scope1.method[1]);
+          return modelsStub.Asset;
+        },
+        findAll: (data) => {
+          assert.equal(null, data);
+          return Promise.resolve([{ id: 1 }, { id: 2 }]);
+        },
+      },
+    };
+    assets.read(req, res, {}, modelsStub);
+  });
 
-  // it('should not create asset if user is not found', (done) => {
-  //   const req = {
-  //     body: {
-  //       email: 'test@example.com',
-  //       password: 'test',
-  //     },
-  //     params: {},
-  //   };
-  //   const res = {
-  //     status: (code) => {
-  //       assert.equal(401, code);
-  //       return res;
-  //     },
-  //     json: (data) => {
-  //       assert.equal('Bad credentials', data.errors[0].message);
-  //       done();
-  //     },
-  //   };
-  //   const modelsStub = {
-  //     User: {
-  //       findAll: (options) => {
-  //         assert.equal('test@example.com', options.where.email);
-  //         return Promise.reject({ errors: [0, 1] });
-  //       },
-  //     },
-  //   };
-  //   assets.create(req, res, {}, modelsStub);
-  // });
+  it('it should call model with right parameters to read a asset', (done) => {
+    const req = { params: { id: 1 }, user: { id: 1 } };
+    const res = {
+      status: (data) => {
+        assert.equal(200, data);
+        return res;
+      },
+      json: (data) => {
+        assert.equal(1, data.asset.id);
+        done();
+      },
+    };
+    const modelsStub = {
+      Asset: {
+        scope: (scope1) => {
+          assert.equal('authorized', scope1.method[0]);
+          assert.equal(req.user.id, scope1.method[1]);
+          return modelsStub.Asset;
+        },
+        findById: (data) => {
+          assert.equal(data, req.params.id);
+          return Promise.resolve({ id: 1 });
+        },
+      },
+    };
+    assets.read(req, res, {}, modelsStub);
+  });
 
-  // it('should read asset form middleware', (done) => {
-  //   const req = {
-  //     tokenDecoded: '123',
-  //     params: {},
-  //   };
-  //   const res = {
-  //     status: (code) => {
-  //       assert.equal(200, code);
-  //       return res;
-  //     },
-  //     json: (data) => {
-  //       assert.equal('123', data.user);
-  //       done();
-  //     },
-  //   };
-  //   assets.read(req, res, {});
-  // });
-
-  // it('should verify asset with valid token', (done) => {
-  //   const req = {
-  //     headers: {
-  //       authorization: 'Bearer 123',
-  //     },
-  //     body: {},
-  //     params: {},
-  //   };
-  //   const res = {};
-  //   const jwtStub = {
-  //     verify: (token, secret) => {
-  //       assert.equal('123', token);
-  //       assert.ok(secret !== '');
-  //       return 321;
-  //     },
-  //   };
-  //   const nextStub = () => {
-  //     assert.equal('321', req.tokenDecoded);
-  //     assert.ok(true);
-  //     done();
-  //   };
-  //   assets.verify(req, res, nextStub, jwtStub);
-  // });
-
-  // it('should not verify asset with invalid token', (done) => {
-  //   const req = {
-  //     headers: {
-  //       authorization: 'Bearer 123',
-  //     },
-  //     body: {},
-  //     params: {},
-  //   };
-  //   const res = {
-  //     status: (code) => {
-  //       assert.equal(403, code);
-  //       return res;
-  //     },
-  //     json: (data) => {
-  //       assert.equal('Forbidden', data.errors[0].message);
-  //       done();
-  //     },
-  //   };
-  //   const jwtStub = {
-  //     verify: (token, secret) => {
-  //       assert.equal('123', token);
-  //       assert.ok(secret !== '');
-  //       throw new Error('error');
-  //     },
-  //   };
-  //   const nextStub = () => {
-  //     assert.equal('321', req.tokenDecoded);
-  //     assert.ok(true);
-  //     done();
-  //   };
-  //   assets.verify(req, res, nextStub, jwtStub);
-  // });
+  it('it should call model with right parameters to update a asset', (done) => {
+    const req = {
+      body: {
+        email: 'test@example.com',
+        name: 'Name',
+        surname: 'Surname',
+        password: '12345678',
+        passwordConfirmation: '12345678',
+      },
+      params: { id: 1 },
+      user: { id: 1 },
+    };
+    const res = {
+      status: (data) => {
+        assert.equal(200, data);
+        return res;
+      },
+      json: (data) => {
+        assert.equal('123', data.asset.manufacturer);
+        assert.equal('456', data.asset.model);
+        assert.equal('789', data.asset.serial);
+        done();
+      },
+    };
+    const modelsStub = {
+      User: {
+        findOrCreate: (options) => {
+          assert.equal(req.body.email, options.where.email);
+          assert.equal(req.body.name, options.defaults.name);
+          assert.equal(req.body.surname, options.defaults.surname);
+          assert.equal(req.body.password, options.defaults.password);
+          assert.equal(req.body.passwordConfirmation, options.defaults.passwordConfirmation);
+          assert.equal(modelsStub.User.Wallets, options.include[0].association);
+          return Promise.resolve([{
+            name: 'test',
+            surname: 'test',
+            email: 'test',
+            Wallets: [{ test: 'test' }],
+          }]);
+        },
+        Wallets: {},
+      },
+      Asset: {
+        scope: (scope1) => {
+          assert.equal('authorized', scope1.method[0]);
+          assert.equal(req.user.id, scope1.method[1]);
+          return modelsStub.Asset;
+        },
+        findById: (id) => {
+          assert.equal(1, id);
+          return Promise.resolve({
+            manufacturer: '123',
+            model: '456',
+            serial: '789',
+            setWallet: (wallet) => {
+              assert('test', wallet.test);
+              return Promise.resolve();
+            },
+          });
+        },
+      },
+    };
+    const mailStub = {
+      send: (data) => {
+        assert('"Oblatum 👻" <support@oblatum.it>', data.from);
+      },
+    };
+    assets.update(req, res, {}, modelsStub, mailStub);
+  });
 });
