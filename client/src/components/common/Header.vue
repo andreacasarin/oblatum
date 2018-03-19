@@ -1,5 +1,5 @@
 <template>
-  <div class="dark-background mb-5">
+  <header class="dark-background mb-5">
     <ob-mnav />
     <div class="container-fluid">
       <div class="row">
@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>

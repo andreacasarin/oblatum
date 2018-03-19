@@ -68,6 +68,9 @@ h6, .h6-alike {
     text-decoration: none;
 }
 
+header img {
+    max-height: 100px;
+}
 footer img {
     max-height: 200px;
 }

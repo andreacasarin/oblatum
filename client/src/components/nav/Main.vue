@@ -3,7 +3,7 @@
     <div class="navbar-brand light-text">
         <router-link to="/" class="font-weight-bold light-text">
           <img src="../../assets/logo-white.svg" alt="Logo white" class="img-fluid mr-1" />
-          Oblatum
+          Oblatum <span style="color:#aaa">beta</span>
         </router-link>
     </div>
 
