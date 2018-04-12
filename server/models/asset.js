@@ -1,315 +1,15 @@
 const Web3 = require('web3');
+const deedAuthorityJson = require('../config/DeedAuthority.json');
+const deedJson = require('../config/Deed.json');
 
 const web3 = new Web3(new Web3.providers.WebsocketProvider(`${process.env.ETH_HOST}:${process.env.ETH_PORT}`));
+const deedAuthority = new web3.eth.Contract(deedAuthorityJson.abi, deedAuthorityJson.networks['1'].address);
+const deed = new web3.eth.Contract(deedJson.abi);
 
-const deedAuthorityAbi = [
-  {
-    constant: true,
-    inputs: [],
-    name: 'contactInformation',
-    outputs: [
-      {
-        name: '',
-        type: 'string',
-      },
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    constant: false,
-    inputs: [],
-    name: 'claimOwnership',
-    outputs: [],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'owner',
-    outputs: [
-      {
-        name: '',
-        type: 'address',
-      },
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: 'info',
-        type: 'string',
-      },
-    ],
-    name: 'setContactInformation',
-    outputs: [],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'pendingOwner',
-    outputs: [
-      {
-        name: '',
-        type: 'address',
-      },
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: 'newOwner',
-        type: 'address',
-      },
-    ],
-    name: 'transferOwnership',
-    outputs: [],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: 'deed',
-        type: 'address',
-      },
-      {
-        indexed: true,
-        name: 'to',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        name: 'timestamp',
-        type: 'uint256',
-      },
-    ],
-    name: 'DeedIssued',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: 'previousOwner',
-        type: 'address',
-      },
-      {
-        indexed: true,
-        name: 'newOwner',
-        type: 'address',
-      },
-    ],
-    name: 'OwnershipTransferred',
-    type: 'event',
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: '_owner',
-        type: 'address',
-      },
-      {
-        name: '_chassis',
-        type: 'bytes32',
-      },
-      {
-        name: '_photo',
-        type: 'bytes32',
-      },
-    ],
-    name: 'issue',
-    outputs: [
-      {
-        name: 'deed',
-        type: 'address',
-      },
-    ],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: '_deed',
-        type: 'address',
-      },
-    ],
-    name: 'isGenuine',
-    outputs: [
-      {
-        name: '',
-        type: 'bool',
-      },
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function',
-  },
-];
-
-const deedAbi = [
-  {
-    constant: true,
-    inputs: [],
-    name: 'chassis',
-    outputs: [
-      {
-        name: '',
-        type: 'bytes32',
-      },
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    constant: false,
-    inputs: [],
-    name: 'claimOwnership',
-    outputs: [],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'owner',
-    outputs: [
-      {
-        name: '',
-        type: 'address',
-      },
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'timestamp',
-    outputs: [
-      {
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'photo',
-    outputs: [
-      {
-        name: '',
-        type: 'bytes32',
-      },
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'pendingOwner',
-    outputs: [
-      {
-        name: '',
-        type: 'address',
-      },
-    ],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: 'newOwner',
-        type: 'address',
-      },
-    ],
-    name: 'transferOwnership',
-    outputs: [],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        name: '_owner',
-        type: 'address',
-      },
-      {
-        name: '_chassis',
-        type: 'bytes32',
-      },
-      {
-        name: '_photo',
-        type: 'bytes32',
-      },
-    ],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'constructor',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: 'previousOwner',
-        type: 'address',
-      },
-      {
-        indexed: true,
-        name: 'newOwner',
-        type: 'address',
-      },
-    ],
-    name: 'OwnershipTransferred',
-    type: 'event',
-  },
-];
-
-const deedAuthority = new web3.eth.Contract(deedAuthorityAbi);
-const deed = new web3.eth.Contract(deedAbi);
-
-const confirmationBlocksCount = 8;
 
 module.exports = (
   sequelize,
   DataTypes,
-  confirmationBlocks = confirmationBlocksCount,
   parentContract = deedAuthority,
   childContract = deed,
   provider = web3,
@@ -366,106 +66,97 @@ module.exports = (
         },
       },
       hooks: {
-        beforeUpdate: (asset) => {
-          console.log('beforeUpdate');
-          asset.setDataValue('previousWalletId', asset.previous('WalletId'));
-          asset.save({ hooks: false });
-        },
         beforeValidate: (asset) => {
           asset.setDataValue('confirmed', false);
+          asset.setDataValue('PreviousWalletId', asset.previous('WalletId'));
+        },
+        beforeUpdate: (asset) => {
+          // FIXME WORKAROUND: https://github.com/sequelize/sequelize/issues/3534
+          asset.setDataValue('PreviousWalletId', asset.previous('WalletId'));
+          asset.save({ hooks: false });
         },
         afterCreate: (asset) => {
           asset.getWallet().then((wallet) => {
-            parentContract.options.address = process.env.ETH_CONTRACT;
-
             const transfer = parentContract.methods.issue(
               wallet.address,
               provider.utils.asciiToHex(asset.manufacturer),
               provider.utils.asciiToHex(asset.model),
-              // provider.utils.asciiToHex(asset.serial),
+              provider.utils.asciiToHex(asset.serial),
             ).encodeABI();
 
             const tx = {
               from: process.env.ETH_ADDRESS,
-              to: process.env.ETH_CONTRACT,
+              to: parentContract.options.address,
               gas: 2000000,
               data: transfer,
             };
 
             return provider.eth.accounts.signTransaction(tx, process.env.ETH_KEY)
-              .then(signed => provider.eth.sendSignedTransaction(signed.rawTransaction)
-                .then((receipt) => {
-                  console.log(receipt);
-                  asset.setDataValue('transaction', receipt.transactionHash);
-                  asset.setDataValue('contract', receipt.contractAddress);
-                  asset.save({ hooks: false });
-
-                  parentContract.once(
-                    'DeedIssued',
-                    {
-                      filter: {
-                        deed: asset.contract,
-                      },
-                      fromBlock: receipt.blockNumber - (confirmationBlocks + 1),
-                      toBlock: receipt.blockNumber - confirmationBlocks,
+              .then((signed) => {
+                parentContract.once(
+                  'DeedIssued',
+                  {
+                    filter: {
+                      to: wallet.address,
                     },
-                    (error, event) => {
-                      if (!error) {
-                        console.log(event);
-                        asset.setDataValue('confirmed', true);
-                        asset.save({ hooks: false });
-                      }
-                    },
-                  );
-                })
-                .catch(error => error))
+                  },
+                  (error, event) => {
+                    if (!error) {
+                      asset.setDataValue('confirmed', true);
+                      asset.setDataValue('contract', event.returnValues.deed);
+                      asset.save({ hooks: false });
+                    }
+                  },
+                );
+                provider.eth.sendSignedTransaction(signed.rawTransaction)
+                  .then((receipt) => {
+                    asset.setDataValue('transaction', receipt.transactionHash);
+                    asset.save({ hooks: false });
+                  })
+                  .catch(error => error);
+              })
               .catch(error => error);
           });
         },
         afterUpdate: (asset) => {
           asset.getWallet().then((wallet) => {
             asset.getPreviousWallet().then((previousWallet) => {
-              console.log(previousWallet);
               childContract.options.address = asset.contract;
+              const transfer = childContract.methods.transferOwnership(wallet.address).encodeABI();
 
-              const transfer = childContract.methods.transferOwnership(
-                wallet.address,
-                provider.utils.asciiToHex(`${asset.manufacturer}-${asset.model}-${asset.serial}`),
-              ).encodeABI();
-
+              // FIXME: here the sender doesn't have enough funds to send tx
+              // therefore this transaction will fail until he has availble balance.
               const tx = {
                 from: previousWallet.address,
-                to: wallet.address,
+                to: asset.contract,
                 gas: 2000000,
                 data: transfer,
               };
 
-              return provider.eth.accounts.signTransaction(tx, previousWallet.address)
-                .then(signed => provider.eth.sendSignedTransaction(signed.rawTransaction)
-                  .then((receipt) => {
-                    console.log(receipt);
-                    asset.setDataValue('transaction', receipt.transactionHash);
-                    asset.save({ hooks: false });
-
-                    childContract.once(
-                      'DeedTransferred',
-                      {
-                        filter: {
-                          asset: provider.utils.asciiToHex(`${asset.manufacturer}-${asset.model}-${asset.serial}`),
-                        },
-                        fromBlock: receipt.blockNumber - (confirmationBlocks + 1),
-                        toBlock: receipt.blockNumber - confirmationBlocks,
+              return provider.eth.accounts.signTransaction(tx, previousWallet.key)
+                .then((signed) => {
+                  childContract.once(
+                    'OwnershipTransferred',
+                    {
+                      filter: {
+                        previousOwner: previousWallet.address,
+                        newOwner: wallet.address,
                       },
-                      (error, event) => {
-                        if (!error) {
-                          console.log(event);
-                          asset.setDataValue('confirmed', true);
-                          asset.save({ hooks: false });
-                        }
-                      },
-                    );
-                  })
-                  .catch(error => error))
+                    },
+                    (error) => {
+                      if (!error) {
+                        asset.setDataValue('confirmed', true);
+                        asset.save({ hooks: false });
+                      }
+                    },
+                  );
+                  provider.eth.sendSignedTransaction(signed.rawTransaction)
+                    .then((receipt) => {
+                      asset.setDataValue('transaction', receipt.transactionHash);
+                      asset.save({ hooks: false });
+                    })
+                    .catch(error => error);
+                })
                 .catch(error => error);
             }).catch(error => error);
           });

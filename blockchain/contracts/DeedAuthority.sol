@@ -18,12 +18,13 @@ contract DeedAuthority is Claimable, Contactable {
     @dev Owner can issue a new ownersheep deed, providing the necessary details.
     @dev The contract saves the deed address to prove genuinity.
     @param _owner The address of the deed owner
-    @param _chassis The Sha256Sum of the chassis code
-    @param _photo The Sha256Sum of the bicycle photo
+    @param _manufacturer The asset manufacturer
+    @param _model The asset model
+    @param _serial The asset serial
     @return deed The deed address
      */
-    function issue(address _owner, bytes32 _chassis, bytes32 _photo) onlyOwner external returns (address deed) {
-        deed = new Deed(_owner, _chassis, _photo);
+    function issue(address _owner, bytes32 _manufacturer, bytes32 _model, bytes32 _serial) onlyOwner external returns (address deed) {
+        deed = new Deed(_owner, _manufacturer, _model, _serial);
 
         assert(deed != 0x0);
 

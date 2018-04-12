@@ -65,21 +65,19 @@
               <ul class="list-unstyled">
                 <li class="list-unstyled pb-3 d-md-block d-none">
                   <div class="row">
-                    <div class="col-md-2 font-weight-bold">Manufacturer</div>
-                    <div class="col-md-2 font-weight-bold">Model</div>
-                    <div class="col-md-2 font-weight-bold">Serial</div>
-                    <div class="col-md-3 font-weight-bold">Transaction</div>
-                    <div class="col-md-2 font-weight-bold">Confirmed</div>
+                    <div class="col-md-3 font-weight-bold">Manufacturer</div>
+                    <div class="col-md-3 font-weight-bold">Model</div>
+                    <div class="col-md-3 font-weight-bold">Serial</div>
+                    <div class="col-md-3 font-weight-bold">Confirmed</div>
                   </div>
                 </li>
                 <li v-for="item in assets" v-bind:key="item.id" class="list-unstyled pb-3">
                   <div class="row">
-                    <div class="col-md-2">{{ item.manufacturer }}</div>
-                    <div class="col-md-2">{{ item.model }}</div>
-                    <div class="col-md-2">{{ item.serial }}</div>
-                    <div class="col-md-3 scroll-y">{{ item.address }}</div>
-                    <div v-if="item.confirmed" class="col-md-2"><i class="fa fa-check"></i></div>
-                    <div v-else class="col-md-2"><i class="fa fa-spinner fa-spin"></i></div>
+                    <div class="col-md-3">{{ item.manufacturer }}</div>
+                    <div class="col-md-3">{{ item.model }}</div>
+                    <div class="col-md-3">{{ item.serial }}</div>
+                    <div v-if="item.confirmed" class="col-md-3"><i class="fa fa-check"></i></div>
+                    <div v-else class="col-md-3"><i class="fa fa-spinner fa-spin"></i></div>
                   </div>
                 </li>
               </ul>

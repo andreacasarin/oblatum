@@ -1,5 +1,6 @@
 ## Oblatum
 
+
 ## Environment requirements
 
 #### Docker:
@@ -41,55 +42,60 @@ For further informations follow "[How to install docker-compose](https://docs.do
 
 `docker-compose up -d`
 
-###### 6. Run sequelize migrations:
+###### 6. Copy contracts definitions:
+
+`cp blockchain/build/contracts/Deed*.json server/config/`
+
+###### 7. Run sequelize migrations:
 
 `docker-compose exec server sequelize db:migrate`
 
-###### 7. Import sequelize seeds:
+###### 8. Import sequelize seeds:
 
 `docker-compose exec server sequelize db:seed:all`
 
-##### 8. Check that the application is installed and configured correctly:
+##### 9. Check that the application is installed and configured correctly:
 
 Open `http://localhost/` in a browser to see application running.
 
 ### React development server
 
-##### 9. Start react development server to build fronted files and watch for changes:
+##### 1. Start react development server to build fronted files and watch for changes:
 
 `docker-compose exec web npm start`
 
-##### 10. Check that react server is working:
+##### 2. Check that react server is working:
 
 Open `http://localhost:3000/` in a browser to see application running.
 
 ### Npm-watch build react
 
-##### 9. Start npm-watch to build fronted files and watch for changes:
+##### 1. Start npm-watch to build fronted files and watch for changes:
 
 `docker-compose exec web npm watch`
 
-##### 10. Check that auto reloading is working:
+##### 2. Check that auto reloading is working:
 
 Open `http://localhost/` in a browser to see application running.
+
 
 ## Tests
 
 ###### Run unit tests:
 
-`docker-compose exec app npm run test`
+`docker-compose exec server npm run test`
 
 ###### Run unit tests live:
 
-`docker-compose exec app npm run test-watch`
+`docker-compose exec server npm run test-watch`
 
 ###### Run code coverage tests:
 
-`docker-compose exec app npm run coverage`
+`docker-compose exec server npm run coverage`
 
 ###### Run linter:
 
-`docker-compose exec app npm run linter`
+`docker-compose exec server npm run linter`
 
 
 ## Project FAQ
@@ -114,14 +120,14 @@ Open `http://localhost/` in a browser to see application running.
 
 Complete all initialization steps again if required (like re-configuring tests).
 
-###### Run bash on app container:
+###### Run bash on server container:
 
-`docker-compose exec app bash`
+`docker-compose exec server bash`
 
-###### Install new node app dependencies:
+###### Install new node server dependencies:
 
-`docker-compose exec app npm install`
+`docker-compose exec server npm install`
 
-###### Update node app dependencies:
+###### Update node server dependencies:
 
-`docker-compose exec app npm update`
+`docker-compose exec server npm update`

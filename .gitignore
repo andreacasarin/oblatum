@@ -3,6 +3,8 @@
 server/node_modules
 server/coverage
 server/.nyc_output
+server/config/Deed.json
+server/config/DeedAuthority.json
 
 client/node_modules
 client/dist
