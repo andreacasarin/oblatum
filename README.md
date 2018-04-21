@@ -1,5 +1,4 @@
-#### Oblatum
-## Think big, start small, scale fast
+## Oblatum
 
 #### Think big
 Oblatum mission is to organize the world’s asset in a transparent and secure way that enables people prosperity and promote financial inclusion.

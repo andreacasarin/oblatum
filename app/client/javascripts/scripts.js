@@ -1,7 +1,7 @@
 $(document).ready(() => {
   $('#get-users').click(() => {
     $.ajax({
-      url: '/api/users',
+      url: 'https://oblatum.it/api/users',
       success: (data) => {
         $('#get-users-listing').html('');
         for (let i = 0; i < data.length; i += 1) {
