@@ -11,8 +11,8 @@ exports.configure = (options = {
 }) => nodemailer.createTransport(options);
 
 exports.send = (options = {
-  from: '"Oblatum 👻" <noreply@oblatum.it>',
-  to: 'noreply@oblatum.it',
+  from: '"Oblatum 👻" <support@oblatum.it>',
+  to: 'support@oblatum.it',
   subject: 'Hello ✔',
   body: 'Someone is interested in Oblatum!',
 }, transporter = this.configure()) => {
