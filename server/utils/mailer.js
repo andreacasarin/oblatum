@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 
 exports.send = (options = {
   from: '"Oblatum 👻" <support@oblatum.it>',
-  to: 'support@oblatum.it',
+  to: 'reaalessandro95@gmail.com, hello@andreacasarin.com, support@oblatum.it',
   subject: 'Hello ✔',
   body: 'Someone is interested in Oblatum!',
 }, transporter = nodemailer.createTransport({
