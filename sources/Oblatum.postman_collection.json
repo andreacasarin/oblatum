@@ -7,17 +7,18 @@
 	},
 	"item": [
 		{
-			"name": "Read users",
+			"name": "Users read",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost/users",
+					"raw": "localhost/api/users",
 					"host": [
 						"localhost"
 					],
 					"path": [
+						"api",
 						"users"
 					]
 				},
@@ -26,17 +27,18 @@
 			"response": []
 		},
 		{
-			"name": "Read user",
+			"name": "User read",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost/users/1",
+					"raw": "localhost/api/users/1",
 					"host": [
 						"localhost"
 					],
 					"path": [
+						"api",
 						"users",
 						"1"
 					]
@@ -46,19 +48,27 @@
 			"response": []
 		},
 		{
-			"name": "Create user",
+			"name": "User create",
 			"request": {
 				"method": "POST",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Name\",\n    \"surname\": \"Surname\",\n    \"email\": \"test@example.com\",\n    \"password\": \"12345678\",\n    \"passwordConfirmation\": \"12345678\",\n    \"role\": \"user\"\n}"
+				},
 				"url": {
-					"raw": "localhost/users/1",
+					"raw": "localhost/api/users",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"users",
-						"1"
+						"api",
+						"users"
 					]
 				},
 				"description": ""
@@ -66,19 +76,28 @@
 			"response": []
 		},
 		{
-			"name": "Update user",
+			"name": "User update",
 			"request": {
 				"method": "PUT",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Name\",\n    \"surname\": \"Surname\",\n    \"email\": \"test@example.com\",\n    \"password\": \"12345678\",\n    \"passwordConfirmation\": \"12345678\",\n    \"role\": \"user\"\n}"
+				},
 				"url": {
-					"raw": "localhost/users/1",
+					"raw": "localhost/api/users/3",
 					"host": [
 						"localhost"
 					],
 					"path": [
+						"api",
 						"users",
-						"1"
+						"3"
 					]
 				},
 				"description": ""
@@ -86,19 +105,48 @@
 			"response": []
 		},
 		{
-			"name": "Delete user",
+			"name": "User delete",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost/users/1",
+					"raw": "localhost/api/users/3",
 					"host": [
 						"localhost"
 					],
 					"path": [
+						"api",
 						"users",
-						"1"
+						"3"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Email send",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@andreacasarin.com\"\n}"
+				},
+				"url": {
+					"raw": "localhost/api/sendmail",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"sendmail"
 					]
 				},
 				"description": ""

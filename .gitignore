@@ -1,5 +1,13 @@
 .env
-app/node_modules
-db/mysql
-web/logs
-app/coverage
+
+server/node_modules
+server/coverage
+server/.nyc_output
+server/config/Deed.json
+server/config/DeedAuthority.json
+
+client/node_modules
+client/dist
+
+blockchain/node_modules
+blockchain/build

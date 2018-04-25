@@ -43,11 +43,23 @@ For further informations follow "[How to install docker-compose](https://docs.do
 
 `docker-compose build`
 
-#### 7. Run dockerized application:
+#### 7. Copy contracts definitions:
+
+`cp blockchain/build/contracts/Deed*.json server/config/`
+
+#### 8. Run dockerized application:
 
 `docker-compose up -d`
 
-#### 8. Check that the application is installed and configured correctly:
+#### 9. Run sequelize migrations:
+
+`docker-compose exec server sequelize db:migrate`
+
+#### 10. Import sequelize seeds:
+
+`docker-compose exec server sequelize db:seed:all`
+
+#### 11. Check that the application is installed and configured correctly:
 
 Open `http://localhost/` in a browser to see application running.
 
@@ -55,19 +67,31 @@ Open `http://localhost/` in a browser to see application running.
 
 #### Run unit tests:
 
-`docker-compose exec app npm run test`
+`docker-compose exec server npm run test`
 
 #### Run unit tests live:
 
-`docker-compose exec app npm run test-watch`
+`docker-compose exec server npm run test-watch`
 
 #### Run code coverage tests:
 
-`docker-compose exec app npm run coverage`
+`docker-compose exec server npm run coverage`
 
 #### Run linter:
 
-`docker-compose exec app npm run linter`
+`docker-compose exec server npm run linter`
+
+#### Rebuild application application:
+
+`docker-compose build --no-cache`
+
+#### Run bash on server container:
+
+`docker-compose exec server bash`
+
+#### Install new node server dependencies:
+
+`docker-compose exec server npm install`
 
 #### Start application after installation:
 
@@ -76,30 +100,6 @@ Open `http://localhost/` in a browser to see application running.
 #### Stop application:
 
 `docker-compose stop`
-
-#### Rebuild application application:
-
-`docker-compose build --no-cache`
-
-#### Run bash on app container:
-
-`docker-compose exec app bash`
-
-#### Install new node dependencies:
-
-`docker-compose exec app npm install`
-
-#### Update composer dependencies:
-
-`docker-compose exec app npm update`
-
-#### Run sequelize migrations:
-
-`docker-compose exec app sequelize db:migrate`
-
-#### Import sequelize seeds:
-
-`docker-compose exec app sequelize db:seed:all`
 
 ## License
 

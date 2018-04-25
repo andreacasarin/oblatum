@@ -1,0 +1,80 @@
+/* DEFAULT */
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #212529;
+    background-color: whitesmoke;
+}
+
+/* LAYOUT */
+
+.light-background {
+    background-color: whitesmoke;
+}
+.dark-background {
+    background-color: #35465c;
+}
+
+/* TYPOGRAFY */
+
+a,
+a:active,
+a:visited,
+a:hover {
+    color: #35465c;
+}
+
+a:hover,
+a.light-text:hover,
+a.dark-text:hover,
+a.active {
+    text-decoration: underline;
+}
+
+.light-text,
+a.light-text,
+.light-text:hover {
+    color: whitesmoke;
+}
+
+.dark-text,
+a.dark-text,
+.dark-text:hover {
+    color: #212529;
+}
+
+h1, .h1-alike {
+    font-size: 46px;
+}
+h2, .h2-alike {
+    font-size: 32px;
+}
+h3 .h3-alike {
+    font-size: 26px;
+}
+h4, .h4-alike {
+    font-size: 22px;
+}
+h5, .h5-alike {
+    font-size: 18px;
+}
+h6, .h6-alike {
+    font-size: 16px;
+}
+
+/* EDGE CASES */
+
+.navbar-brand a:hover {
+    text-decoration: none;
+}
+
+header img {
+    max-height: 100px;
+}
+footer img {
+    max-height: 200px;
+}
+
+.scroll-y {
+    overflow-y: scroll;
+}
