@@ -1,0 +1,10 @@
+FROM mysql:5.7
+
+RUN \
+    echo 'performance_schema = 0' > /etc/mysql/conf.d/custom.conf \
+    && echo 'show_compatibility_56 = 1' >> /etc/mysql/conf.d/custom.conf \
+    && echo 'key_buffer = 8M' >> /etc/mysql/conf.d/custom.conf \
+    && echo 'max_connections = 30' >> /etc/mysql/conf.d/custom.conf \
+    && echo 'query_cache_size = 4M' >> /etc/mysql/conf.d/custom.conf \
+    && echo 'query_cache_limit = 512K' >> /etc/mysql/conf.d/custom.conf \
+    && echo 'thread_stack = 128K' >> /etc/mysql/conf.d/custom.conf
