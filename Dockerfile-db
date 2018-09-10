@@ -1,10 +1,18 @@
 FROM mysql:5.7
 
 RUN \
-    echo 'performance_schema = 0' > /etc/mysql/conf.d/custom.conf \
-    && echo 'show_compatibility_56 = 1' >> /etc/mysql/conf.d/custom.conf \
-    && echo 'key_buffer = 8M' >> /etc/mysql/conf.d/custom.conf \
-    && echo 'max_connections = 30' >> /etc/mysql/conf.d/custom.conf \
-    && echo 'query_cache_size = 4M' >> /etc/mysql/conf.d/custom.conf \
-    && echo 'query_cache_limit = 512K' >> /etc/mysql/conf.d/custom.conf \
-    && echo 'thread_stack = 128K' >> /etc/mysql/conf.d/custom.conf
+    echo 'performance_schema = 0' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'show_compatibility_56 = 1' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'max_connections = 20' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'query_cache_size = 0' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'query_cache_type = 0' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'query_cache_limit = 512K' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'key_buffer_size = 512K' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'read_buffer_size = 512K' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'sort_buffer_size = 512K' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'join_buffer_size = 512K' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'tmp_table_size = 2M' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'max_heap_table_size = 2M' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'innodb_buffer_pool_size = 16M' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'innodb_log_file_size = 2M' >> /etc/mysql/mysql.conf.d/mysqld.cnf \
+    && echo 'max_allowed_packet = 8M' >> /etc/mysql/mysql.conf.d/mysqld.cnf
