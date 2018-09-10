@@ -1,18 +1,6 @@
 version: '2.3'
 
 services:
-  db:
-    image: mysql:5.7
-    networks:
-      - app_net
-    volumes:
-      - app_db:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-
   app:
     build:
       context: .
@@ -41,7 +29,6 @@ services:
       - 80
     depends_on:
       - app
-      - db
     networks:
       - app_net
     command: nginx
