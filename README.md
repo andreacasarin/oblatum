@@ -51,27 +51,23 @@ For further informations follow "[How to install docker-compose](https://docs.do
 
 `docker-compose exec blockchain bash`
 
-#### 9. Copy contracts definitions:
-
-`cp blockchain/build/contracts/Deed*.json server/config/`
-
-#### 10. Run sequelize migrations:
+#### 9. Run sequelize migrations:
 
 `docker-compose exec server sequelize db:migrate`
 
-#### ~~11. Import sequelize seeds~~:
+#### ~~10. Import sequelize seeds~~:
 
 ~~`docker-compose exec server sequelize db:seed:all`~~
 
-#### 12. Stop dockerized application:
+#### 11. Stop dockerized application:
 
 `CTRL+c`
 
-#### 13. Start background dockerized application:
+#### 12. Start background dockerized application:
 
 `docker-compose up -d`
 
-#### 14. Check that the application is installed and configured correctly:
+#### 13. Check that the application is installed and configured correctly:
 
 Open `http://localhost/` in a browser to see application running.
 
