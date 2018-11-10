@@ -4,14 +4,6 @@ server/node_modules
 server/coverage
 server/.nyc_output
 
-#
-# They should be ignored when
-# we will be able to copy them
-# on the fly after compilation
-#
-#server/config/Deed.json
-#server/config/DeedAuthority.json
-
 client/node_modules
 client/dist
 

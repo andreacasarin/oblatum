@@ -10,6 +10,7 @@ services:
   server:
     volumes:
       - server:/usr/local/app
+      - contracts:/usr/local/app/config/contracts
     ports:
       - 3000:3000
     logging:
@@ -33,6 +34,7 @@ services:
       - 8545:8545
     volumes:
       - truffle:/usr/local/app
+      - contracts:/usr/local/app/build/contracts
       - blockchain:/var/lib/blockchain
     logging:
       driver: json-file
@@ -59,3 +61,9 @@ volumes:
       type: nfs
       o: addr=host.docker.internal,rw,nolock,hard,nointr
       device: ":${APP_ROOT}/blockchain"
+  contracts:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr
+      device: ":${APP_ROOT}/blockchain/build/contracts"

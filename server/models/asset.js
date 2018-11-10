@@ -1,6 +1,6 @@
 const Web3 = require('web3');
-const deedAuthorityJson = require('../config/DeedAuthority.json');
-const deedJson = require('../config/Deed.json');
+const deedAuthorityJson = require('../config/contracts/DeedAuthority.json');
+const deedJson = require('../config/contracts/Deed.json');
 
 const web3 = new Web3(new Web3.providers.WebsocketProvider(`${process.env.ETH_HOST}:${process.env.ETH_PORT}`));
 const deedAuthority = new web3.eth.Contract(deedAuthorityJson.abi, deedAuthorityJson.networks['1'].address);
