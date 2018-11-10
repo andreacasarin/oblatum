@@ -17,10 +17,6 @@
         <div class="float-sm-right">
           <h5>Contacts</h5>
           <div class="icon-align pt-2">
-            <i class="fa fa-phone h5-alike mr-2" aria-hidden="true"></i>
-            <a href="tel:+39.327.8562208">+39.327.8562208</a>
-          </div>
-          <div class="icon-align pt-2">
             <i class="fa fa-envelope h5-alike mr-2" aria-hidden="true"></i>
             <a href="mailto:support@oblatum.it">support@oblatum.it</a>
           </div>
