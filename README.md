@@ -109,6 +109,11 @@ Open `http://localhost/` in a browser to see application running.
 
 `docker-compose stop`
 
+
+#### Update contracts definitions (in case of changes):
+
+`cp blockchain/build/contracts/Deed*.json server/config/`
+
 ## License
 
 The MIT License
