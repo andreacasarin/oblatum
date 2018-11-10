@@ -43,23 +43,35 @@ For further informations follow "[How to install docker-compose](https://docs.do
 
 `docker-compose build`
 
-#### 7. Copy contracts definitions:
+#### 7. Pre-start dockerized application:
+
+`docker-compose up`
+
+#### 8. Migrate smartcontracts:
+
+`docker-compose exec blockchain bash`
+
+#### 9. Copy contracts definitions:
 
 `cp blockchain/build/contracts/Deed*.json server/config/`
 
-#### 8. Run dockerized application:
-
-`docker-compose up -d`
-
-#### 9. Run sequelize migrations:
+#### 10. Run sequelize migrations:
 
 `docker-compose exec server sequelize db:migrate`
 
-#### 10. Import sequelize seeds:
+#### ~~11. Import sequelize seeds~~:
 
-`docker-compose exec server sequelize db:seed:all`
+~~`docker-compose exec server sequelize db:seed:all`~~
 
-#### 11. Check that the application is installed and configured correctly:
+#### 12. Stop dockerized application:
+
+`CTRL+c`
+
+#### 13. Start background dockerized application:
+
+`docker-compose up -d`
+
+#### 14. Check that the application is installed and configured correctly:
 
 Open `http://localhost/` in a browser to see application running.
 

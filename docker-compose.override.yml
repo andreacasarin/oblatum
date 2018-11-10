@@ -9,8 +9,7 @@ services:
 
   server:
     volumes:
-      - ./server:/usr/local/app
-      - ./server/node_modules:/usr/local/app/node_modules
+      - server:/usr/local/app
     ports:
       - 3000:3000
     logging:
@@ -19,11 +18,10 @@ services:
 
   web:
     volumes:
-      - ./client:/usr/local/app
-      - ./client/node_modules:/usr/local/app/node_modules
+      - client:/usr/local/app
     ports:
-      - 80:80
-      - 8080:8080
+      - 80:3000
+      - 8080:80
     logging:
       driver: json-file
     # command: bash -c "npm install && nginx"
@@ -34,9 +32,30 @@ services:
     ports:
       - 8545:8545
     volumes:
-      - ./blockchain:/usr/local/app
-      - ./blockchain/node_modules:/usr/local/app/node_modules
+      - truffle:/usr/local/app
       - blockchain:/var/lib/blockchain
     logging:
       driver: json-file
     entrypoint: bash -c "npm install && node ./node_modules/ganache-cli/build/cli.node.js -h 0.0.0.0 -a '1' -m 'i topi non avevano nipoti' -i '1' --db=/var/lib/blockchain"
+
+volumes:
+  database:
+  blockchain:
+  server:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr
+      device: ":${APP_ROOT}/server"
+  client:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr
+      device: ":${APP_ROOT}/client"
+  truffle:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr
+      device: ":${APP_ROOT}/blockchain"
