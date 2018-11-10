@@ -55,7 +55,6 @@ services:
       - 80
     depends_on:
       - server
-      - database
     networks:
       - network
     environment:
