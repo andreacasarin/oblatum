@@ -1,28 +1,119 @@
 {
 	"info": {
-		"name": "Oblatum",
 		"_postman_id": "4a541d9d-34cd-00e8-6a51-c69120a3b6ae",
-		"description": "",
+		"name": "Oblatum",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Asset create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjE0NzQ0OTIsImRhdGEiOnsidXNlciI6eyJpZCI6IjVmNWViZWRlLTlhNDItNDFmNS04MDExLTlhZmJhMWRhYzc2ZiIsIm5hbWUiOiJOYW1lIiwic3VybmFtZSI6IlN1cm5hbWUiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRhMEdmb0Q2TW5HRFBRWUQvUi9EM1FlVHJlQUovaTF3cTJWalQzUGczSlFDRHQwRHJEZS5nQyIsInBhc3N3b3JkQ29uZmlybWF0aW9uIjoiJDJhJDEwJGEwR2ZvRDZNbkdEUFFZRC9SL0QzUWVUcmVBSi9pMXdxMlZqVDNQZzNKUUNEdDBEckRlLmdDIiwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDE4LTAzLTE5VDE0OjU4OjU1LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE4LTAzLTE5VDE0OjU4OjU1LjAwMFoifX0sImlhdCI6MTUyMTQ3MTUzOH0.gWWWrJ1aA8BQ_vFHTz-NqjIYBcwetJOTH4WmPgsQAtQ"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"manufacturer\": \"Cannondale\",\n    \"model\": \"Jekyll\",\n    \"serial\": \"12345678\"\n}"
+				},
+				"url": {
+					"raw": "{{schema}}{{host}}{{port}}{{path}}/assets",
+					"host": [
+						"{{schema}}{{host}}{{port}}{{path}}"
+					],
+					"path": [
+						"assets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asset read",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 8c048c87-745c-475e-b116-f0f723ad4a33"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{schema}}{{host}}{{port}}{{path}}/assets/8c048c87-745c-475e-b116-f0f723ad4a33",
+					"host": [
+						"{{schema}}{{host}}{{port}}{{path}}"
+					],
+					"path": [
+						"assets",
+						"8c048c87-745c-475e-b116-f0f723ad4a33"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assets read",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjEzMDMxODIsImRhdGEiOnsidXNlciI6eyJpZCI6IjM3ZDRiNTY5LTgyMzktNDFmZS04ZTY3LTZmZmE1YTNlZDA2YyIsIm5hbWUiOiJOYW1lIiwic3VybmFtZSI6IlN1cm5hbWUiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQ3Nm9JbnB3ajRYWEg3RjVhRDY3UDN1WnhiV1d2Y2NuQmRNUVF1QWhOT0xtT1BQbUFHZTB4bSIsInBhc3N3b3JkQ29uZmlybWF0aW9uIjoiJDJhJDEwJDc2b0lucHdqNFhYSDdGNWFENjdQM3VaeGJXV3ZjY25CZE1RUXVBaE5PTG1PUFBtQUdlMHhtIiwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDE4LTAzLTE3VDE0OjU2OjIzLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE4LTAzLTE3VDE0OjU2OjIzLjAwMFoifX0sImlhdCI6MTUyMTI5OTU4Nn0.uTf1r82CqhVo3EtwHsnSuk6TozJw2TInMjG7RcL065s"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{schema}}{{host}}{{port}}{{path}}/assets",
+					"host": [
+						"{{schema}}{{host}}{{port}}{{path}}"
+					],
+					"path": [
+						"assets"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Users read",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "localhost/api/users",
+					"raw": "{{schema}}{{host}}{{port}}{{path}}/users",
 					"host": [
-						"localhost"
+						"{{schema}}{{host}}{{port}}{{path}}"
 					],
 					"path": [
-						"api",
 						"users"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -31,97 +122,20 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
-				"url": {
-					"raw": "localhost/api/users/1",
-					"host": [
-						"localhost"
-					],
-					"path": [
-						"api",
-						"users",
-						"1"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "User create",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Name\",\n    \"surname\": \"Surname\",\n    \"email\": \"test@example.com\",\n    \"password\": \"12345678\",\n    \"passwordConfirmation\": \"12345678\",\n    \"role\": \"user\"\n}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/api/users",
+					"raw": "{{schema}}{{host}}{{port}}{{path}}/users/d45bc707-da4b-4e9a-875d-7df92726c905",
 					"host": [
-						"localhost"
+						"{{schema}}{{host}}{{port}}{{path}}"
 					],
 					"path": [
-						"api",
-						"users"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "User update",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Name\",\n    \"surname\": \"Surname\",\n    \"email\": \"test@example.com\",\n    \"password\": \"12345678\",\n    \"passwordConfirmation\": \"12345678\",\n    \"role\": \"user\"\n}"
-				},
-				"url": {
-					"raw": "localhost/api/users/3",
-					"host": [
-						"localhost"
-					],
-					"path": [
-						"api",
 						"users",
-						"3"
+						"d45bc707-da4b-4e9a-875d-7df92726c905"
 					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "User delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "localhost/api/users/3",
-					"host": [
-						"localhost"
-					],
-					"path": [
-						"api",
-						"users",
-						"3"
-					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -140,18 +154,218 @@
 					"raw": "{\n\t\"email\": \"test@andreacasarin.com\"\n}"
 				},
 				"url": {
-					"raw": "localhost/api/sendmail",
+					"raw": "{{schema}}{{host}}{{port}}{{path}}/sendmail",
 					"host": [
-						"localhost"
+						"{{schema}}{{host}}{{port}}{{path}}"
 					],
 					"path": [
-						"api",
 						"sendmail"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
+		},
+		{
+			"name": "Session read",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjEzMDMxODIsImRhdGEiOnsidXNlciI6eyJpZCI6IjM3ZDRiNTY5LTgyMzktNDFmZS04ZTY3LTZmZmE1YTNlZDA2YyIsIm5hbWUiOiJOYW1lIiwic3VybmFtZSI6IlN1cm5hbWUiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQ3Nm9JbnB3ajRYWEg3RjVhRDY3UDN1WnhiV1d2Y2NuQmRNUVF1QWhOT0xtT1BQbUFHZTB4bSIsInBhc3N3b3JkQ29uZmlybWF0aW9uIjoiJDJhJDEwJDc2b0lucHdqNFhYSDdGNWFENjdQM3VaeGJXV3ZjY25CZE1RUXVBaE5PTG1PUFBtQUdlMHhtIiwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDE4LTAzLTE3VDE0OjU2OjIzLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE4LTAzLTE3VDE0OjU2OjIzLjAwMFoifX0sImlhdCI6MTUyMTI5OTU4Nn0.uTf1r82CqhVo3EtwHsnSuk6TozJw2TInMjG7RcL065s"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{schema}}{{host}}{{port}}{{path}}/sessions",
+					"host": [
+						"{{schema}}{{host}}{{port}}{{path}}"
+					],
+					"path": [
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjEzMDY4MDcsImRhdGEiOnsidXNlciI6eyJpZCI6IjM3ZDRiNTY5LTgyMzktNDFmZS04ZTY3LTZmZmE1YTNlZDA2YyIsIm5hbWUiOiJOYW1lIiwic3VybmFtZSI6IlN1cm5hbWUiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQ3Nm9JbnB3ajRYWEg3RjVhRDY3UDN1WnhiV1d2Y2NuQmRNUVF1QWhOT0xtT1BQbUFHZTB4bSIsInBhc3N3b3JkQ29uZmlybWF0aW9uIjoiJDJhJDEwJDc2b0lucHdqNFhYSDdGNWFENjdQM3VaeGJXV3ZjY25CZE1RUXVBaE5PTG1PUFBtQUdlMHhtIiwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDE4LTAzLTE3VDE0OjU2OjIzLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE4LTAzLTE3VDE0OjU2OjIzLjAwMFoifX0sImlhdCI6MTUyMTMwMzIzN30.uuCb4nEyhyYKMhh55Q36PErQWPAdpGIus0-dZJVpHcs"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Name\",\n    \"surname\": \"Surnamehjkhkjhjk\",\n    \"email\": \"test@example.com\",\n    \"password\": \"12345678\",\n    \"passwordConfirmation\": \"12345678\",\n    \"role\": \"user\"\n}"
+				},
+				"url": {
+					"raw": "{{schema}}{{host}}{{port}}{{path}}/users/37d4b569-8239-41fe-8e67-6ffa5a3ed06c",
+					"host": [
+						"{{schema}}{{host}}{{port}}{{path}}"
+					],
+					"path": [
+						"users",
+						"37d4b569-8239-41fe-8e67-6ffa5a3ed06c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Session create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"support@oblatum.it\",\n    \"password\": \"ug6l1hm4rycxfzvb\"\n}"
+				},
+				"url": {
+					"raw": "{{schema}}{{host}}{{port}}{{path}}/sessions",
+					"host": [
+						"{{schema}}{{host}}{{port}}{{path}}"
+					],
+					"path": [
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asset update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjE0NzQ0OTIsImRhdGEiOnsidXNlciI6eyJpZCI6IjVmNWViZWRlLTlhNDItNDFmNS04MDExLTlhZmJhMWRhYzc2ZiIsIm5hbWUiOiJOYW1lIiwic3VybmFtZSI6IlN1cm5hbWUiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRhMEdmb0Q2TW5HRFBRWUQvUi9EM1FlVHJlQUovaTF3cTJWalQzUGczSlFDRHQwRHJEZS5nQyIsInBhc3N3b3JkQ29uZmlybWF0aW9uIjoiJDJhJDEwJGEwR2ZvRDZNbkdEUFFZRC9SL0QzUWVUcmVBSi9pMXdxMlZqVDNQZzNKUUNEdDBEckRlLmdDIiwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDE4LTAzLTE5VDE0OjU4OjU1LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE4LTAzLTE5VDE0OjU4OjU1LjAwMFoifX0sImlhdCI6MTUyMTQ3MTUzOH0.gWWWrJ1aA8BQ_vFHTz-NqjIYBcwetJOTH4WmPgsQAtQ"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"asd\",\n\t\"surname\": \"asd\",\n\t\"email\": \"test3@example.com\",\n\t\"password\": \"123456789\",\n\t\"passwordConfirmation\": \"123456789\"\n}"
+				},
+				"url": {
+					"raw": "{{schema}}{{host}}{{port}}{{path}}/assets/2effa218-15b4-44f4-8efc-f3ad1e9a62a0",
+					"host": [
+						"{{schema}}{{host}}{{port}}{{path}}"
+					],
+					"path": [
+						"assets",
+						"2effa218-15b4-44f4-8efc-f3ad1e9a62a0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjEzMDY4MDcsImRhdGEiOnsidXNlciI6eyJpZCI6IjM3ZDRiNTY5LTgyMzktNDFmZS04ZTY3LTZmZmE1YTNlZDA2YyIsIm5hbWUiOiJOYW1lIiwic3VybmFtZSI6IlN1cm5hbWUiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQ3Nm9JbnB3ajRYWEg3RjVhRDY3UDN1WnhiV1d2Y2NuQmRNUVF1QWhOT0xtT1BQbUFHZTB4bSIsInBhc3N3b3JkQ29uZmlybWF0aW9uIjoiJDJhJDEwJDc2b0lucHdqNFhYSDdGNWFENjdQM3VaeGJXV3ZjY25CZE1RUXVBaE5PTG1PUFBtQUdlMHhtIiwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDE4LTAzLTE3VDE0OjU2OjIzLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE4LTAzLTE3VDE0OjU2OjIzLjAwMFoifX0sImlhdCI6MTUyMTMwMzIzN30.uuCb4nEyhyYKMhh55Q36PErQWPAdpGIus0-dZJVpHcs"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{schema}}{{host}}{{port}}{{path}}/users/37d4b569-8239-41fe-8e67-6ffa5a3ed06c",
+					"host": [
+						"{{schema}}{{host}}{{port}}{{path}}"
+					],
+					"path": [
+						"users",
+						"37d4b569-8239-41fe-8e67-6ffa5a3ed06c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Name\",\n    \"surname\": \"Surname\",\n    \"email\": \"test42@example.com\",\n    \"password\": \"12345678\",\n    \"passwordConfirmation\": \"12345678\"\n}"
+				},
+				"url": {
+					"raw": "{{schema}}{{host}}{{port}}{{path}}/users",
+					"host": [
+						"{{schema}}{{host}}{{port}}{{path}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "5b11b79e-f1a7-4081-bfea-511cc5923476",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "34b45a84-e5b5-4f97-bd41-3b3c072b80ea",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "5f272512-b688-44c0-a515-87f312a3f983",
+			"key": "path",
+			"value": "/api",
+			"type": "string"
 		}
 	]
 }
