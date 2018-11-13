@@ -94,3 +94,4 @@ networks:
 volumes:
   database:
   blockchain:
+  contracts:

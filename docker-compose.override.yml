@@ -42,7 +42,23 @@ services:
 
 volumes:
   database:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr
+      device: ":${APP_ROOT}/database/data"
   blockchain:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr
+      device: ":${APP_ROOT}/blockchain/data"
+  contracts:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr
+      device: ":${APP_ROOT}/blockchain/build/contracts"
   server:
     driver: local
     driver_opts:
@@ -61,9 +77,3 @@ volumes:
       type: nfs
       o: addr=host.docker.internal,rw,nolock,hard,nointr
       device: ":${APP_ROOT}/blockchain"
-  contracts:
-    driver: local
-    driver_opts:
-      type: nfs
-      o: addr=host.docker.internal,rw,nolock,hard,nointr
-      device: ":${APP_ROOT}/blockchain/build/contracts"
