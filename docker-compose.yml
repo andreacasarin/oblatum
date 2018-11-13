@@ -86,7 +86,7 @@ services:
       ETH_ADDRESS: ${ETH_ADDRESS}
       ETH_HOST: ${ETH_HOST}
       ETH_PORT: ${ETH_PORT}
-    entrypoint: bash -c "node ./node_modules/ganache-cli/build/cli.node.js -h 0.0.0.0 -a '1' -m 'i topi non avevano nipoti' -i '1' --db=/var/lib/blockchain"
+    entrypoint: bash -c "npm run compile && node ./node_modules/ganache-cli/build/cli.node.js -h 0.0.0.0 -a '1' -m 'i topi non avevano nipoti' -i '1' --db=/var/lib/blockchain"
 
 networks:
   network:
