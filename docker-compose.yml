@@ -29,7 +29,7 @@ services:
       driver: journald
     environment:
       DOCKER: 'true'
-    command: "-a '1' -m 'i topi non avevano nipoti' -i '1' --db=/var/lib/blockchain"
+    command: "-a '1' -m '${ETH_MNEMONIC}' -i '1' --db=/var/lib/blockchain"
 
   server:
     build:
@@ -58,7 +58,7 @@ services:
       ETH_HOST: ${ETH_HOST}
       ETH_PORT: ${ETH_PORT}
       PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-    command: bash -c "truffle migrate && sequelize db:migrate && npm start"
+    command: bash -c "sleep 10 && truffle migrate && sequelize db:migrate && npm start"
 
   web:
     build:
