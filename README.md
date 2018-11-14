@@ -11,21 +11,13 @@ Our solution can be easily applied to different assets and can be complemented w
 
 ## Installation
 
-#### 1. Docker:
+#### 1. Install Docker:
 
-**Minimum version:** 17.03.0 .
+For informations follow "[How to install docker](https://www.docker.com/community-edition#/download)" instructions.
 
-To check docker version run in console `docker -v` .
+#### 2. Install Docker Compose:
 
-For further informations follow "[How to install docker](https://www.docker.com/community-edition#/download)" instructions.
-
-#### 2. Docker Compose:
-
-**Minimum version:** 1.16.0 .
-
-To check docker-compose version run in console `docker-compose -v` .
-
-For further informations follow "[How to install docker-compose](https://docs.docker.com/compose/install/)" instructions.
+For informations follow "[How to install docker-compose](https://docs.docker.com/compose/install/)" instructions.
 
 #### 3. Clone repository:
 
@@ -47,59 +39,51 @@ For further informations follow "[How to install docker-compose](https://docs.do
 
 `docker-compose up`
 
-#### 8. Migrate smartcontracts:
-
-`docker-compose exec blockchain bash`
-
-#### 9. Run sequelize migrations:
-
-`docker-compose exec server sequelize db:migrate`
-
-#### ~~10. Import sequelize seeds~~:
-
-~~`docker-compose exec server sequelize db:seed:all`~~
-
-#### 11. Stop dockerized application:
+#### 8. Stop dockerized application:
 
 `CTRL+c`
 
-#### 12. Start background dockerized application:
+#### 9. Start background dockerized application:
 
 `docker-compose up -d`
 
-#### 13. Check that the application is installed and configured correctly:
+#### 10. Check that the application is installed and configured correctly:
 
 Open `http://localhost/` in a browser to see application running.
 
 ## Usage
 
-#### Run unit tests:
+#### Run unit tests on server:
 
 `docker-compose exec server npm run test`
 
-#### Run unit tests live:
+#### Run unit tests live on server:
 
 `docker-compose exec server npm run test-watch`
 
-#### Run code coverage tests:
+#### Run code coverage tests on server:
 
 `docker-compose exec server npm run coverage`
 
-#### Run linter:
+#### Run linter on server:
 
 `docker-compose exec server npm run linter`
-
-#### Rebuild application application:
-
-`docker-compose build --no-cache`
 
 #### Run bash on server container:
 
 `docker-compose exec server bash`
 
-#### Install new node server dependencies:
+#### Install new node dependencies on server:
 
 `docker-compose exec server npm install`
+
+#### Run Truffle migrations:
+
+`docker-compose exec server truffle migrate`
+
+#### Run Sequelize migrations:
+
+`docker-compose exec server sequelize db:migrate`
 
 #### Start application after installation:
 
@@ -108,11 +92,6 @@ Open `http://localhost/` in a browser to see application running.
 #### Stop application:
 
 `docker-compose stop`
-
-
-#### Update contracts definitions (in case of changes):
-
-`cp blockchain/build/contracts/Deed*.json server/config/`
 
 ## License
 
