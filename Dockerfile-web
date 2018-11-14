@@ -1,5 +1,8 @@
 FROM debian:latest
 
+ARG api_host
+ARG api_port
+
 RUN \
     apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install nginx curl gnupg2 ca-certificates \
