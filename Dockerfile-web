@@ -30,8 +30,13 @@ RUN \
     && echo '  }' >> /etc/nginx/sites-enabled/default \
     && echo '}' >> /etc/nginx/sites-enabled/default
 
+
 ADD web/package.json web/package-lock.json /usr/local/app/
 WORKDIR /usr/local/app/
 RUN npm install --only=production
 ADD web /usr/local/app/
+
+ENV API_HOST=$api_host
+ENV API_PORT=$api_port
+
 RUN npm install && npm run build && npm prune --production
