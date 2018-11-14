@@ -11,13 +11,14 @@ FROM node:9
 # RUN \
 #   echo "root=postmaster" >> /etc/ssmtp/ssmtp.conf \
 #   && echo "FromLineOverride=yes" >> /etc/ssmtp/ssmtp.conf \
-#   && echo "mailhub=${SMTP_SERVER}" >> /etc/ssmtp/ssmtp.conf \
+#   && echo "mailhub=${SMTP_HOST}" >> /etc/ssmtp/ssmtp.conf \
 #   && echo "UseTLS=yes" >> /etc/ssmtp/ssmtp.conf \
 #   && echo "AuthUser=${SMTP_USER}" >> /etc/ssmtp/ssmtp.conf \
 #   && echo "AuthPass=${SMTP_PASSWORD}" >> /etc/ssmtp/ssmtp.conf
 
 ADD server/package.json server/package-lock.json /usr/local/app/
 WORKDIR /usr/local/app/
-RUN npm install --only=production
+# RUN npm install --only=production
+RUN npm install
 
 ADD server /usr/local/app/
