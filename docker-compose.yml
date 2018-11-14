@@ -77,7 +77,7 @@ services:
       API_PORT: ${API_PORT}
     logging:
       driver: journald
-    command: bash -c "npm run build && nginx -g 'daemon off;'"
+    command: bash -c "nginx -g 'daemon off;'"
 
 networks:
   network:

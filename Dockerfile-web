@@ -34,4 +34,4 @@ ADD web/package.json web/package-lock.json /usr/local/app/
 WORKDIR /usr/local/app/
 RUN npm install --only=production
 ADD web /usr/local/app/
-RUN npm run build
+RUN npm install && npm run build && npm prune --production
