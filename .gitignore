@@ -3,9 +3,7 @@
 server/node_modules
 server/coverage
 server/.nyc_output
+server/build
 
-client/node_modules
-client/dist
-
-blockchain/node_modules
-blockchain/build
+web/node_modules
+web/dist

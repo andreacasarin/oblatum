@@ -7,73 +7,41 @@ services:
     logging:
       driver: json-file
 
+  blockchain:
+    ports:
+      - 8545:8545
+    logging:
+      driver: json-file
+
   server:
     volumes:
       - server:/usr/local/app
-      - contracts:/usr/local/app/config/contracts
     ports:
       - 3000:3000
     logging:
       driver: json-file
-    command: bash -c "npm install && npm run watch"
+    command: bash -c "npm install && truffle migrate && sequelize db:migrate && npm run watch"
 
   web:
     volumes:
-      - client:/usr/local/app
+      - web:/usr/local/app
     ports:
       - 80:3000
       - 8080:80
     logging:
       driver: json-file
-    # command: bash -c "npm install && nginx"
-    # To be able to do this we need to remove daemon directive from /etc/nginx/nginx.conf:
     command: bash -c "npm install && nginx -g 'daemon on;' && npm run dev"
 
-  blockchain:
-    ports:
-      - 8545:8545
-    volumes:
-      - truffle:/usr/local/app
-      - contracts:/usr/local/app/build/contracts
-      - blockchain:/var/lib/blockchain
-    logging:
-      driver: json-file
-    entrypoint: bash -c "npm install && node ./node_modules/ganache-cli/build/cli.node.js -h 0.0.0.0 -a '1' -m 'i topi non avevano nipoti' -i '1' --db=/var/lib/blockchain"
-
 volumes:
-  database:
-    driver: local
-    driver_opts:
-      type: nfs
-      o: addr=host.docker.internal,rw,nolock,hard,nointr
-      device: ":${APP_ROOT}/database/data"
-  blockchain:
-    driver: local
-    driver_opts:
-      type: nfs
-      o: addr=host.docker.internal,rw,nolock,hard,nointr
-      device: ":${APP_ROOT}/blockchain/data"
-  contracts:
-    driver: local
-    driver_opts:
-      type: nfs
-      o: addr=host.docker.internal,rw,nolock,hard,nointr
-      device: ":${APP_ROOT}/blockchain/build/contracts"
   server:
     driver: local
     driver_opts:
       type: nfs
       o: addr=host.docker.internal,rw,nolock,hard,nointr
       device: ":${APP_ROOT}/server"
-  client:
+  web:
     driver: local
     driver_opts:
       type: nfs
       o: addr=host.docker.internal,rw,nolock,hard,nointr
-      device: ":${APP_ROOT}/client"
-  truffle:
-    driver: local
-    driver_opts:
-      type: nfs
-      o: addr=host.docker.internal,rw,nolock,hard,nointr
-      device: ":${APP_ROOT}/blockchain"
+      device: ":${APP_ROOT}/web"

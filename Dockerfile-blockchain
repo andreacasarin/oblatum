@@ -1,13 +1,1 @@
-FROM node:9
-
-RUN \
-    mkdir /var/lib/blockchain \
-    && chown node /var/lib/blockchain
-
-ADD blockchain/package.json blockchain/package-lock.json /usr/local/app/
-WORKDIR /usr/local/app/
-RUN npm install --only=production
-
-ADD blockchain /usr/local/app/
-
-# RUN npm run compile
+FROM trufflesuite/ganache-cli:latest

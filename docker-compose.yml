@@ -17,18 +17,29 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
+  blockchain:
+    build:
+      context: .
+      dockerfile: Dockerfile-blockchain
+    networks:
+      - network
+    volumes:
+      - blockchain:/var/lib/blockchain
+    logging:
+      driver: journald
+    environment:
+      DOCKER: 'true'
+    command: "-a '1' -m 'i topi non avevano nipoti' -i '1' --db=/var/lib/blockchain"
+
   server:
     build:
       context: .
       dockerfile: Dockerfile-server
     networks:
       - network
-    volumes:
-      - contracts:/usr/local/app/config/contracts
     depends_on:
       - database
       - blockchain
-    user: node
     logging:
       driver: journald
     environment:
@@ -47,18 +58,18 @@ services:
       ETH_HOST: ${ETH_HOST}
       ETH_PORT: ${ETH_PORT}
       PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-    command: bash -c "sequelize db:migrate && npm start"
+    command: bash -c "truffle migrate && sequelize db:migrate && npm start"
 
   web:
     build:
       context: .
       dockerfile: Dockerfile-web
+    networks:
+      - network
     ports:
       - 80
     depends_on:
       - server
-    networks:
-      - network
     environment:
       PORT: ${NODE_PORT}
       NODE_ENV: ${NODE_ENV}
@@ -68,30 +79,9 @@ services:
       driver: journald
     command: bash -c "npm run build && nginx -g 'daemon off;'"
 
-  blockchain:
-    build:
-      context: .
-      dockerfile: Dockerfile-blockchain
-    volumes:
-      - blockchain:/var/lib/blockchain
-      - contracts:/usr/local/app/build/contracts
-    networks:
-      - network
-    user: node
-    logging:
-      driver: journald
-    environment:
-      NODE_ENV: ${NODE_ENV}
-      PATH: /usr/local/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-      ETH_ADDRESS: ${ETH_ADDRESS}
-      ETH_HOST: ${ETH_HOST}
-      ETH_PORT: ${ETH_PORT}
-    entrypoint: bash -c "npm run compile && node ./node_modules/ganache-cli/build/cli.node.js -h 0.0.0.0 -a '1' -m 'i topi non avevano nipoti' -i '1' --db=/var/lib/blockchain"
-
 networks:
   network:
 
 volumes:
   database:
   blockchain:
-  contracts:

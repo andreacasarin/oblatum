@@ -30,12 +30,8 @@ RUN \
     && echo '  }' >> /etc/nginx/sites-enabled/default \
     && echo '}' >> /etc/nginx/sites-enabled/default
 
-    # Removing to use it in background on dev
-    # && echo 'daemon off;' >> /etc/nginx/nginx.conf
-
-ADD client/package.json client/package-lock.json /usr/local/app/
+ADD web/package.json web/package-lock.json /usr/local/app/
 WORKDIR /usr/local/app/
-# RUN npm install --only=production
-RUN npm install
-ADD client /usr/local/app/
+RUN npm install --only=production
+ADD web /usr/local/app/
 RUN npm run build
