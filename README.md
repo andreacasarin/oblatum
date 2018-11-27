@@ -7,7 +7,7 @@ Oblatum mission is to organize the world’s asset in a transparent and secure w
 We have chosen to start from tracing bicycle. We leverage the Ethereum blockchain to create a digital certificate associated with the bicycle which enhances transparency and prevents the reselling of stolen bicycles.
 
 ### Scale fast
-Our solution can be easily applied to different assets and can be complemented with many different services attached to any registered asset. By relaying on the Ethereum blockchain we contribute to the Ethereum community, the most active community in the crypto-world, and we benefit from the open innovation.
+Our solution can be easily applied to different assets and can be complemented with many different services attached to any registered asset. By relaying on the Ethereum blockchain we contribute to the Ethereum community, one of the most active community in the crypto-world, and we benefit from the open innovation.
 
 ## Installation
 

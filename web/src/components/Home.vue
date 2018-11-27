@@ -53,7 +53,7 @@
                 attached to any registered asset.
                 By relaying on the Ethereum blockchain
                 we contribute to the Ethereum community,
-                the most active community in the crypto-world,
+                one of the most active community in the crypto-world,
                 and we benefit from the open innovation.
               </div>
             </div>
