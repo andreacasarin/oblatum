@@ -70,7 +70,7 @@
             </div>
 
             <div class="row">
-              <div class="col-sm-4 pb-3">
+              <div class="col-sm-4 offset-sm-4 pb-5 pt-5">
                 <img
                 src="../assets/andrea.jpg"
                 class="rounded-circle mx-auto d-block pb-3"
@@ -93,10 +93,10 @@
             </div>
 
             <div class="row">
-              <div class="col-sm-4 pb-3">
+              <div class="col-sm-4 offset-sm-2 pb-5 pt-5">
                 <img
                 src="../assets/alessandro.jpg"
-                class="rounded-circle mx-auto d-block pb-3"
+                class="rounded-circle mx-auto d-block former pb-3"
                 alt="Alessandro Rea"
                 height="200px"
                 width="200px" />
@@ -108,10 +108,10 @@
                 </div>
               </div>
 
-              <div class="col-sm-4 pb-3">
+              <div class="col-sm-4 pb-5 pt-5">
                 <img
                 src="../assets/ezechiele.jpg"
-                class="rounded-circle mx-auto d-block pb-3"
+                class="rounded-circle mx-auto d-block former pb-3"
                 alt="Andrea Casarin"
                 height="200px"
                 width="200px" />
