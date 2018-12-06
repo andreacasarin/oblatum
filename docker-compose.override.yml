@@ -16,6 +16,7 @@ services:
   server:
     volumes:
       - server:/usr/local/app
+      # - ${APP_ROOT}/server:/usr/local/app
     ports:
       - 3000:3000
     logging:
@@ -25,9 +26,10 @@ services:
   web:
     volumes:
       - web:/usr/local/app
+      # - ${APP_ROOT}/web:/usr/local/app
     ports:
-      - 80:3000
-      - 8080:80
+      - 80:8080
+      - 9000:80
     logging:
       driver: json-file
     command: bash -c "npm install && nginx -g 'daemon on;' && npm run dev"

@@ -70,7 +70,30 @@
             </div>
 
             <div class="row">
-              <div class="col-sm-6 pb-3">
+              <div class="col-sm-4 pb-3">
+                <img
+                src="../assets/andrea.jpg"
+                class="rounded-circle mx-auto d-block pb-3"
+                alt="Andrea Casarin"
+                height="200px"
+                width="200px" />
+                <h5 class="row justify-content-center font-weight-bold">
+                  <a href="andreacasarin.com" class="light-text">Andrea Casarin</a>
+                </h5>
+                <div class="row justify-content-center light-text font-italic">
+                  CEO & CTO
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col text-center light-text">
+                <h1>Former members</h1>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4 pb-3">
                 <img
                 src="../assets/alessandro.jpg"
                 class="rounded-circle mx-auto d-block pb-3"
@@ -85,18 +108,18 @@
                 </div>
               </div>
 
-              <div class="col-sm-6 pb-3">
+              <div class="col-sm-4 pb-3">
                 <img
-                src="../assets/andrea.jpg"
+                src="../assets/ezechiele.jpg"
                 class="rounded-circle mx-auto d-block pb-3"
                 alt="Andrea Casarin"
                 height="200px"
                 width="200px" />
                 <h5 class="row justify-content-center light-text font-weight-bold">
-                  Andrea Casarin
+                  Ezechiele Tosadori
                 </h5>
                 <div class="row justify-content-center light-text font-italic">
-                  CTO
+                  Developer
                 </div>
               </div>
             </div>
