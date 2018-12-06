@@ -21,7 +21,7 @@ services:
       - 3000:3000
     logging:
       driver: json-file
-    command: bash -c "npm install && truffle migrate && sequelize db:migrate && npm run watch"
+    command: bash -c "npm install && truffle migrate --reset && sequelize db:migrate && npm run watch"
 
   web:
     volumes:
