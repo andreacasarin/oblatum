@@ -8,7 +8,7 @@ exports.create = (req, res, next, orm = models, mail = mailer) => {
         from: '"Oblatum 👻" <support@oblatum.io>',
         to: user.email,
         subject: 'User created ✔',
-        body: 'User' +
+        body: 'User ' +
           `${user.name} ` +
           'has been created in Oblatum. Log in on http://www.oblatum.io to see more!',
       });

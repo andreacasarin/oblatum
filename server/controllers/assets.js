@@ -1,13 +1,21 @@
 const models = require('../models/index');
 const mailer = require('../utils/mailer');
 
-exports.create = (req, res, next, orm = models) => {
+exports.create = (req, res, next, orm = models, mail = mailer) => {
   orm.User
     .scope('withWallets', { method: ['authorized', req.user.id] })
     .findById(req.user.id)
     .then(user =>
       user.Wallets[0].createAsset(req.body)
         .then((asset) => {
+          mail.send({
+            from: '"Oblatum 👻" <support@oblatum.io>',
+            to: user[0].email,
+            subject: 'Asset registered ✔',
+            body: 'You just registered' +
+              `${asset.manufacturer} ${asset.model} (${asset.serial}) ` +
+              'to you in Oblatum. Log in on http://www.oblatum.io to see more!',
+          });
           res.status(200).json({ asset });
         })
         .catch((error) => {
