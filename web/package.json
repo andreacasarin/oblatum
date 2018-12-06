@@ -1,7 +1,7 @@
 {
-  "name": "client",
+  "name": "Oblatum web client",
   "version": "1.0.0",
-  "description": "Oblatum web client",
+  "description": "Oblatum enables people to trace, store and insure their most valuable assets.",
   "author": "Andrea Casarin <git@andreacasarin.com>",
   "private": true,
   "scripts": {

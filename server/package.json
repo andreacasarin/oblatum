@@ -1,7 +1,7 @@
 {
-  "name": "app",
+  "name": "Oblatum server",
   "version": "1.0.0",
-  "description": "Oblatum server",
+  "description": "Oblatum enables people to trace, store and insure their most valuable assets.",
   "main": "index.js",
   "author": "Andrea Casarin <git@andreacasarin.com>",
   "private": true,
