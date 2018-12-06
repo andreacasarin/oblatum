@@ -151,7 +151,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\": \"test@andreacasarin.com\"\n}"
+					"raw": "{\n\t\"email\": \"test@oblatum.io\"\n}"
 				},
 				"url": {
 					"raw": "{{schema}}{{host}}{{port}}{{path}}/sendmail",
@@ -238,7 +238,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"support@oblatum.it\",\n    \"password\": \"ug6l1hm4rycxfzvb\"\n}"
+					"raw": "{\n    \"email\": \"support@oblatum.io\",\n    \"password\": \"ug6l1hm4rycxfzvb\"\n}"
 				},
 				"url": {
 					"raw": "{{schema}}{{host}}{{port}}{{path}}/sessions",

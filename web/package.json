@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "Oblatum web client",
   "author": "Andrea Casarin <git@andreacasarin.com>",
   "private": true,
   "scripts": {

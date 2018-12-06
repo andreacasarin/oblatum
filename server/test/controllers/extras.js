@@ -6,7 +6,7 @@ describe('Extras', () => {
   it('it should call mailer with right parametes', () => {
     const req = {
       body: {
-        email: 'support@oblatum.it',
+        email: 'support@oblatum.io',
       },
     };
     const res = {

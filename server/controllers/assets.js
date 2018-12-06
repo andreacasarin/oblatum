@@ -65,14 +65,14 @@ exports.update = (req, res, next, orm = models, mail = mailer) => {
         .then(asset =>
           asset.setWallet(user[0].Wallets[0])
             .then(() => {
-              // mail.send({
-              //   from: '"Oblatum 👻" <support@oblatum.it>',
-              //   to: user[0].email,
-              //   subject: 'Congratulations ✔',
-              //   body: 'Someone just registered' +
-              //     `${asset.manufacturer} ${asset.model} (${asset.serial}) ` +
-              //     'to you in Oblatum. Log in on http://www.oblatum.it to see more!',
-              // });
+              mail.send({
+                from: '"Oblatum 👻" <support@oblatum.io>',
+                to: user[0].email,
+                subject: 'Asset registered ✔',
+                body: 'Someone just registered' +
+                  `${asset.manufacturer} ${asset.model} (${asset.serial}) ` +
+                  'to you in Oblatum. Log in on http://www.oblatum.io to see more!',
+              });
               res.status(200).json({ asset });
             })
             .catch((error) => {

@@ -1,8 +1,17 @@
 const models = require('../models/index');
+const mailer = require('../utils/mailer');
 
-exports.create = (req, res, next, orm = models) => {
+exports.create = (req, res, next, orm = models, mail = mailer) => {
   orm.User.create(req.body)
     .then((user) => {
+      mail.send({
+        from: '"Oblatum 👻" <support@oblatum.io>',
+        to: user.email,
+        subject: 'User created ✔',
+        body: 'User' +
+          `${user.name} ` +
+          'has been created in Oblatum. Log in on http://www.oblatum.io to see more!',
+      });
       res.status(200).json({ user });
     })
     .catch((error) => {

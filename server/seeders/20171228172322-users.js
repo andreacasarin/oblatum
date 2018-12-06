@@ -5,7 +5,7 @@ module.exports = {
       {
         name: 'Oblatum',
         surname: 'Admin',
-        email: 'support@oblatum.it',
+        email: 'support@oblatum.io',
         password: 'ug6l1hm4rycxfzvb',
         // confirmed: true,
         role: 'admin',

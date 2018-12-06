@@ -1,6 +1,7 @@
 {
   "name": "app",
   "version": "1.0.0",
+  "description": "Oblatum server",
   "main": "index.js",
   "author": "Andrea Casarin <git@andreacasarin.com>",
   "private": true,

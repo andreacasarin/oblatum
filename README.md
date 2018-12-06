@@ -97,7 +97,7 @@ Open `http://localhost/` in a browser to see application running.
 
 The MIT License
 
-Copyright (c) 2010-2018 Oblatum. https://oblatum.it
+Copyright (c) 2010-2018 Oblatum. https://www.oblatum.io
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

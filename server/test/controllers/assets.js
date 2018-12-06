@@ -173,7 +173,7 @@ describe('Assets', () => {
     };
     const mailStub = {
       send: (data) => {
-        assert('"Oblatum 👻" <support@oblatum.it>', data.from);
+        assert('"Oblatum 👻" <support@oblatum.io>', data.from);
       },
     };
     assets.update(req, res, {}, modelsStub, mailStub);

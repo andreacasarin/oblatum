@@ -1,10 +1,10 @@
 const nodemailer = require('nodemailer');
 
 exports.send = (options = {
-  from: '"Oblatum 👻" <support@oblatum.it>',
-  to: 'reaalessandro95@gmail.com, hello@andreacasarin.com, support@oblatum.it',
+  from: '"Oblatum 👻" <support@oblatum.io>',
+  to: 'support@oblatum.io',
   subject: 'Hello ✔',
-  body: 'Someone is interested in Oblatum!',
+  body: 'This is the default Oblatum message!',
 }, transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,

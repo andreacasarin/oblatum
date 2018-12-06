@@ -18,7 +18,7 @@
           <h5>Contacts</h5>
           <div class="icon-align pt-2">
             <i class="fa fa-envelope h5-alike mr-2" aria-hidden="true"></i>
-            <a href="mailto:support@oblatum.it">support@oblatum.it</a>
+            <a href="mailto:support@oblatum.io">support@oblatum.io</a>
           </div>
           <div class="pt-5">
             Oblatum &copy; 2018
